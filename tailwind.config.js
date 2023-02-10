@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js, jsx}"],
+  content: ["./src/**/*.{html,js,jsx}"],
   presets: [],
   darkMode: 'media', // or 'class'
   theme: {
@@ -241,7 +241,15 @@ module.exports = {
       150: '1.5',
       200: '2',
     },
-    container: {},
+    container: {
+      padding: {
+        DEFAULT: '1rem',
+        sm: '2rem',
+        lg: '4rem',
+        xl: '5rem',
+        '2xl': '6rem',
+      },
+    },
     content: {
       none: 'none',
     },
