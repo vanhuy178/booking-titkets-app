@@ -5,6 +5,7 @@ import Movies from '../components/Movies';
 import MultipleRows from '../components/r-slick/MulipleRows';
 import { fetchMovies } from '../redux/actions/ManagingMovies';
 import HomeMenu from '../template/home/HomeTemplate/HomeMenu';
+import Detail_Movies from '../components/Detail_Movies';
 
 export default function Home(propsRoute) {
     // console.log(propsRoute);
@@ -39,6 +40,8 @@ export default function Home(propsRoute) {
 
             <div className="mx-36">
                 <HomeMenu />
+
+                <Detail_Movies />
             </div>
 
         </>
