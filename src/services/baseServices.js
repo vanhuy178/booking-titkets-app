@@ -1,11 +1,11 @@
 // WE CAN CALL HTTPS REQUEST GET, POST, PUT, DELETE
-import Axios from "axios";
+import axios from "axios";
 import { DOMAIN, TOKEN } from '../utils/settings/config';
 
 export class BaseServices {
     //put json về phía backend
     put = (url, model) => {
-        return Axios({
+        return axios({
             url: `${DOMAIN}${url}`,
             method: 'PUT',
             data: model,
@@ -14,7 +14,7 @@ export class BaseServices {
     }
 
     post = (url, model) => {
-        return Axios({
+        return axios({
             url: `${DOMAIN}${url}`,
             method: 'POST',
             data: model,
@@ -24,7 +24,7 @@ export class BaseServices {
 
 
     get = (url) => {
-        return Axios({
+        return axios({
             url: `${DOMAIN}${url}`,
             method: 'GET',
             headers: { 'Authorization': 'Bearer ' + localStorage.getItem(TOKEN) } //token yêu cầu từ backend chứng minh user đã đăng nhập rồi
@@ -32,7 +32,7 @@ export class BaseServices {
     }
 
     delete = (url) => {
-        return Axios({
+        return axios({
             url: `${DOMAIN}${url}`,
             method: 'DELETE',
             headers: { 'Authorization': 'Bearer ' + localStorage.getItem(TOKEN) } //token yêu cầu từ backend chứng minh user đã đăng nhập rồi
