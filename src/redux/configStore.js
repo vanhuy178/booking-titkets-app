@@ -1,7 +1,8 @@
 import { applyMiddleware, combineReducers, legacy_createStore } from 'redux';
 import thunk from 'redux-thunk';
+import { carouselReducer } from './reducers/carouselReducer';
 const rootReducer = combineReducers({
-    // contain reducers funtion
+    carouselStore: carouselReducer
 })
 
 const store = legacy_createStore(rootReducer, applyMiddleware(thunk));

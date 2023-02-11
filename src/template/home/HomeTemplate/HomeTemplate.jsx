@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import HomeMenu from "./HomeMenu";
 import Header from "../Layout/Header/Header";
 import HomeCarousel from "../Layout/HomeCarousel/HomeCarousel";
+import Footer from "../Layout/Footer/Footer";
 
 export const HomeTemplate = (props) => { // props contains path, exact, component
     const { Component, ...restProps } = props; // destructuring Components props and the rest part
@@ -12,13 +13,18 @@ export const HomeTemplate = (props) => { // props contains path, exact, componen
             // props.location, props.history, props.match
             return (
                 <Fragment>
+                    {/* MAIN LAYOUT */}
+                    {/* HEADER */}
                     <Header {...propRoute} />
                     <HomeCarousel  {...propRoute} />
+
+                    {/* THE BODY USING REDIRECT IN APP.JS */}
                     <Component {...propRoute} />
+
                     <HomeMenu />
-                    <footer>
-                        đây là footer pages
-                    </footer>
+
+                    {/* FOOTER */}
+                    <Footer />
                 </Fragment>
             )
 

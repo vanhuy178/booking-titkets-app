@@ -39,5 +39,7 @@ src/
 
 2. in folder template we are going use history, reacr-router, tailwind,  library to set up redirect page with Header.js + HomeTemplate.js + App.js, we are going to target in HomeTemplate.js here includes multiple component 
 
-2. 
+3. create footer component
+
+4. target folder reducer, we create carouselReducers
 

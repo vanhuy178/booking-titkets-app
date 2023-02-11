@@ -3,8 +3,6 @@ import React from 'react'
 export default function Home(propsRoute) {
     console.log(propsRoute);
     return (
-
-        // <div className="container">
         <section className="text-gray-600 body-font" style={{ margin: '0 auto' }}>
             <div className="container px-5 py-24 mx-auto">
                 <div className="flex flex-wrap justify-between -m-4">
@@ -89,7 +87,6 @@ export default function Home(propsRoute) {
                 </div>
             </div>
         </section >
-        // </div >
 
     )
 }
