@@ -18,7 +18,6 @@ export default function Movies(props) {
                 <div className="space-y-2 text-center">
                     <div className="my-5">
                         <a className='h-20 w-20 rounded-sm bg-slate-600 px-7 py-2 text-white uppercase '>Đặt vé</a>
-
                     </div>
                 </div>
             </div>

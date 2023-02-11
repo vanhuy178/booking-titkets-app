@@ -56,6 +56,8 @@ src/
 
 6. The component Movies carousel is ok, i use card in mamba, witch react slick carousel for Home component but we will config hover and some animation int the next step
 
+7. We finished watching and upcomming button
+
 
 
 

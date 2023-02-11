@@ -1,4 +1,4 @@
-import { GET_MOVIES } from "../types/ManagingMoviesType";
+import { GET_MOVIES, SET_UPCOMING_FILM, SET_WATCHNG_FILM } from "../types/ManagingMoviesType";
 
 const initialState = {
     listMovies: [
@@ -16,16 +16,33 @@ const initialState = {
             "dangChieu": false,
             "sapChieu": true
         }
-    ]
+    ],
+    upcomingMovies: true,
+    watchingMovies: true,
+    // CREATE AN ARRAY TO BACKUP MAIN ARRAY, IT WILL RECEIVED FULL ARRAY FROM API
+    defaultListMovies: []
 }
 
 export const ManagingMovieReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_MOVIES: {
 
-            return { ...state, listMovies: action.payload }
+            let allMovies = action.payload
+            return { ...state, listMovies: allMovies, defaultListMovies: allMovies }
         }
 
+        // CHECK ONE TWO CONDITION HERE
+        case SET_WATCHNG_FILM: {
+            state.watchingMovies = !state.watchingMovies;
+            let watchingMoviesList = state.defaultListMovies.filter(movie => movie.dangChieu === state.watchingMovies)
+            return { ...state, listMovies: watchingMoviesList }
+
+        }
+        case SET_UPCOMING_FILM: {
+            state.upcomingMovies = !state.upcomingMovies;
+            let upcomingMoviesList = state.defaultListMovies.filter(movie => movie.sapChieu === state.upcomingMovies)
+            return { ...state, listMovies: upcomingMoviesList }
+        }
         default:
             return { ...state };
     }

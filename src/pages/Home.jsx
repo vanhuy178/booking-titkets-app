@@ -24,22 +24,14 @@ export default function Home(propsRoute) {
 
 
     const { listMovies } = useSelector(state => state.managingMoviesStore);
-    // console.log(listMovies);
-    // let settingJustifyFlex = listMovies.length === 1 ? 'center' : 'between';
-    // const renderMovies = () => {
-    //     return listMovies.map((item, index) => {
-    //         return (
-    //             <Movies item={item} />
-    //         )
-    //     })
-    // }
 
     return (
         <>
-            {/* <MultipleRows /> */}
+            {/*we use  <MultipleRows /> */}
 
             <section className="text-gray-600 body-font" >
                 <div className="container px-5 py-24 mx-auto " >
+                    {/* WE USING REACT-SLICK HERE https://react-slick.neostack.com/*/}
                     <MultipleRows listMovies={listMovies} />
                 </div>
             </section>
@@ -48,13 +40,7 @@ export default function Home(propsRoute) {
             <div className="mx-36">
                 <HomeMenu />
             </div>
-            {/* <section className="home text-gray-600 body-font" style={{ margin: '0 auto' }}>
-                <div className="container px-5 py-24 mx-auto">
-                    <div className={`flex flex-wrap justify-${settingJustifyFlex} -m-4`}>
 
-                    </div>
-                </div>
-            </section > */}
         </>
 
     )
