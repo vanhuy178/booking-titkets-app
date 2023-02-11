@@ -1,10 +1,12 @@
 import { applyMiddleware, combineReducers, legacy_createStore } from 'redux';
 import thunk from 'redux-thunk';
 import { carouselReducer } from './reducers/carouselReducer';
+import { ManagingMovieReducer } from './reducers/ManagingMoviesReducer';
 const rootReducer = combineReducers({
-    carouselStore: carouselReducer
+    carouselStore: carouselReducer,
+    managingMoviesStore: ManagingMovieReducer
 })
 
 const store = legacy_createStore(rootReducer, applyMiddleware(thunk));
 
-export default store
+export default store;

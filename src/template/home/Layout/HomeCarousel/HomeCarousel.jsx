@@ -15,17 +15,20 @@ export default function HomeCarousel() {
         background: '#364d79',
     };
     const dispatch = useDispatch()
+    const { listCarouselBanner } = useSelector((state) => state.carouselStore);
+    console.log(listCarouselBanner);
     useEffect(
         () => {
             // DISPATCH ACTION WITH REDUX THUNK
-            const action = fetchCarousel();
+            // CAN DISPATCH A FUNCTION WITH A SUPPORT OF REDUX - THUNK
             // Because we was setting redux thunk , so we can pass into dispatch with a function
-            // dispatch(action)---> action ---> fetchCarousel() --> dispatch an action object to reducer
-            dispatch(action)
+            // dispatch(action) ---> fetchCarousel() --> dispatch an action object to reducer
+            dispatch(fetchCarousel())
 
         }, [])
-    const { listCarouselBanner } = useSelector((state) => state.carouselStore);
 
+
+    console.log(listCarouselBanner);
     const renderImage = () => {
         return listCarouselBanner.map((item, index) => {
             return (

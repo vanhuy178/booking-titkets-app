@@ -19,15 +19,20 @@ src/
 |    |---constant.js
 |---redux 
 |    |--- action
-|    |---types
+|    |--- types
 |    |--- reducers
 |    |---configStore.js
 |--- pages
 |
+|--- servies (connect with backend with http resquest using axios lib) 
+|    |--- baseSerives.js
 |---component
 |
 |---template
-|
+|   |--- admin
+|   |--- HomeTemplate
+|   |--- UserTemplate
+|   |--- UserTemplate
 |---utils
 ```
 
@@ -41,5 +46,5 @@ src/
 
 3. create footer component
 
-4. target folder reducer, we create carouselReducers
+4. target folder redux, in folder reducer create carouselReducers, 
 
