@@ -16,7 +16,6 @@ export default function HomeCarousel() {
     };
     const dispatch = useDispatch()
     const { listCarouselBanner } = useSelector((state) => state.carouselStore);
-    console.log(listCarouselBanner);
     useEffect(
         () => {
             // DISPATCH ACTION WITH REDUX THUNK
@@ -28,12 +27,11 @@ export default function HomeCarousel() {
         }, [])
 
 
-    console.log(listCarouselBanner);
     const renderImage = () => {
         return listCarouselBanner.map((item, index) => {
             return (
                 <div key={index}>
-                    <div style={{ ...contentStyle, backgroundImage: `url(${item.hinhAnh})`, backgroundPosition: 'center', backgroundSize: 'cover' }}>
+                    <div style={{ ...contentStyle, backgroundImage: `url(${item.hinhAnh})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundAttachment: 'fixed' }}>
                     </div>
                 </div>
             )

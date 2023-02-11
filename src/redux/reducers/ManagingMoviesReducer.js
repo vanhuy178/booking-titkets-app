@@ -20,7 +20,6 @@ const initialState = {
 }
 
 export const ManagingMovieReducer = (state = initialState, action) => {
-    console.log(action.payload);
     switch (action.type) {
         case GET_MOVIES: {
 

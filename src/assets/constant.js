@@ -28,3 +28,6 @@ export const capitalizationletter = (string) => {
 }
 // console.log(capitalizationletter('xuyên không thời gian'));
 
+
+
+// CUSTOMIZE LIBRARY SLICK
