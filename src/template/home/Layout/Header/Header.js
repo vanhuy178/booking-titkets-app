@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
+import { history } from '../../../../App';
 import MainLogo from '../../../../components/MainLogo';
 
 
@@ -30,7 +31,8 @@ export default function Header() {
                 </ul>
 
                 <div className="items-center flex-shrink-0 hidden lg:flex">
-                    <button className="self-center px-8 py-3 rounded">Sign in</button>
+                    <NavLink to='/login' className="self-center px-8 py-3 rounded">Sign in</NavLink>
+                    {/* <button onClick={() => history.push('/login')} className="self-center px-8 py-3 rounded">Sign in</button> */}
                     <button className="self-center px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900">Sign up</button>
                 </div>
 

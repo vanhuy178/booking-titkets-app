@@ -5,7 +5,7 @@ import representLogo from '../assets/image/PrepesentImage.png'
 export default function MainLogo() {
     return (
         <>
-            <NavLink rel="noopener noreferrer" to='./home' aria-label="Back to homepage" className="flex items-center p-2 inline-block">
+            <NavLink rel="noopener noreferrer" to='/home' aria-label="Back to homepage" className="flex items-center p-2 inline-block">
                 <style>
                     {animation}
                 </style>

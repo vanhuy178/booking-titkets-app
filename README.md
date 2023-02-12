@@ -83,6 +83,9 @@ servies
 
 9. we finished Home menu will api 
 
+10. we complete Detail Component
+
+11. we will create Checkout template component
 
 
 
