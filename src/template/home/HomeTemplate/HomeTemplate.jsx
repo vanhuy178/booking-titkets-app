@@ -21,7 +21,7 @@ export const HomeTemplate = (props) => { // props contains path, exact, componen
                     {/* THE BODY USING REDIRECT IN APP.JS */}
                     <Component {...propRoute} />
 
-                    <HomeMenu />
+
 
                     {/* FOOTER */}
                     <Footer />

@@ -6,6 +6,7 @@ import MultipleRows from '../components/r-slick/MulipleRows';
 import { fetchMovies } from '../redux/actions/ManagingMovies';
 import HomeMenu from '../template/home/HomeTemplate/HomeMenu';
 import Detail_Movies from '../components/Detail_Movies';
+import { fetchListCenimaSystem } from '../redux/actions/CenimaAction';
 
 export default function Home(propsRoute) {
     // console.log(propsRoute);
@@ -21,10 +22,16 @@ export default function Home(propsRoute) {
             // Because we was setting redux thunk , so we can pass into dispatch with a function
             // dispatch(action)---> action ---> fetchCarousel() --> dispatch an action object to reducer
             dispatch(action)
+
+
+            dispatch(fetchListCenimaSystem())
+
         }, [])
 
 
     const { listMovies } = useSelector(state => state.managingMoviesStore);
+
+    const { listCenimaSystem } = useSelector(state => state.managingCenimaStore)
 
     return (
         <>
@@ -38,10 +45,8 @@ export default function Home(propsRoute) {
             </section>
 
 
-            <div className="mx-36">
-                <HomeMenu />
-
-                <Detail_Movies />
+            <div className="mx-36" >
+                <HomeMenu listCenimaSystem={listCenimaSystem} />
             </div>
 
         </>

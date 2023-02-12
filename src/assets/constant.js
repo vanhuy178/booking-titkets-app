@@ -16,7 +16,7 @@ export const animation = `
 }
 `
 
-// FUNCTION TO CAPITALIZATION LETTER 
+// FUNCTION TO CAPITALIZE EACH LETTER 
 
 export const capitalizationletter = (string) => {
     let trimString = string.trim();
@@ -28,4 +28,7 @@ export const capitalizationletter = (string) => {
 }
 // console.log(capitalizationletter('xuyên không thời gian'));
 
-
+// FUNCTION TO CAPITALIZE FIRST LETTER 
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
