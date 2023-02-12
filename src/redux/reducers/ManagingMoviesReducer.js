@@ -22,7 +22,7 @@ const initialState = {
     // CREATE AN ARRAY TO BACKUP MAIN ARRAY, IT WILL RECEIVED FULL ARRAY FROM API
     defaultListMovies: [],
 
-    // This is a object
+    // CREATE AN OBJECT FOR DETAIL MOVIE FILMS
     detailMoviesShowTimesInfo: {}
 }
 

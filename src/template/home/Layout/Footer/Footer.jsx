@@ -4,15 +4,10 @@ import MainLogo from '../../../../components/MainLogo'
 import _ from 'lodash';
 export default function Footer(props) {
 
-
-    // CODING....
     const { listCenimaSystem } = useSelector(state => state.managingCenimaStore);
+
     // using map and uniq function of lodash to split unnecessary data
     const arrayCinemaSystem = _.map(listCenimaSystem, (cinemaSystemItem => _.pick(cinemaSystemItem, ['maHeThongRap', 'logo', 'tenHeThongRap'])));
-
-    console.log('From footer', listCenimaSystem);
-
-
     return (
         <footer className="py-6 dark:bg-gray-800 dark:text-gray-50 bg-gray-700 text-white">
             <div className="container px-6 mx-auto space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50">
@@ -28,10 +23,10 @@ export default function Footer(props) {
                     <div className="col-span-6 text-center md:text-left md:col-span-1">
                         <p className="pb-1 text-lg font-medium">Partner</p>
                         <ul className='grid grid-cols-2'>
-                            {arrayCinemaSystem.map((itemCinema, indexCinema) => {
+                            {arrayCinemaSystem && arrayCinemaSystem.map((itemCinema, indexCinema) => {
                                 return (
-                                    <li className='my-2' key={indexCinema}>
-                                        <img src={itemCinema.logo} alt={itemCinema.tenHeThongRap} width='30' />
+                                    <li className=' my-2' key={indexCinema}>
+                                        <img src={itemCinema.logo} className alt={itemCinema.tenHeThongRap} width='30' />
                                     </li>
                                 )
                             })}

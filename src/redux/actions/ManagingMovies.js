@@ -35,8 +35,6 @@ export const fetchDetailShowTimesMovies = (idMovies) => {
                 type: GET_DETAIL_MOVIE,
                 payload: result.data.content
             })
-            // CHECK 
-            // console.log('get detail show movies', result);
         } catch (error) {
             console.log(error);
         }
