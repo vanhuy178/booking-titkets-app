@@ -1,14 +1,13 @@
 import { Carousel, Radio } from 'antd';
-import axios from 'axios';
-import { useState, React, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { fetchCarousel } from '../../../../redux/actions/CarouselAction';
+import { fetchCarousel } from '../../../redux/actions/CarouselAction';
 
 
 export default function HomeCarousel() {
     const contentStyle = {
-        height: '100vh',
+        height: '640px',
         color: '#fff',
         lineHeight: '160px',
         textAlign: 'center',

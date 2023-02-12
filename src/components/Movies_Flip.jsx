@@ -1,6 +1,8 @@
 import React from 'react'
 import './styleCompononent/Movies_Flip.css';
 import { PlayCircleOutlined } from '@ant-design/icons'
+import { NavLink } from 'react-router-dom';
+import { history } from '../App';
 export default function Movies_Flip(props) {
     const { biDanh, dangChieu, danhGia, hinhAnh, hot, moTa, maPhim, ngayKhoiChieu, sapChieu, tenPhim, trailer } = props.moviesItem
 
@@ -25,7 +27,19 @@ export default function Movies_Flip(props) {
 
                     </div>
                 </div>
-                <div className="bg-orange-300 text-center cursor-pointer py-2 bg-indigo-300 my-2 text-success-50 font-bold">ĐẶT VÉ</div>
+
+                {/*
+                
+                    REDIRECT TO DETAIL PAGE WITH AN ID
+                
+                */}
+
+
+                <div className="bg-orange-300 text-center cursor-pointer py-2 bg-indigo-300 my-2 text-success-50 font-bold"
+                >
+                    <NavLink to={`/detail/${maPhim}`}>ĐẶT VÉ</NavLink>
+
+                </div>
             </div>
         </>
 

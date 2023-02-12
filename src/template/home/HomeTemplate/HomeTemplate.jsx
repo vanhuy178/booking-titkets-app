@@ -2,7 +2,7 @@ import { Fragment, useEffect } from "react";
 import { Route } from "react-router-dom";
 import HomeMenu from "./HomeMenu";
 import Header from "../Layout/Header/Header";
-import HomeCarousel from "../Layout/HomeCarousel/HomeCarousel";
+import HomeCarousel from "./HomeCarousel";
 import Footer from "../Layout/Footer/Footer";
 
 export const HomeTemplate = (props) => { // props contains path, exact, component
@@ -16,7 +16,6 @@ export const HomeTemplate = (props) => { // props contains path, exact, componen
                     {/* MAIN LAYOUT */}
                     {/* HEADER */}
                     <Header {...propRoute} />
-                    <HomeCarousel  {...propRoute} />
 
                     {/* THE BODY USING REDIRECT IN APP.JS */}
                     <Component {...propRoute} />

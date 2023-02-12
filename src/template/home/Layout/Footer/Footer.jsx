@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import MainLogo from '../../../../components/MainLogo'
+import _ from 'lodash';
+export default function Footer(props) {
 
-export default function Footer() {
+
+    // CODING....
+    const { listCenimaSystem } = useSelector(state => state.managingCenimaStore);
+    // using map and uniq function of lodash to split unnecessary data
+    const arrayCinemaSystem = _.map(listCenimaSystem, (cinemaSystemItem => _.pick(cinemaSystemItem, ['maHeThongRap', 'logo', 'tenHeThongRap'])));
+
+    console.log('From footer', listCenimaSystem);
+
+
     return (
         <footer className="py-6 dark:bg-gray-800 dark:text-gray-50 bg-gray-700 text-white">
             <div className="container px-6 mx-auto space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50">
                 <div className="grid grid-cols-12">
-                    <div className="pb-6 col-span-full md:pb-0 md:col-span-6">
+                    <div className="pb-6 col-span-full md:pb-0 md:col-span-5">
                         <MainLogo />
                         <a rel="noopener noreferrer" className="flex justify-center space-x-3 md:justify-start">
                             <span className="self-center text-xl font-semibold">
@@ -14,27 +25,19 @@ export default function Footer() {
                             </span>
                         </a>
                     </div>
-                    <div className="col-span-6 text-center md:text-left md:col-span-3">
-                        <p className="pb-1 text-lg font-medium">Category</p>
-                        <ul>
-                            <li>
-                                <a rel="noopener noreferrer" className="hover:dark:text-violet-400">Link</a>
-                            </li>
-                            <li>
-                                <a rel="noopener noreferrer" className="hover:dark:text-violet-400">Link</a>
-                            </li>
-                            <li>
-                                <a rel="noopener noreferrer" className="hover:dark:text-violet-400">Link</a>
-                            </li>
-                            <li>
-                                <a rel="noopener noreferrer" className="hover:dark:text-violet-400">Link</a>
-                            </li>
-                            <li>
-                                <a rel="noopener noreferrer" className="hover:dark:text-violet-400">Link</a>
-                            </li>
+                    <div className="col-span-6 text-center md:text-left md:col-span-1">
+                        <p className="pb-1 text-lg font-medium">Partner</p>
+                        <ul className='grid grid-cols-2'>
+                            {arrayCinemaSystem.map((itemCinema, indexCinema) => {
+                                return (
+                                    <li className='my-2' key={indexCinema}>
+                                        <img src={itemCinema.logo} alt={itemCinema.tenHeThongRap} width='30' />
+                                    </li>
+                                )
+                            })}
                         </ul>
                     </div>
-                    <div className="col-span-6 text-center md:text-left md:col-span-3">
+                    <div className="col-span-6 text-center md:text-left md:col-span-4 ml-10">
                         <p className="pb-1 text-lg font-medium">Category</p>
                         <ul>
                             <li>

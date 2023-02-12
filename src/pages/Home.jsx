@@ -5,8 +5,8 @@ import Movies from '../components/Movies';
 import MultipleRows from '../components/r-slick/MulipleRows';
 import { fetchMovies } from '../redux/actions/ManagingMovies';
 import HomeMenu from '../template/home/HomeTemplate/HomeMenu';
-import Detail_Movies from '../components/Detail_Movies';
 import { fetchListCenimaSystem } from '../redux/actions/CenimaAction';
+import HomeCarousel from '../template/home/HomeTemplate/HomeCarousel';
 
 export default function Home(propsRoute) {
     // console.log(propsRoute);
@@ -31,11 +31,13 @@ export default function Home(propsRoute) {
 
     const { listMovies } = useSelector(state => state.managingMoviesStore);
 
+    // coding fixing footer
     const { listCenimaSystem } = useSelector(state => state.managingCenimaStore)
-
+    console.log('from home-menu', listCenimaSystem);
     return (
         <>
             {/*we use  <MultipleRows /> */}
+            <HomeCarousel />
 
             <section className="text-gray-600 body-font" >
                 <div className="container px-5 py-24 mx-auto " >

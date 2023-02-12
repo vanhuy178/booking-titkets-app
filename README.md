@@ -39,6 +39,27 @@ src/
 ```
 
 
+# What does each folder exactly do?
+
+```
+template
+```
+
+
+```
+
+redux
+```
+
+
+```
+layout
+```
+
+```
+servies
+```
+
 
 # STEP
 
@@ -59,6 +80,8 @@ src/
 7. We finished watching and upcomming button
 
 8. we will target to HomeMenu component, but first we create manageCenima service to call api, next setup cenima in redux folder
+
+9. we finished Home menu will api 
 
 
 

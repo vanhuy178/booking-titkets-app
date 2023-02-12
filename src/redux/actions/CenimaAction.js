@@ -17,7 +17,8 @@ export const fetchListCenimaSystem = () => {
                     payload: result.data.content
                 })
             }
-
+            // coding...........
+            console.log('reslt from call api fetch listcin', result.data.content);
         } catch (error) {
             console.log(error);
         }

@@ -22,6 +22,10 @@ export class ManageMovieService extends BaseServices {
         return this.get(`/api/QuanLyPhim/LayDanhSachPhim?maNhom=${IDGROUP}`)
     }
 
+    getListMoviesShowTimesInfo = (idMovies) => {
+        return this.get(`/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${idMovies}`)
+    }
+
 }
 
 export const managingMovieService = new ManageMovieService();

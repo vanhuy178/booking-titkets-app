@@ -1,4 +1,4 @@
-import { GET_MOVIES, SET_UPCOMING_FILM, SET_WATCHNG_FILM } from "../types/ManagingMoviesType";
+import { GET_DETAIL_MOVIE, GET_MOVIES, SET_UPCOMING_FILM, SET_WATCHNG_FILM } from "../types/ManagingMoviesType";
 
 const initialState = {
     listMovies: [
@@ -20,7 +20,10 @@ const initialState = {
     upcomingMovies: true,
     watchingMovies: true,
     // CREATE AN ARRAY TO BACKUP MAIN ARRAY, IT WILL RECEIVED FULL ARRAY FROM API
-    defaultListMovies: []
+    defaultListMovies: [],
+
+    // This is a object
+    detailMoviesShowTimesInfo: {}
 }
 
 export const ManagingMovieReducer = (state = initialState, action) => {
@@ -42,6 +45,12 @@ export const ManagingMovieReducer = (state = initialState, action) => {
             state.upcomingMovies = !state.upcomingMovies;
             let upcomingMoviesList = state.defaultListMovies.filter(movie => movie.sapChieu === state.upcomingMovies)
             return { ...state, listMovies: upcomingMoviesList }
+        }
+
+
+        // Coding....
+        case GET_DETAIL_MOVIE: {
+            return { ...state, detailMoviesShowTimesInfo: action.payload }
         }
         default:
             return { ...state };

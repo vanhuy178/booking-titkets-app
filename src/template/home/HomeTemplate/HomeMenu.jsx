@@ -58,7 +58,7 @@ class HomeMenu extends React.PureComponent {
                                                                 {/*
 
                                                                 .... CODDE
-
+                                                                    Css for hot
                                                                 */}
                                                             </style>
                                                             <p className='text-xl text-red-500 font-bold'>HOT</p>
@@ -103,7 +103,6 @@ class HomeMenu extends React.PureComponent {
         })
     }
     render() {
-        console.log('from home menu', this.props.listCenimaSystem);
         return (
             <div className='container'>
                 <Tabs tabPosition={this.state.tabPosition} className=''>
