@@ -26,7 +26,6 @@ export default function Detail(props) {
 
 	// CONNECT TO STATE REDUX AND BUILD FUNCTION FOR CALL API IN SERVICES FOLDER
 	const { detailMoviesShowTimesInfo } = useSelector(state => state.managingMoviesStore);
-	console.log(detailMoviesShowTimesInfo);
 	// OH NO *.* YOU NEED MAINTAIN CODE PLEASE! 
 	const description = detailMoviesShowTimesInfo.moTa;
 	const rating = detailMoviesShowTimesInfo.danhGia;
@@ -107,8 +106,9 @@ export default function Detail(props) {
 																	</div>
 																	<div className="info-showtimes-movie mt-2 grid grid-cols-4 gap-5">
 																		{itemGroupCinema.lichChieuPhim && itemGroupCinema.lichChieuPhim.map((itemInforShowtimesMovie, indexShowtimesMovies) => {
+
 																			return (
-																				<NavLink to='/home' className='text-sm col-span-1 text-green-500' key={indexShowtimesMovies}>
+																				<NavLink to={`/checkout/${itemInforShowtimesMovie.maLichChieu}`} className='text-sm col-span-1 text-green-500' key={indexShowtimesMovies}>
 																					<p>
 																						{itemInforShowtimesMovie.tenRap}
 																					</p>

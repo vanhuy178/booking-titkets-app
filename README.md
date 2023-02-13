@@ -87,6 +87,3 @@ servies
 
 11. we will create Checkout template component
 
-
-
-

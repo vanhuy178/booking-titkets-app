@@ -16,7 +16,7 @@ export const fetchMovies = () => {
                 payload: result.data.content
             })
         } catch (error) {
-            console.log(error);
+            console.log(error.response.data);
         }
     }
 }
@@ -36,7 +36,7 @@ export const fetchDetailShowTimesMovies = (idMovies) => {
                 payload: result.data.content
             })
         } catch (error) {
-            console.log(error);
+            console.log(error.response.data);
         }
     }
 }

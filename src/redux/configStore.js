@@ -1,12 +1,16 @@
 import { applyMiddleware, combineReducers, legacy_createStore } from 'redux';
 import thunk from 'redux-thunk';
 import { carouselReducer } from './reducers/carouselReducer';
+import { ManagingBookingTicketsReducer } from './reducers/ManagingBookingtTicketsReducer';
 import { manageCenimaReducer } from './reducers/ManagingCenimaReducer';
 import { ManagingMovieReducer } from './reducers/ManagingMoviesReducer';
+import { managingUserReducer } from './reducers/ManagingUserReducer';
 const rootReducer = combineReducers({
     carouselStore: carouselReducer,
     managingMoviesStore: ManagingMovieReducer,
-    managingCenimaStore: manageCenimaReducer
+    managingCenimaStore: manageCenimaReducer,
+    managingUserStore: managingUserReducer,
+    managingBookingTicketsStore: ManagingBookingTicketsReducer
 })
 
 const store = legacy_createStore(rootReducer, applyMiddleware(thunk));

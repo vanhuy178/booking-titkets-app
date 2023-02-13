@@ -9,8 +9,6 @@ class ManageCinema extends BaseServices {
     getListBannerCinema = () => {
         return this.get(`/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=${IDGROUP}`)
     }
-
-
 }
 
 export const managingCenima = new ManageCinema();

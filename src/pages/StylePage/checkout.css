@@ -1,0 +1,41 @@
+/* THE LIGHT OF THE SCREEN */
+.trapezoid {
+    border-bottom: 50px solid #555;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    height: 0;
+    width: 80%;
+    margin: 0 auto;
+    opacity: 0.4;
+    filter: drop-shadow(0px 87px 67px rgba(0, 0, 0, 0.3));
+    -webkit-filter: drop-shadow(0px 87px 67px rgba(0, 0, 0, 0.3));
+    -moz-filter: drop-shadow(0px 87px 67px rgba(0, 0, 0, 0.3));
+}
+
+/* NORMALL CHAIR */
+.theChair {
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 6px;
+    margin-right: 6px;
+    margin-bottom: 20px;
+    background-color: gray;
+}
+
+/* ORDERED CHAIR */
+.theOrderChair {
+    cursor: no-drop;
+    background-color: rgb(232, 76, 76);
+}
+
+/* ORDERING CHAIR */
+.theOrderingChair {
+    background-color: rgb(18, 176, 18) !important;
+}
+
+/* VIP CHAIR */
+.theVipChair {
+    background-color: yellow;
+}

@@ -29,7 +29,7 @@ class HomeMenu extends React.PureComponent {
                         {item.lstCumRap?.map((itemCinema, indexCinema) => {
                             return (
                                 <TabPane tab={
-
+                                    // TAB RIGHT
                                     <div style={{ width: '300px' }}>
                                         <img src="https://s3img.vcdn.vn/123phim/2021/01/bhd-star-bitexco-16105952137769.png" alt='Hello' width='50' />
                                         <div className="text-left">
