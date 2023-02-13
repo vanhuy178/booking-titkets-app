@@ -4,7 +4,7 @@ export class ListChair {
     "maRap" = '';
     "loaiGhe" = "";
     "stt" = "";
-    "giaVe" = null;
-    "daDat" = null;
-    "taiKhoanNguoiDat" = null
+    "giaVe" = '';
+    "daDat" = '';
+    "taiKhoanNguoiDat" = ''
 }
