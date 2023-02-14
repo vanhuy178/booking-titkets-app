@@ -1,1 +1,2 @@
 export const USER_LOGIN_ACTION = 'USER_LOGIN_ACTION';
+export const TAKE_INFO_USER = 'TAKE_INFO_USER'

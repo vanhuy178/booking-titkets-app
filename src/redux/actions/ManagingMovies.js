@@ -16,7 +16,7 @@ export const fetchMovies = () => {
                 payload: result.data.content
             })
         } catch (error) {
-            console.log(error.response.data);
+            console.log(error);
         }
     }
 }
@@ -26,9 +26,7 @@ export const fetchDetailShowTimesMovies = (idMovies) => {
     return async (dispatch) => {
         try {
             /*
-
             WE CONNECT TO BACK-END VIA CLASS IN SERVICE FOLFER
-
              */
             let result = await managingMovieService.getListMoviesShowTimesInfo(idMovies);
             dispatch({
@@ -36,7 +34,7 @@ export const fetchDetailShowTimesMovies = (idMovies) => {
                 payload: result.data.content
             })
         } catch (error) {
-            console.log(error.response.data);
+            console.log(error);
         }
     }
 }

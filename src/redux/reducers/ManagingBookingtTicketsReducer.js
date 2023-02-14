@@ -6,32 +6,6 @@ const initialState = {
     listOrderCinemaChairs: []
 }
 
-// const t = {
-//     daDat
-//         :
-//         false
-// giaVe
-//         :
-//         90000
-// loaiGhe
-//         :
-//         "Vip"
-// maGhe
-//         :
-//         49862
-// maRap
-//         :
-//         466
-// stt
-//         :
-//         "62"
-// taiKhoanNguoiDat
-//         :
-//         null
-// tenGhe
-//         :
-//         "62"
-// }
 export const ManagingBookingTicketsReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_DETAIL_MANAGING_SHOWTIME_MOVIES:

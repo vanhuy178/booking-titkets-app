@@ -1,6 +1,6 @@
 import { history } from "../../App";
 import { managingUser } from "../../services/ManagingUser";
-import { USER_LOGIN_ACTION } from "../types/User";
+import { TAKE_INFO_USER, USER_LOGIN_ACTION } from "../types/User";
 
 export const postUserLogin = (data) => {
     return async (dispatch) => {
@@ -19,7 +19,22 @@ export const postUserLogin = (data) => {
             }
             // console.log(result);
         } catch (error) {
-            console.log(error.response.data);
+            console.log(error);
+        }
+    }
+}
+export const fethInfoUser = () => {
+    return async (dispatch) => {
+        try {
+            const result = await managingUser.takeInfouser()
+            if (result.status === 200) {
+                dispatch({
+                    type: TAKE_INFO_USER,
+                    payload: result.data.content
+                })
+            }
+        } catch (error) {
+            console.log(error);
         }
     }
 }   

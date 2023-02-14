@@ -1,4 +1,6 @@
 export class UserLoginClass {
-    "taiKhoan" = "";
-    "matKhau" = "";
+    constructor() {
+        this.taiKhoan = "";
+        this.matKhau = "";
+    }
 }

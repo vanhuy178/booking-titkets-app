@@ -108,6 +108,7 @@ export default function Detail(props) {
 																		{itemGroupCinema.lichChieuPhim && itemGroupCinema.lichChieuPhim.map((itemInforShowtimesMovie, indexShowtimesMovies) => {
 
 																			return (
+																				// LINK TO CHECKOUT PAGE
 																				<NavLink to={`/checkout/${itemInforShowtimesMovie.maLichChieu}`} className='text-sm col-span-1 text-green-500' key={indexShowtimesMovies}>
 																					<p>
 																						{itemInforShowtimesMovie.tenRap}

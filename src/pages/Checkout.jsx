@@ -1,23 +1,27 @@
-import { CloseOutlined } from '@ant-design/icons';
+import { CloseOutlined, UserOutlined } from '@ant-design/icons';
+import { Tabs } from 'antd';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchManagingBookingTickets } from '../redux/actions/managingBookingTickets';
+import { fetchManagingBookingTickets, postBookingTickets } from '../redux/actions/managingBookingTickets';
 import { ORDER_CINEMA_CHAIR } from '../redux/types/ManagingDetailShowtimeMovies';
+import { BookingTicketClass } from '../models/BookingTicketsClass'
 import _ from 'lodash'
 import './StylePage/checkout.css';
+import { fethInfoUser } from '../redux/actions/ManagingUserAction';
+import moment from 'moment';
 
-
-export default function Checkout(props) {
+function Checkout(props) {
     const dispatch = useDispatch()
     //CALL API TO TAKE DATA 
     useEffect(() => {
         // DISPATH FUNCTION WITH THE HELP OF REDUX-THUNK
         dispatch(fetchManagingBookingTickets(props.match.params.id))
+        dispatch(fethInfoUser())
     }, [])
 
     // GET VALUE FROM REDUCER ACTUALLY WE WAS LOGGED SUCCESSFULLY
     const { detailCinemaShowtimes, listOrderCinemaChairs } = useSelector(state => state.managingBookingTicketsStore);
-    const { userLogin } = useSelector(state => state.managingUserStore);
+    const { managingInfoUser } = useSelector(state => state.managingUserStore);
     const { danhSachGhe, thongTinPhim } = detailCinemaShowtimes;
 
     // RENDER CHAIR
@@ -25,32 +29,34 @@ export default function Checkout(props) {
         const vip = 'Vip';
         const vipClass = 'theVipChair';
         const theOrderChairClass = 'theOrderChair'
-        return danhSachGhe.map((item, index) => {
-
-            let indexOrderingChairs = listOrderCinemaChairs.findIndex(orderingChair => orderingChair.maGhe === item.maGhe);
+        return danhSachGhe.map((itemChair, index) => {
             let orderingChairClass = '';
+            let orderedChairClass = '';
+            let indexOrderingChairs = listOrderCinemaChairs.findIndex(orderingChair => orderingChair.maGhe === itemChair.maGhe);
             if (indexOrderingChairs !== -1) {
                 orderingChairClass = 'theOrderingChair'
             }
-            let typeOfChairs = item.loaiGhe.trim().toLocaleLowerCase() === vip.toLocaleLowerCase() ? vipClass : '';
-            let checkOrder = item.daDat === true ? theOrderChairClass : '';
+            if (managingInfoUser.taiKhoan === itemChair.taiKhoanNguoiDat) {
+                orderedChairClass = 'theYourOrderChair'
+            }
+            let typeOfChairs = itemChair.loaiGhe.trim().toLocaleLowerCase() === vip.toLocaleLowerCase() ? vipClass : '';
+            let checkOrder = itemChair.daDat === true ? theOrderChairClass : '';
             return <>
-
                 <button
-                    disabled={item.daDat}
-                    className={` theChair ${typeOfChairs} ${checkOrder} ${orderingChairClass} text-center text-gray-800`}
+                    disabled={itemChair.daDat}
+                    className={` theChair ${typeOfChairs} ${checkOrder} ${orderingChairClass} ${orderedChairClass} text-center text-gray-800`}
                     key={index}
 
                     // HANDLE EVENT
                     onClick={() => {
                         dispatch({
                             type: ORDER_CINEMA_CHAIR,
-                            payload: item
+                            payload: itemChair
                         })
                     }}
-
                 >
-                    {item.daDat ? <CloseOutlined /> : item.stt}
+                    {/* I ORDER IS USER ICON, BUT PEOPLE ORDER IS X */}
+                    {itemChair.daDat ? orderedChairClass !== '' ? <UserOutlined /> : <CloseOutlined /> : itemChair.stt}
                 </button>
                 {(index + 1) % 16 === 0 ? <br /> : ''}
             </>
@@ -58,9 +64,7 @@ export default function Checkout(props) {
         )
     }
     const totalMoney = () => {
-
         return (listOrderCinemaChairs.length !== 0 ? listOrderCinemaChairs.reduce((total, item) => total += item.giaVe, 0) : 0).toLocaleString()
-
     }
     return (
         <div className="min-h-screen">
@@ -76,13 +80,28 @@ export default function Checkout(props) {
 
                     {/* THE LIST CINEMA CHAIRS */}
 
-                    <div className='mt-20 mx-auto' style={{ width: '75%' }}>
+                    <div className='mt-10 mx-auto' style={{ width: '75%' }}>
                         {renderChair()}
+                    </div>
+
+
+                    {/* DESCIPTION */}
+                    <div className="flex justify-center" style={{ width: '60%', margin: '0 auto' }}>
+                        <div className='w-full'>
+                            <ul className='flex justify-between'>
+                                <li>Ghế đang đặt <button className='theChair theOrderingChair'>00</button></li>
+                                <li>Ghế đã được đặt <button className='theChair theOrderChair'>X</button></li>
+                                <li>Ghế chưa đặt <button className='theChair'>00</button></li>
+                                <li>Ghế vip <button className='theChair theVipChair'>00</button></li>
+                                <li>Ghế mình đặt <button className='theChair theYourOrderChair'><UserOutlined /></button></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
                 {/* SHOW DETAIL OF THE MOVIE */}
                 <div className="col-span-3">
+                    {/* TỔNG TIỀN */}
                     <h2 className='text-center text-4xl text-green-600 font-bold my-5'>{totalMoney()} đ</h2>
                     <hr />
                     <div className="detail-film">
@@ -93,22 +112,24 @@ export default function Checkout(props) {
                     <hr />
 
                     <div className="my-2">
-                        <p className='text-red-500' style={{ minHeight: '50px' }}>
-                            <span>
+                        <p className='text-red-500 ' style={{ minHeight: '50px' }}>
+                            <span className='w-24 inline-block'>
                                 Số ghế:
                             </span>
-                            {
-                                _.sortBy(listOrderCinemaChairs, ['stt']).map((itemOrderCinemaChair, indexOrderingChairs) => {
-                                    return <span
-                                        key={indexOrderingChairs}
-                                        className='text-green-500 text-xl mx-1'
-                                    >{itemOrderCinemaChair.stt}</span>
-                                })
-                            }
+
+                            <span className='break-words'>
+                                {
+                                    _.sortBy(listOrderCinemaChairs, ['stt']).map((itemOrderCinemaChair, indexOrderingChairs) => {
+                                        return <span
+                                            key={indexOrderingChairs}
+                                            className='text-green-500 text-xl mx-1'
+                                        >{itemOrderCinemaChair.stt}</span>
+                                    })
+                                }
+                            </span>
                         </p>
                         <p className='text-green-500'>Tổng tiền:
                             <span className='ml-2'>
-
                                 {totalMoney()}
                             </span>
                         </p>
@@ -116,18 +137,31 @@ export default function Checkout(props) {
 
                     <hr />
                     <p>Email</p>
-                    <p>{userLogin.taiKhoan}</p>
+                    <p>{managingInfoUser.taiKhoan}</p>
 
                     <hr />
                     <p>Phone</p>
-                    <p>{userLogin.soDT}</p>
+                    <p>{managingInfoUser.soDT}</p>
 
                     <hr />
                     <p>Mã thanh toán</p>
                     <p className='text-sm text-gray-400'>Áp dụng mã giảm giá</p>
 
                     <hr />
-                    <div className='flex flex-col mt-10 justify-start '>
+                    <div className='flex flex-col mt-10 justify-start'
+                        onClick={() => {
+                            const infoBooking = new BookingTicketClass()
+                            infoBooking.maLichChieu = props.match.params.id;
+                            infoBooking.danhSachVe = []
+                            listOrderCinemaChairs.map((itemOrderCinemaChairs, index) => {
+                                const { maGhe, giaVe } = itemOrderCinemaChairs;
+                                if (maGhe !== '' && giaVe !== '') {
+                                    infoBooking.danhSachVe.push({ maGhe, giaVe })
+                                }
+                            })
+                            return dispatch(postBookingTickets(infoBooking))
+                        }}
+                    >
                         <button className="w-full bg-green-600 text-white py-2 px-4 border border-gray-400 rounded shadow uppercase">
                             Đặt vé
                         </button>
@@ -138,4 +172,65 @@ export default function Checkout(props) {
             </div>
         </div >
     )
+}
+
+export default function (props) {
+    return (
+        <Tabs defaultActiveKey="1">
+            <Tabs.TabPane tab="01 CHỌN VÀ THANH TOÁN" key="1">
+                <Checkout {...props} />
+            </Tabs.TabPane>
+            <Tabs.TabPane tab="02 KẾT QUẢ ĐẶT VÉ" key="2">
+                <ResultBookingTickes />
+            </Tabs.TabPane>
+        </Tabs>
+    )
+}
+
+function ResultBookingTickes() {
+    // WHEN WEB LOADING THERE ARE NO INFO ABOUT MANAGINGINFOUSER BECAUSE WE TAKE IT FROM REDUCER
+    // SO NOW WE WILL CALL API TAKE IT
+    const dispatch = useDispatch();
+    const { managingInfoUser } = useSelector(state => state.managingUserStore);
+
+    useEffect(() => {
+        dispatch(fethInfoUser());
+    }, [])
+
+    const renderInfoBookingTickets = () => {
+        return managingInfoUser.thongTinDatVe && managingInfoUser.thongTinDatVe.map((itemInfoTickets, indexInfoTickets) => {
+            console.log(itemInfoTickets);
+            const seats = _.first(itemInfoTickets.danhSachGhe);
+            const { ngayDat, tenPhim } = itemInfoTickets
+            return (
+                <div className="p-2 lg:w-1/3 md:w-1/2 w-full" key={indexInfoTickets}>
+                    <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+                        <img alt="team" className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src={itemInfoTickets.hinhAnh} />
+                        <div className="flex-grow">
+                            <h2 className="text-gray-900 title-font font-medium">{tenPhim}</h2>
+                            <p className="text-gray-500">{moment(ngayDat).format('hh:mm A d/mm/yy')}</p>
+                            <p>Địa điểm: <h1>{seats.tenHeThongRap}-{seats.tenCumRap}</h1></p>
+                            <p>Số ghế</p>
+                            <p>{itemInfoTickets.danhSachGhe.slice(0, 10).map(item => <span className='ml-1 text-sm break-words text-green-500'>{item.tenGhe}</span>)}</p>
+                        </div>
+                    </div>
+                </div>
+            )
+        })
+    }
+    return <div className='result-booking-tickets container'>
+        <section className="text-gray-600 body-font">
+            <div className="container px-5 py-10 mx-auto">
+                <div className="flex flex-col text-center w-full mb-20">
+                    <h1 className="sm:text-4xl text-4xl font-medium title-font mb-4 text-purple-500">Lịch sử đặt vé khách hàng</h1>
+                    {/* <p className="lg:w-2/3 mx-auto leading-relaxed text-base"></p> */}
+                </div>
+                <div className="flex flex-wrap -m-2">
+                    {/* RENDER INFO BOOKING TICKETS */}
+                    {renderInfoBookingTickets()}
+                </div>
+            </div>
+        </section>
+
+    </div>
 }

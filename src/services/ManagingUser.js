@@ -8,6 +8,10 @@ class ManagingUser extends BaseServices {
     postInfoLogin = (infoLogin) => {//{taiKhoan, matKhau}
         return this.post('/api/QuanLyNguoiDung/DangNhap', infoLogin)
     }
+
+    takeInfouser = () => {
+        return this.post('/api/QuanLyNguoiDung/ThongTinTaiKhoan')
+    }
 }
 export const managingUser = new ManagingUser()
 

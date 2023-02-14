@@ -30,10 +30,8 @@ export default function Home(propsRoute) {
 
 
     const { listMovies } = useSelector(state => state.managingMoviesStore);
-
-    // coding fixing footer
     const { listCenimaSystem } = useSelector(state => state.managingCenimaStore)
-    console.log('from home-menu', listCenimaSystem);
+
     return (
         <>
             {/*we use  <MultipleRows /> */}

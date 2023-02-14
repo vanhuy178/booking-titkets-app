@@ -1,26 +1,29 @@
 import { UserLoginClass } from "../../models/LoginClass"
 import { TOKEN, USER_LOGIN } from "../../utils/settings/config"
-import { USER_LOGIN_ACTION } from "../types/User"
+import { TAKE_INFO_USER, USER_LOGIN_ACTION } from "../types/User"
 
 
-let user = {}
+let user = new UserLoginClass()
 if (!localStorage.getItem(USER_LOGIN)) {
     user = JSON.parse(localStorage.getItem(USER_LOGIN))
 }
-user = new UserLoginClass()
 const initialState = {
-    userLogin: user
+    userLogin: user,
+    managingInfoUser: {
+
+    }
 }
 
 export const managingUserReducer = (state = initialState, action) => {
     switch (action.type) {
         case USER_LOGIN_ACTION: {
-            console.log('userLogin', action.payload);
             localStorage.setItem(USER_LOGIN, JSON.stringify(action.payload));
             localStorage.setItem(TOKEN, action.payload.accessToken)
             return { ...state, userLogin: action.payload }
         }
-
+        case TAKE_INFO_USER: {
+            return { ...state, managingInfoUser: action.payload }
+        }
         default:
             return { ...state }
     }

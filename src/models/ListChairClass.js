@@ -1,10 +1,12 @@
 export class ListChair {
-    "maGhe" = '';
-    "tenGhe" = "";
-    "maRap" = '';
-    "loaiGhe" = "";
-    "stt" = "";
-    "giaVe" = '';
-    "daDat" = '';
-    "taiKhoanNguoiDat" = ''
+    constructor(props) {
+        this.maGhe = '';
+        this.tenGhe = "";
+        this.maRap = '';
+        this.loaiGhe = "";
+        this.stt = "";
+        this.giaVe = '';
+        this.daDat = '';
+        this.thongTinDatVe = ''
+    }
 }
