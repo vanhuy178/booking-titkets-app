@@ -10,6 +10,8 @@ import './StylePage/checkout.css';
 import { fethInfoUser } from '../redux/actions/ManagingUserAction';
 import moment from 'moment';
 import { mainBackgroundColor } from '../assets/constant';
+import { connection } from '../index'
+import { orderCinemaChair } from '../redux/actions/ManagingMovies';
 
 
 export default function Checkout(props) {
@@ -43,10 +45,15 @@ function CheckoutItem(props) {
 		// DISPATH FUNCTION WITH THE HELP OF REDUX-THUNK
 		dispatch(fetchManagingBookingTickets(props.match.params.id))
 		dispatch(fethInfoUser())
+
+		//LOADING LIST ORDERING CHAIRS FROM THE SERVER
+		connection.on('loadDanhSachGheDaDat', (listChairsOrderByPeople) => {
+			console.log({ listChairsOrderByPeople });
+		})
 	}, [])
 
 	// GET VALUE FROM REDUCER ACTUALLY WE WAS LOGGED SUCCESSFULLY
-	const { detailCinemaShowtimes, listOrderCinemaChairs, listChairIsOrderingByCustomer } = useSelector(state => state.managingBookingTicketsStore);
+	const { detailCinemaShowtimes, listOrderingCinemaChairs, listChairIsOrderingByCustomer } = useSelector(state => state.managingBookingTicketsStore);
 	const { managingInfoUser } = useSelector(state => state.managingUserStore);
 	const { danhSachGhe, thongTinPhim } = detailCinemaShowtimes;
 
@@ -55,10 +62,8 @@ function CheckoutItem(props) {
 		const vip = 'Vip';
 		const vipClass = 'theVipChair';
 		const theOrderChairClass = 'theOrderChair';
-		console.log({ listChairIsOrderingByCustomer });
 
 		return danhSachGhe.map((itemChair, index) => {
-			console.log(itemChair.maGhe);
 			let orderingChairClass = '';
 			let orderedChairClass = '';
 			let customersAreOrderingTheChairs = '';
@@ -69,7 +74,7 @@ function CheckoutItem(props) {
 				customersAreOrderingTheChairs = 'theChairAreOrderingByByCustomer'
 			}
 			// CHECK IF USER CLICK ON OR NOT 
-			let indexOrderingChairs = listOrderCinemaChairs.findIndex(orderingChair => orderingChair.maGhe === itemChair.maGhe);
+			let indexOrderingChairs = listOrderingCinemaChairs.findIndex(orderingChair => orderingChair.maGhe === itemChair.maGhe);
 			// IF CLICK IT AND THEY EQUALS ID, THE BUTTON WILL TRANSFORM GREEN
 			if (indexOrderingChairs !== -1) {
 				orderingChairClass = 'theOrderingChair'
@@ -88,10 +93,7 @@ function CheckoutItem(props) {
 
 					// HANDLE EVENT
 					onClick={() => {
-						dispatch({
-							type: ORDER_CINEMA_CHAIR,
-							payload: itemChair
-						})
+						dispatch(orderCinemaChair(itemChair, props.match.params.id))
 					}}
 				>
 					{/* IF I ORDER THE ICON IS USER ICON, BUT PEOPLE ORDER IS X */}
@@ -105,7 +107,7 @@ function CheckoutItem(props) {
 		)
 	}
 	const totalMoney = () => {
-		return (listOrderCinemaChairs.length !== 0 ? listOrderCinemaChairs.reduce((total, item) => total += item.giaVe, 0) : 0).toLocaleString()
+		return (listOrderingCinemaChairs.length !== 0 ? listOrderingCinemaChairs.reduce((total, item) => total += item.giaVe, 0) : 0).toLocaleString()
 	}
 	return (
 		<div className="min-h-screen checkout-c">
@@ -158,7 +160,7 @@ function CheckoutItem(props) {
 
 							<span className='break-words'>
 								{
-									_.sortBy(listOrderCinemaChairs, ['stt']).map((itemOrderCinemaChair, indexOrderingChairs) => {
+									_.sortBy(listOrderingCinemaChairs, ['stt']).map((itemOrderCinemaChair, indexOrderingChairs) => {
 										return <span
 											key={indexOrderingChairs}
 											className='text-green-500 text-xl mx-1'
@@ -193,7 +195,7 @@ function CheckoutItem(props) {
 							const infoBooking = new BookingTicketClass()
 							infoBooking.maLichChieu = props.match.params.id;
 							infoBooking.danhSachVe = []
-							listOrderCinemaChairs.map((itemOrderCinemaChairs, index) => {
+							listOrderingCinemaChairs.map((itemOrderCinemaChairs, index) => {
 								const { maGhe, giaVe } = itemOrderCinemaChairs;
 								if (maGhe !== '' && giaVe !== '') {
 									infoBooking.danhSachVe.push({ maGhe, giaVe })

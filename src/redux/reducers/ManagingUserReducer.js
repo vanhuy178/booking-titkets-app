@@ -1,4 +1,5 @@
 import { UserLoginClass } from "../../models/LoginClass"
+import { ManagingUserClass } from "../../models/ManagingUserClass"
 import { TOKEN, USER_LOGIN } from "../../utils/settings/config"
 import { TAKE_INFO_USER, USER_LOGIN_ACTION } from "../types/User"
 
@@ -9,9 +10,7 @@ if (!localStorage.getItem(USER_LOGIN)) {
 }
 const initialState = {
     userLogin: user,
-    managingInfoUser: {
-
-    }
+    managingInfoUser: new ManagingUserClass()
 }
 
 export const managingUserReducer = (state = initialState, action) => {
@@ -22,6 +21,7 @@ export const managingUserReducer = (state = initialState, action) => {
             return { ...state, userLogin: action.payload }
         }
         case TAKE_INFO_USER: {
+            console.log('Take user info:', action.payload);
             return { ...state, managingInfoUser: action.payload }
         }
         default:

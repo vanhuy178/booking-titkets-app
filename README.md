@@ -89,3 +89,7 @@ servies
 
 12. Complete Tabs of Checkout component
 
+13. Build button for the people are ordering the chair and we will set up web socket in the next step
+
+14. Config websocket between client and server successfully.
+
