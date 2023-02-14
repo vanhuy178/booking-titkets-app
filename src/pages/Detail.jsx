@@ -34,7 +34,7 @@ export default function Detail(props) {
 
 	return (
 		<>
-			<div style={{ backgroundImage: `url(${detailMoviesShowTimesInfo.hinhAnh})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+			<div className='detail-c' style={{ backgroundImage: `url(${detailMoviesShowTimesInfo.hinhAnh})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
 				<CustomCard
 					style={{ paddingTop: '150px', minHeight: '100vh' }}
 					effectColor="#C780FF" // required

@@ -1,9 +1,11 @@
 import { ManagingBookingTicketsClass } from "../../models/ManagingBookingClass"
 import { GET_DETAIL_MANAGING_SHOWTIME_MOVIES, ORDER_CINEMA_CHAIR } from "../types/ManagingDetailShowtimeMovies"
+import { COMPLETED_BOOKING, REDIRECT_TABS } from "../types/ManagingMoviesType"
 
 const initialState = {
     detailCinemaShowtimes: new ManagingBookingTicketsClass(),
-    listOrderCinemaChairs: []
+    listOrderCinemaChairs: [],
+    tabActive: '1',
 }
 
 export const ManagingBookingTicketsReducer = (state = initialState, action) => {
@@ -27,6 +29,16 @@ export const ManagingBookingTicketsReducer = (state = initialState, action) => {
             }
             return { ...state, listOrderCinemaChairs: updatedListOrderCinemaChairs }
 
+        case COMPLETED_BOOKING: {
+            return { ...state, listOrderCinemaChairs: [] }
+        }
+
+        case REDIRECT_TABS: {
+            return { ...state, tabActive: '2' }
+        }
+        case "CHANGE_TAB_ACTIVE": {
+            return { ...state, tabActive: action.payload }
+        }
         default:
             return { ...state }
     }

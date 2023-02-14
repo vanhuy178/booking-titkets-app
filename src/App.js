@@ -1,6 +1,7 @@
 import { createBrowserHistory } from 'history';
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Loading from './components/Loading';
 import Checkout from './pages/Checkout';
 import Contact from './pages/Contact';
 import Detail from './pages/Detail';
@@ -21,6 +22,7 @@ function App() {
     <>
       {/* <Suspense fallback={<div>Loading...</div>}> */}
       <Router history={history}>
+        <Loading />
         <Switch>
 
           {/* HOME TEMPLATE */}
