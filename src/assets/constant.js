@@ -34,4 +34,4 @@ function capitalizeFirstLetter(string) {
 }
 
 
-export const mainBackgroundColor = 'bg-orange-300';
+export const mainBackgroundColor = 'bg-orange-300 !important';  

@@ -5,6 +5,7 @@ import { COMPLETED_BOOKING, REDIRECT_TABS } from "../types/ManagingMoviesType"
 const initialState = {
     detailCinemaShowtimes: new ManagingBookingTicketsClass(),
     listOrderCinemaChairs: [],
+    listChairIsOrderingByCustomer: [{ maGhe: 49153 }, { maGhe: 49151 }, { maGhe: 49150 }],
     tabActive: '1',
 }
 

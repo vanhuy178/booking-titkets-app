@@ -1,4 +1,4 @@
-import { CloseOutlined, UserOutlined } from '@ant-design/icons';
+import { CloseOutlined, UsergroupAddOutlined, UserOutlined } from '@ant-design/icons';
 import { Tabs } from 'antd';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -10,7 +10,7 @@ import './StylePage/checkout.css';
 import { fethInfoUser } from '../redux/actions/ManagingUserAction';
 import moment from 'moment';
 import { mainBackgroundColor } from '../assets/constant';
-import { REDIRECT_TABS } from '../redux/types/ManagingMoviesType';
+
 
 export default function Checkout(props) {
 	const tabBooking = <span className='p-10 text-xl font-bold'>CHỌN VÀ THANH TOÁN</span>
@@ -46,7 +46,7 @@ function CheckoutItem(props) {
 	}, [])
 
 	// GET VALUE FROM REDUCER ACTUALLY WE WAS LOGGED SUCCESSFULLY
-	const { detailCinemaShowtimes, listOrderCinemaChairs } = useSelector(state => state.managingBookingTicketsStore);
+	const { detailCinemaShowtimes, listOrderCinemaChairs, listChairIsOrderingByCustomer } = useSelector(state => state.managingBookingTicketsStore);
 	const { managingInfoUser } = useSelector(state => state.managingUserStore);
 	const { danhSachGhe, thongTinPhim } = detailCinemaShowtimes;
 
@@ -54,14 +54,27 @@ function CheckoutItem(props) {
 	const renderChair = () => {
 		const vip = 'Vip';
 		const vipClass = 'theVipChair';
-		const theOrderChairClass = 'theOrderChair'
+		const theOrderChairClass = 'theOrderChair';
+		console.log({ listChairIsOrderingByCustomer });
+
 		return danhSachGhe.map((itemChair, index) => {
+			console.log(itemChair.maGhe);
 			let orderingChairClass = '';
 			let orderedChairClass = '';
+			let customersAreOrderingTheChairs = '';
+
+			// CHECK WHAT EVERY SEATS IS BOOKED BY CUSTOMERS?
+			let indexCustomerOrderClass = listChairIsOrderingByCustomer.findIndex(itemChairOrderByPeople => itemChairOrderByPeople.maGhe === itemChair.maGhe)
+			if (indexCustomerOrderClass !== -1) {
+				customersAreOrderingTheChairs = 'theChairAreOrderingByByCustomer'
+			}
+			// CHECK IF USER CLICK ON OR NOT 
 			let indexOrderingChairs = listOrderCinemaChairs.findIndex(orderingChair => orderingChair.maGhe === itemChair.maGhe);
+			// IF CLICK IT AND THEY EQUALS ID, THE BUTTON WILL TRANSFORM GREEN
 			if (indexOrderingChairs !== -1) {
 				orderingChairClass = 'theOrderingChair'
 			}
+
 			if (managingInfoUser.taiKhoan === itemChair.taiKhoanNguoiDat) {
 				orderedChairClass = 'theYourOrderChair'
 			}
@@ -69,8 +82,8 @@ function CheckoutItem(props) {
 			let checkOrder = itemChair.daDat === true ? theOrderChairClass : '';
 			return <>
 				<button
-					disabled={itemChair.daDat}
-					className={` theChair ${typeOfChairs} ${checkOrder} ${orderingChairClass} ${orderedChairClass} text-center text-gray-800`}
+					disabled={itemChair.daDat | customersAreOrderingTheChairs !== ''}
+					className={` theChair ${typeOfChairs} ${checkOrder} ${orderingChairClass} ${orderedChairClass} ${customersAreOrderingTheChairs} text-center text-gray-800`}
 					key={index}
 
 					// HANDLE EVENT
@@ -81,8 +94,10 @@ function CheckoutItem(props) {
 						})
 					}}
 				>
-					{/* I ORDER IS USER ICON, BUT PEOPLE ORDER IS X */}
-					{itemChair.daDat ? orderedChairClass !== '' ? <UserOutlined /> : <CloseOutlined /> : itemChair.stt}
+					{/* IF I ORDER THE ICON IS USER ICON, BUT PEOPLE ORDER IS X */}
+					{itemChair.daDat ? orderedChairClass !== '' || customersAreOrderingTheChairs !== '' ?
+						<UserOutlined /> : <CloseOutlined /> :
+						customersAreOrderingTheChairs !== '' ? <UsergroupAddOutlined /> : itemChair.stt}
 				</button>
 				{(index + 1) % 16 === 0 ? <br /> : ''}
 			</>
@@ -99,20 +114,17 @@ function CheckoutItem(props) {
 				{/* SHOW SCREEN */}
 				<div className="col-span-8">
 					{/* SCREEN */}
-					<div className="bg-black w-full h-5 rounded-sm" style={{ width: '75%', margin: '0 auto' }}></div>
+					<div className="bg-black w-full h-5 rounded-sm text-white text-center" style={{ width: '75%', margin: '0 auto' }}>Màn hình</div>
 					<div className={'trapezoid'} style={{ textAlign: 'center' }}>
-						<p className='text-gray-800 pt-2'>Màn hình</p>
 					</div>
 
 					{/* THE LIST CINEMA CHAIRS */}
-
 					<div className='mt-10 mx-auto' style={{ width: '75%' }}>
 						{renderChair()}
 					</div>
 
-
 					{/* DESCIPTION */}
-					<div className="flex justify-center" style={{ width: '60%', margin: '0 auto' }}>
+					<div className="flex justify-center" style={{ width: '70%', margin: '0 auto' }}>
 						<div className='w-full'>
 							<ul className='flex justify-between'>
 								<li>Ghế đang đặt <button className='theChair theOrderingChair'>00</button></li>
@@ -120,6 +132,7 @@ function CheckoutItem(props) {
 								<li>Ghế chưa đặt <button className='theChair'>00</button></li>
 								<li>Ghế vip <button className='theChair theVipChair'>00</button></li>
 								<li>Ghế mình đặt <button className='theChair theYourOrderChair'><UserOutlined /></button></li>
+								<li>Ghế người khác đang đặt<button className='theChair theChairIsOrderByAnother'>00</button></li>
 							</ul>
 						</div>
 					</div>

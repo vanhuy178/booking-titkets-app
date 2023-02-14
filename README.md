@@ -87,3 +87,5 @@ servies
 
 11. we will create Checkout template component
 
+12. Complete Tabs of Checkout component
+

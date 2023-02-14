@@ -9,6 +9,7 @@ import { Rate, Table } from 'antd';
 import { Tabs } from 'antd';
 import TabPane from 'antd/es/tabs/TabPane';
 import { NavLink } from 'react-router-dom';
+import { mainBackgroundColor } from '../assets/constant';
 
 export default function Detail(props) {
 	let dispatch = useDispatch()
@@ -74,7 +75,8 @@ export default function Detail(props) {
 						</div>
 					</div>
 
-					<div className='bg-white py-10 px-12 mt-20 ml-64 w-2/3 ' style={{ minHeight: 500 }}>
+					{/* DESCRIPTION TABLE */}
+					<div className='bg-orange-300 py-10 px-12 mt-20 ml-64 w-2/3 ' style={{ minHeight: 500 }}>
 						<Tabs defaultActiveKey="1" size={'small'} centered >
 							<TabPane tab={
 								<h1 className='text-xl'>Lịch chiếu</h1>
