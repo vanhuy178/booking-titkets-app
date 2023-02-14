@@ -3,7 +3,6 @@ import { Tabs } from 'antd';
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchManagingBookingTickets, postBookingTickets } from '../redux/actions/managingBookingTickets';
-import { ORDER_CINEMA_CHAIR } from '../redux/types/ManagingDetailShowtimeMovies';
 import { BookingTicketClass } from '../models/BookingTicketsClass'
 import _ from 'lodash'
 import './StylePage/checkout.css';
@@ -46,15 +45,25 @@ function CheckoutItem(props) {
 		dispatch(fetchManagingBookingTickets(props.match.params.id))
 		dispatch(fethInfoUser())
 
-		//LOADING LIST ORDERING CHAIRS FROM THE SERVER
-		connection.on('loadDanhSachGheDaDat', (listChairsOrderByPeople) => {
-			console.log({ listChairsOrderByPeople });
+		//LOADING LIST CHAIRS ARE ORDERED PEOPLE FROM THE SERVER
+		// CODING...................................................
+
+		connection.on('loadDanhSachGheDaDat', (listChairAreOrderedByPeople) => {
+			//STEP 1 REMOVE YOURSELF FROM THE LIST CHAIR ARE ORDERED BY PEOPLE
+			let filterMyselfOutOfTheList = listChairAreOrderedByPeople.filter(itemFilter => itemFilter.taiKhoan !== userLogin.taiKhoan);
+
+			// STEP 2 MERGE ALL LIST CHAIRS INTO 1 GENERAL ARRAY
+			let mergeListChairFromUser = filterMyselfOutOfTheList.reduce((result, itemMergerChair) => {
+				let parseListChairs = JSON.parse(itemMergerChair.danhSachGhe);
+				return [...result, ...parseListChairs]
+			}, [])
+			console.log({ mergeListChairFromUser });
 		})
 	}, [])
 
 	// GET VALUE FROM REDUCER ACTUALLY WE WAS LOGGED SUCCESSFULLY
 	const { detailCinemaShowtimes, listOrderingCinemaChairs, listChairIsOrderingByCustomer } = useSelector(state => state.managingBookingTicketsStore);
-	const { managingInfoUser } = useSelector(state => state.managingUserStore);
+	const { managingInfoUser, userLogin } = useSelector(state => state.managingUserStore);
 	const { danhSachGhe, thongTinPhim } = detailCinemaShowtimes;
 
 	// RENDER CHAIR
@@ -134,7 +143,7 @@ function CheckoutItem(props) {
 								<li>Ghế chưa đặt <button className='theChair'>00</button></li>
 								<li>Ghế vip <button className='theChair theVipChair'>00</button></li>
 								<li>Ghế mình đặt <button className='theChair theYourOrderChair'><UserOutlined /></button></li>
-								<li>Ghế người khác đang đặt<button className='theChair theChairIsOrderByAnother'>00</button></li>
+								<li>Ghế người khác đang đặt<button className='theChair theChairAreOrderingByByCustomer'>00</button></li>
 							</ul>
 						</div>
 					</div>

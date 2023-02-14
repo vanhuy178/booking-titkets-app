@@ -21,7 +21,6 @@ export const managingUserReducer = (state = initialState, action) => {
             return { ...state, userLogin: action.payload }
         }
         case TAKE_INFO_USER: {
-            console.log('Take user info:', action.payload);
             return { ...state, managingInfoUser: action.payload }
         }
         default:

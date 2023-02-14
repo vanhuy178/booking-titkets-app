@@ -52,10 +52,10 @@ export const orderCinemaChair = (chair, idShowtimes) => {
         // SET NECESSARY VALUE FOR CALL API
         let listOrderingCinemaChairs = getState().managingBookingTicketsStore.listOrderingCinemaChairs
         let userName = getState().managingUserStore.userLogin.taiKhoan;
-
         let listOrderingCinemaChairsStringify = JSON.stringify(listOrderingCinemaChairs)
         //CHECK VALUES BEFORE CALL API
         console.log(idShowtimes);
+        // console.log(listOrderingCinemaChairsStringify);
         // CALL API TO SIGNALR
         connection.invoke('datGhe', userName, listOrderingCinemaChairsStringify, idShowtimes)
     }
