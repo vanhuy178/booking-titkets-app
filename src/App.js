@@ -7,6 +7,7 @@ import Contact from './pages/Contact';
 import Detail from './pages/Detail';
 import Home from "./pages/Home"
 import News from './pages/News';
+import Profile from './pages/Profile';
 import { CheckoutTemplate } from './template/home/CheckoutTemplate/CheckoutTemplate';
 import { HomeTemplate } from './template/home/HomeTemplate/HomeTemplate';
 import Login from './template/home/UserTemplate/login/Login';
@@ -28,6 +29,7 @@ function App() {
           <HomeTemplate path="/contact" exact Component={Contact} />
           <HomeTemplate path="/news" exact Component={News} />
           <HomeTemplate path='/detail/:id' exact Component={Detail} />
+          <HomeTemplate path='/profile' exact Component={Profile} />
 
 
           <UserTemplate path='/login' exact Component={Login} />

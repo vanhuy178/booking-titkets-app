@@ -13,8 +13,6 @@ export default function Detail(props) {
 	let dispatch = useDispatch()
 
 	useEffect(() => {
-
-
 		// TAKE INFO PARAMS FROM URL
 		let { id } = props.match.params
 
@@ -22,14 +20,12 @@ export default function Detail(props) {
 		dispatch(fetchDetailShowTimesMovies(id))
 	}, [])
 
-
 	// CONNECT TO STATE REDUX AND BUILD FUNCTION FOR CALL API IN SERVICES FOLDER
 	const { detailMoviesShowTimesInfo } = useSelector(state => state.managingMoviesStore);
 	// OH NO *.* YOU NEED MAINTAIN CODE PLEASE! 
 	const description = detailMoviesShowTimesInfo.moTa;
 	const rating = detailMoviesShowTimesInfo.danhGia;
 	const image = detailMoviesShowTimesInfo.hinhAnh
-
 
 	return (
 		<>

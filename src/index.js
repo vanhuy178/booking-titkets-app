@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import store from './redux/configStore';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import i18n from './i18';
 import { DOMAIN } from './utils/settings/config';
 // const signalR = require("@microsoft/signalr");
 
