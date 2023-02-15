@@ -9,19 +9,32 @@ import './StylePage/checkout.css';
 import { fethInfoUser } from '../redux/actions/ManagingUserAction';
 import moment from 'moment';
 import { orderCinemaChair } from '../redux/actions/ManagingMovies';
-// import { connection } from '..';
+import { NavLink } from 'react-router-dom';
+import ProfileMini from '../components/ProfileMini';
 
 
 export default function Checkout(props) {
+	const dispatch = useDispatch()
+	const { tabActive } = useSelector(state => state.managingBookingTicketsStore);
+	const { userLogin } = useSelector(state => state.managingUserStore);
+
 	const tabBooking = <span className='p-10 text-xl font-bold'>CHỌN VÀ THANH TOÁN</span>
 	const tabResult = <span className='p-10 text-xl font-bold'>KẾT QUẢ ĐẶT VÉ</span>
-	const { tabActive } = useSelector(state => state.managingBookingTicketsStore);
-	const dispatch = useDispatch()
 
+	let HomeIcon = <NavLink to='/home' className='text-2xl text-gray-500'><i class="fa-solid fa-house"></i></NavLink>
+	const operator = <>
+		{
+			userLogin.taiKhoan === '' ? "" : ProfileMini(userLogin.taiKhoan)
+		}
+	</>;
+
+	useEffect(() => {
+		dispatch({ type: "CHANGE_TAB_ACTIVE", payload: '1' })
+
+	}, [])
 	return (
-		//  	
 		<div style={{ height: '100vh' }}>
-			<Tabs defaultActiveKey='1' activeKey={tabActive}
+			<Tabs tabBarExtraContent={operator} defaultActiveKey="1" activeKey={tabActive}
 				onChange={(key) => {
 					dispatch({ type: "CHANGE_TAB_ACTIVE", payload: key })
 				}}
@@ -31,6 +44,8 @@ export default function Checkout(props) {
 				</Tabs.TabPane>
 				<Tabs.TabPane tab={tabResult} key="2">
 					<ResultBookingTickes />
+				</Tabs.TabPane>
+				<Tabs.TabPane tab={HomeIcon} key="3">
 				</Tabs.TabPane>
 			</Tabs>
 		</div >
@@ -107,7 +122,7 @@ function CheckoutItem(props) {
 					{/* IF I ORDER THE ICON IS USER ICON, BUT PEOPLE ORDER IS X */}
 					{itemChair.daDat ? orderedChairClass !== '' || customersAreOrderingTheChairs !== '' ?
 						<UserOutlined /> : <CloseOutlined /> :
-						customersAreOrderingTheChairs !== '' ? <UsergroupAddOutlined /> : itemChair.stt}
+						itemChair.stt}
 				</button>
 				{(index + 1) % 16 === 0 ? <br /> : ''}
 			</>
@@ -211,7 +226,6 @@ function CheckoutItem(props) {
 							return dispatch(postBookingTickets(infoBooking))
 						}}
 					>
-						{/* CODING.......................................................................... */}
 						<button className="w-full bg-green-600 text-white py-2 px-4 border border-gray-400 rounded shadow uppercase">
 							Đặt vé
 						</button>

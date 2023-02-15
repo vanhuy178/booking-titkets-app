@@ -37,6 +37,7 @@ export const ManagingBookingTicketsReducer = (state = initialState, action) => {
         case REDIRECT_TABS: {
             return { ...state, tabActive: '2' }
         }
+
         case CHANGE_TAB_ACTIVE: {
             return { ...state, tabActive: action.payload }
         }

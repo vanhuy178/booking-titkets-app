@@ -10,6 +10,9 @@ export const CheckoutTemplate = (props) => { // props contains path, exact, comp
     *
     * 
     */
+    useEffect(() => {
+        window.scroll(0, 0)
+    })
 
     if (!localStorage.getItem(USER_LOGIN)) {
         return <Redirect to='/login' />

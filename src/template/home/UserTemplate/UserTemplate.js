@@ -3,6 +3,9 @@ import { Route } from "react-router-dom";
 
 export const UserTemplate = (props) => { // props contains path, exact, component
     const { Component, ...restProps } = props; // destructuring Components props and the rest part
+    useEffect(() => {
+        window.scroll(0, 0)
+    })
     return (<Route {...restProps}
         // This is middle component for helping me render Ui
         render={propRoute => { // props don't use when we don't want to redirect the page

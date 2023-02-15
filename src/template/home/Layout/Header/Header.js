@@ -4,6 +4,7 @@ import { Select } from 'antd';
 import MainLogo from '../../../../components/MainLogo';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import ProfileMini from '../../../../components/ProfileMini'
 import _ from 'lodash';
 const { Option, OptGroup } = Select;
 
@@ -21,23 +22,18 @@ export default function Header() {
             return (
                 <>
                     {/* LOGIN AND RESGISTER */}
-                    <div className="items-center flex-shrink-0 hidden lg:flex">
-                        <NavLink to='/login' className="self-center px-8 py-3 rounded" i18nKey={'login'}>{t('login')}</NavLink>
-                        <NavLink to='/register' className="self-center px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900" i18nKey={'register'}>{t('register')}</NavLink>
-                        <Select defaultValue="en" style={{ width: 100 }} onChange={handleChange}>
-                            <Option value="vi">Vi</Option>
-                            <Option value="en">Eng</Option>
-                            <Option value="chi">Chi</Option>
-                        </Select>,
-                    </div>
+                    <NavLink to='/login' className="self-center px-8 py-3 rounded" i18nKey={'login'}>{t('login')}</NavLink>
+                    <NavLink to='/register' className="self-center px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900" i18nKey={'register'}>{t('register')}</NavLink>
                 </>
             )
         }
         else {
             return <>
-                <div className="profile">
+                {/* <div className="profile">
                     <NavLink to='/profile' className='text-white'>Hello !{userLogin.taiKhoan}</NavLink>
-                </div>
+                </div> */}
+
+                {ProfileMini(userLogin.taiKhoan)}
             </>
         }
     }
@@ -64,8 +60,14 @@ export default function Header() {
                 </ul>
 
                 {/* LOGIN AND RESGISTER */}
-                {renderLogin()}
-
+                <div className="items-center flex-shrink-0 hidden lg:flex">
+                    {renderLogin()}
+                    <Select className='ml-2' defaultValue="en" style={{ width: 100 }} onChange={handleChange}>
+                        <Option value="vi">Vi</Option>
+                        <Option value="en">Eng</Option>
+                        <Option value="chi">Chi</Option>
+                    </Select>
+                </div>
                 <button className="p-4 lg:hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 dark:text-gray-100">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
