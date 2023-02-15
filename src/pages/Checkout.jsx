@@ -11,6 +11,7 @@ import moment from 'moment';
 import { mainBackgroundColor } from '../assets/constant';
 import { connection } from '../index'
 import { orderCinemaChair } from '../redux/actions/ManagingMovies';
+import { ORDER_CHAIR_REAL_TIME } from '../redux/types/ManagingMoviesType';
 
 
 export default function Checkout(props) {
@@ -18,6 +19,31 @@ export default function Checkout(props) {
 	const tabResult = <span className='p-10 text-xl font-bold'>KẾT QUẢ ĐẶT VÉ</span>
 	const { tabActive } = useSelector(state => state.managingBookingTicketsStore);
 	const dispatch = useDispatch()
+
+	const { detailCinemaShowtimes, listOrderingCinemaChairs, listChairIsOrderingByCustomer } = useSelector(state => state.managingBookingTicketsStore);
+	const { managingInfoUser, userLogin } = useSelector(state => state.managingUserStore);
+	const { danhSachGhe, thongTinPhim } = detailCinemaShowtimes;
+
+	useEffect(() => {
+
+		dispatch(fetchManagingBookingTickets(props.match.params.id))
+		dispatch(fethInfoUser())
+
+
+		// connection.on('loadDanhSachGheDaDat', (listChairAreOrderedByPeople) => {
+		// 	// STEP 1 REMOVE YOURSELF FROM THE LIST CHAIR ARE ORDERED BY PEOPLE
+		// 	let filterMyselfOutOfTheList = listChairAreOrderedByPeople.filter(itemFilter => itemFilter.taiKhoan !== userLogin.taiKhoan);
+
+		// 	// STEP 2 MERGE ALL LIST CHAIRS INTO 1 GENERAL ARRAY
+		// 	let mergeListChairFromUser = filterMyselfOutOfTheList.reduce((result, itemMergerChair) => {
+		// 		let parseListChairs = JSON.parse(itemMergerChair.danhSachGhe);
+		// 		return [...result, ...parseListChairs]
+		// 	}, []);
+		// 	mergeListChairFromUser = _.uniqBy(mergeListChairFromUser, 'maGhe')
+		// 	console.log(mergeListChairFromUser);
+		// 	dispatch({ type: "ORDER_CHAIR_REAL_TIME", payload: mergeListChairFromUser })
+		// })
+	}, [])
 
 	return (
 		//  	
@@ -28,7 +54,13 @@ export default function Checkout(props) {
 				}}
 			>
 				<Tabs.TabPane tab={tabBooking} key="1" >
-					<CheckoutItem {...props} />
+					<CheckoutItem {...props}
+						detailCinemaShowtimes={detailCinemaShowtimes}
+						listOrderingCinemaChairs={listOrderingCinemaChairs}
+						listChairIsOrderingByCustomer={listChairIsOrderingByCustomer}
+						managingInfoUser={managingInfoUser}
+						danhSachGhe={danhSachGhe}
+						thongTinPhim={thongTinPhim} />
 				</Tabs.TabPane>
 				<Tabs.TabPane tab={tabResult} key="2">
 					<ResultBookingTickes />
@@ -38,79 +70,90 @@ export default function Checkout(props) {
 	)
 }
 function CheckoutItem(props) {
+	const { thongTinPhim, danhSachGhe, managingInfoUser, listChairIsOrderingByCustomer, listOrderingCinemaChairs, match } = props;
 	const dispatch = useDispatch()
 	//CALL API TO TAKE DATA 
-	useEffect(() => {
-		// DISPATH FUNCTION WITH THE HELP OF REDUX-THUNK
-		dispatch(fetchManagingBookingTickets(props.match.params.id))
-		dispatch(fethInfoUser())
 
-		//LOADING LIST CHAIRS ARE ORDERED PEOPLE FROM THE SERVER
-		// CODING...................................................
+	// useEffect(() => {
+	// DISPATH FUNCTION WITH THE HELP OF REDUX-THUNK
 
-		connection.on('loadDanhSachGheDaDat', (listChairAreOrderedByPeople) => {
-			//STEP 1 REMOVE YOURSELF FROM THE LIST CHAIR ARE ORDERED BY PEOPLE
-			let filterMyselfOutOfTheList = listChairAreOrderedByPeople.filter(itemFilter => itemFilter.taiKhoan !== userLogin.taiKhoan);
 
-			// STEP 2 MERGE ALL LIST CHAIRS INTO 1 GENERAL ARRAY
-			let mergeListChairFromUser = filterMyselfOutOfTheList.reduce((result, itemMergerChair) => {
-				let parseListChairs = JSON.parse(itemMergerChair.danhSachGhe);
-				return [...result, ...parseListChairs]
-			}, [])
-			console.log({ mergeListChairFromUser });
-		})
-	}, [])
+	// dispatch(fetchManagingBookingTickets(props.match.params.id))
+	// dispatch(fethInfoUser())
+
+	//LOADING LIST CHAIRS ARE ORDERED PEOPLE FROM THE SERVER
+	// CODING...................................................
+
+	// 	connection.on('loadDanhSachGheDaDat', (listChairAreOrderedByPeople) => {
+	// 		// STEP 1 REMOVE YOURSELF FROM THE LIST CHAIR ARE ORDERED BY PEOPLE
+	// 		let filterMyselfOutOfTheList = listChairAreOrderedByPeople.filter(itemFilter => itemFilter.taiKhoan !== userLogin.taiKhoan);
+
+	// 		// STEP 2 MERGE ALL LIST CHAIRS INTO 1 GENERAL ARRAY
+	// 		let mergeListChairFromUser = filterMyselfOutOfTheList.reduce((result, itemMergerChair) => {
+	// 			let parseListChairs = JSON.parse(itemMergerChair.danhSachGhe);
+	// 			return [...result, ...parseListChairs]
+	// 		}, []);
+	// 		mergeListChairFromUser = _.uniqBy(mergeListChairFromUser, 'maGhe')
+	// 		console.log(mergeListChairFromUser);
+	// 		dispatch({ type: "ORDER_CHAIR_REAL_TIME", payload: mergeListChairFromUser })
+	// 	})
+
+	// }, [])
 
 	// GET VALUE FROM REDUCER ACTUALLY WE WAS LOGGED SUCCESSFULLY
-	const { detailCinemaShowtimes, listOrderingCinemaChairs, listChairIsOrderingByCustomer } = useSelector(state => state.managingBookingTicketsStore);
-	const { managingInfoUser, userLogin } = useSelector(state => state.managingUserStore);
-	const { danhSachGhe, thongTinPhim } = detailCinemaShowtimes;
+	// const { detailCinemaShowtimes, listOrderingCinemaChairs, listChairIsOrderingByCustomer } = useSelector(state => state.managingBookingTicketsStore);
+	// const { managingInfoUser, userLogin } = useSelector(state => state.managingUserStore);
+	// const { danhSachGhe, thongTinPhim } = detailCinemaShowtimes;
 
 	// RENDER CHAIR
+
 	const renderChair = () => {
 		const vip = 'Vip';
 		const vipClass = 'theVipChair';
 		const theOrderChairClass = 'theOrderChair';
-
 		return danhSachGhe.map((itemChair, index) => {
 			let orderingChairClass = '';
 			let orderedChairClass = '';
 			let customersAreOrderingTheChairs = '';
-
+			const { maGhe, daDat, loaiGhe, stt, taiKhoanNguoiDat } = itemChair
 			// CHECK WHAT EVERY SEATS IS BOOKED BY CUSTOMERS?
-			let indexCustomerOrderClass = listChairIsOrderingByCustomer.findIndex(itemChairOrderByPeople => itemChairOrderByPeople.maGhe === itemChair.maGhe)
+			let indexCustomerOrderClass = listChairIsOrderingByCustomer.findIndex(itemChairOrderByPeople => itemChairOrderByPeople.maGhe === maGhe)
 			if (indexCustomerOrderClass !== -1) {
 				customersAreOrderingTheChairs = 'theChairAreOrderingByByCustomer'
 			}
 			// CHECK IF USER CLICK ON OR NOT 
-			let indexOrderingChairs = listOrderingCinemaChairs.findIndex(orderingChair => orderingChair.maGhe === itemChair.maGhe);
+			let indexOrderingChairs = listOrderingCinemaChairs.findIndex(orderingChair => orderingChair.maGhe === maGhe);
 			// IF CLICK IT AND THEY EQUALS ID, THE BUTTON WILL TRANSFORM GREEN
 			if (indexOrderingChairs !== -1) {
-				orderingChairClass = 'theOrderingChair'
+				orderingChairClass = 'theOrderingChair';
 			}
 
-			if (managingInfoUser.taiKhoan === itemChair.taiKhoanNguoiDat) {
+			if (managingInfoUser.taiKhoan === taiKhoanNguoiDat) {
 				orderedChairClass = 'theYourOrderChair'
 			}
-			let typeOfChairs = itemChair.loaiGhe.trim().toLocaleLowerCase() === vip.toLocaleLowerCase() ? vipClass : '';
-			let checkOrder = itemChair.daDat === true ? theOrderChairClass : '';
+
+			let disableButton = daDat || customersAreOrderingTheChairs !== '';
+			let typeOfChairs = loaiGhe.trim().toLocaleLowerCase() === vip.toLocaleLowerCase() ? vipClass : '';
+			let checkOrder = daDat === true ? theOrderChairClass : '';
+			let checkCustomerAreOrderingChairs = customersAreOrderingTheChairs !== '' ? <UsergroupAddOutlined /> : stt;
+			let checkCondiTionToShowColorForButton = ` theChair ${typeOfChairs} ${checkOrder} ${orderingChairClass} ${orderedChairClass} ${customersAreOrderingTheChairs} text-center text-gray-800`
+			let takesSixteenRows = (index + 1) % 16 === 0 ? <br /> : '';
 			return <>
 				<button
-					disabled={itemChair.daDat | customersAreOrderingTheChairs !== ''}
-					className={` theChair ${typeOfChairs} ${checkOrder} ${orderingChairClass} ${orderedChairClass} ${customersAreOrderingTheChairs} text-center text-gray-800`}
+					disabled={disableButton}
+					className={checkCondiTionToShowColorForButton}
 					key={index}
 
 					// HANDLE EVENT
 					onClick={() => {
-						dispatch(orderCinemaChair(itemChair, props.match.params.id))
+						dispatch(orderCinemaChair(itemChair, match.params.id))
 					}}
 				>
 					{/* IF I ORDER THE ICON IS USER ICON, BUT PEOPLE ORDER IS X */}
-					{itemChair.daDat ? orderedChairClass !== '' || customersAreOrderingTheChairs !== '' ?
-						<UserOutlined /> : <CloseOutlined /> :
-						customersAreOrderingTheChairs !== '' ? <UsergroupAddOutlined /> : itemChair.stt}
+					{daDat ? orderedChairClass !== '' || customersAreOrderingTheChairs !== '' ?
+						<UserOutlined /> : <CloseOutlined /> : checkCustomerAreOrderingChairs}
 				</button>
-				{(index + 1) % 16 === 0 ? <br /> : ''}
+				{takesSixteenRows}
 			</>
 		}
 		)
@@ -202,7 +245,7 @@ function CheckoutItem(props) {
 					<div className='flex flex-col mt-10 justify-start'
 						onClick={() => {
 							const infoBooking = new BookingTicketClass()
-							infoBooking.maLichChieu = props.match.params.id;
+							infoBooking.maLichChieu = match.params.id;
 							infoBooking.danhSachVe = []
 							listOrderingCinemaChairs.map((itemOrderCinemaChairs, index) => {
 								const { maGhe, giaVe } = itemOrderCinemaChairs;
@@ -213,14 +256,11 @@ function CheckoutItem(props) {
 							return dispatch(postBookingTickets(infoBooking))
 						}}
 					>
-						{/* CODING.......................................................................... */}
 						<button className="w-full bg-green-600 text-white py-2 px-4 border border-gray-400 rounded shadow uppercase">
 							Đặt vé
 						</button>
 					</div>
 				</div>
-
-
 			</div>
 		</div >
 	)

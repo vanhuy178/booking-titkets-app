@@ -16,11 +16,9 @@ export const history = createBrowserHistory();
 
 
 function App() {
-  // const CheckoutTemplate = React.lazy(() => import('./template/home/CheckoutTemplate/CheckoutTemplate'));
-  // USE LAZY LOADING TECHNOLOGY
+
   return (
     <>
-      {/* <Suspense fallback={<div>Loading...</div>}> */}
       <Router history={history}>
         <Loading />
         <Switch>
@@ -41,8 +39,6 @@ function App() {
 
         </Switch>
       </Router>
-      {/* </Suspense> */}
-
     </>
   );
 }

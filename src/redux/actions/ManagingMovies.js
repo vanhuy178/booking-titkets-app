@@ -1,7 +1,5 @@
-import axios from 'axios';
 import { connection } from '../..';
 import { managingMovieService } from '../../services/manageMovieServices';
-import { DOMAIN } from '../../utils/settings/config';
 import { ORDER_CINEMA_CHAIR } from '../types/ManagingDetailShowtimeMovies';
 import { GET_DETAIL_MOVIE, GET_MOVIES } from '../types/ManagingMoviesType';
 export const fetchMovies = () => {
@@ -50,13 +48,13 @@ export const orderCinemaChair = (chair, idShowtimes) => {
             payload: chair
         })
         // SET NECESSARY VALUE FOR CALL API
-        let listOrderingCinemaChairs = getState().managingBookingTicketsStore.listOrderingCinemaChairs
-        let userName = getState().managingUserStore.userLogin.taiKhoan;
-        let listOrderingCinemaChairsStringify = JSON.stringify(listOrderingCinemaChairs)
-        //CHECK VALUES BEFORE CALL API
-        console.log(idShowtimes);
+        // let listOrderingCinemaChairs = getState().managingBookingTicketsStore.listOrderingCinemaChairs
+        // let userName = getState().managingUserStore.userLogin.taiKhoan;
+        // let listOrderingCinemaChairsStringify = JSON.stringify(listOrderingCinemaChairs)
+        // //CHECK VALUES BEFORE CALL API
+        // console.log(idShowtimes);
         // console.log(listOrderingCinemaChairsStringify);
-        // CALL API TO SIGNALR
-        connection.invoke('datGhe', userName, listOrderingCinemaChairsStringify, idShowtimes)
+        // // CALL API TO SIGNALR
+        // connection.invoke('datGhe', userName, listOrderingCinemaChairsStringify, idShowtimes)
     }
 }

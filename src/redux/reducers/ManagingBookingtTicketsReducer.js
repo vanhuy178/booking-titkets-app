@@ -1,10 +1,10 @@
 import { ManagingBookingTicketsClass } from "../../models/ManagingBookingClass"
 import { GET_DETAIL_MANAGING_SHOWTIME_MOVIES, ORDER_CINEMA_CHAIR } from "../types/ManagingDetailShowtimeMovies"
-import { COMPLETED_BOOKING, REDIRECT_TABS } from "../types/ManagingMoviesType"
+import { CHANGE_TAB_ACTIVE, COMPLETED_BOOKING, ORDER_CHAIR_REAL_TIME, REDIRECT_TABS } from "../types/ManagingMoviesType"
 
 const initialState = {
     detailCinemaShowtimes: new ManagingBookingTicketsClass(),
-    listOrderingCinemaChairs: [], // THE LIST ORDERING CHAIRS
+    listOrderingCinemaChairs: [],
     listChairIsOrderingByCustomer: [{ maGhe: 49153 }, { maGhe: 49151 }, { maGhe: 49150 }],
     tabActive: '1',
 }
@@ -37,10 +37,14 @@ export const ManagingBookingTicketsReducer = (state = initialState, action) => {
         case REDIRECT_TABS: {
             return { ...state, tabActive: '2' }
         }
-        case "CHANGE_TAB_ACTIVE": {
+        case CHANGE_TAB_ACTIVE: {
             return { ...state, tabActive: action.payload }
+        }
+        case "ORDER_CHAIR_REAL_TIME": {
+            console.log('from managing booking', action.payload);
+            return { ...state, listChairIsOrderingByCustomer: action.payload }
         }
         default:
             return { ...state }
     }
-}
+}   
