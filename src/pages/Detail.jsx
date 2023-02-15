@@ -9,8 +9,6 @@ import { Rate, Table } from 'antd';
 import { Tabs } from 'antd';
 import TabPane from 'antd/es/tabs/TabPane';
 import { NavLink } from 'react-router-dom';
-import { mainBackgroundColor } from '../assets/constant';
-
 export default function Detail(props) {
 	let dispatch = useDispatch()
 

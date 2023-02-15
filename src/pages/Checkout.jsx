@@ -8,10 +8,8 @@ import _ from 'lodash'
 import './StylePage/checkout.css';
 import { fethInfoUser } from '../redux/actions/ManagingUserAction';
 import moment from 'moment';
-import { mainBackgroundColor } from '../assets/constant';
-import { connection } from '../index'
 import { orderCinemaChair } from '../redux/actions/ManagingMovies';
-import { ORDER_CHAIR_REAL_TIME } from '../redux/types/ManagingMoviesType';
+// import { connection } from '..';
 
 
 export default function Checkout(props) {
@@ -20,47 +18,16 @@ export default function Checkout(props) {
 	const { tabActive } = useSelector(state => state.managingBookingTicketsStore);
 	const dispatch = useDispatch()
 
-	const { detailCinemaShowtimes, listOrderingCinemaChairs, listChairIsOrderingByCustomer } = useSelector(state => state.managingBookingTicketsStore);
-	const { managingInfoUser, userLogin } = useSelector(state => state.managingUserStore);
-	const { danhSachGhe, thongTinPhim } = detailCinemaShowtimes;
-
-	useEffect(() => {
-
-		dispatch(fetchManagingBookingTickets(props.match.params.id))
-		dispatch(fethInfoUser())
-
-
-		// connection.on('loadDanhSachGheDaDat', (listChairAreOrderedByPeople) => {
-		// 	// STEP 1 REMOVE YOURSELF FROM THE LIST CHAIR ARE ORDERED BY PEOPLE
-		// 	let filterMyselfOutOfTheList = listChairAreOrderedByPeople.filter(itemFilter => itemFilter.taiKhoan !== userLogin.taiKhoan);
-
-		// 	// STEP 2 MERGE ALL LIST CHAIRS INTO 1 GENERAL ARRAY
-		// 	let mergeListChairFromUser = filterMyselfOutOfTheList.reduce((result, itemMergerChair) => {
-		// 		let parseListChairs = JSON.parse(itemMergerChair.danhSachGhe);
-		// 		return [...result, ...parseListChairs]
-		// 	}, []);
-		// 	mergeListChairFromUser = _.uniqBy(mergeListChairFromUser, 'maGhe')
-		// 	console.log(mergeListChairFromUser);
-		// 	dispatch({ type: "ORDER_CHAIR_REAL_TIME", payload: mergeListChairFromUser })
-		// })
-	}, [])
-
 	return (
 		//  	
-		<div className={mainBackgroundColor}>
+		<div style={{ height: '100vh' }}>
 			<Tabs defaultActiveKey='1' activeKey={tabActive}
 				onChange={(key) => {
 					dispatch({ type: "CHANGE_TAB_ACTIVE", payload: key })
 				}}
 			>
 				<Tabs.TabPane tab={tabBooking} key="1" >
-					<CheckoutItem {...props}
-						detailCinemaShowtimes={detailCinemaShowtimes}
-						listOrderingCinemaChairs={listOrderingCinemaChairs}
-						listChairIsOrderingByCustomer={listChairIsOrderingByCustomer}
-						managingInfoUser={managingInfoUser}
-						danhSachGhe={danhSachGhe}
-						thongTinPhim={thongTinPhim} />
+					<CheckoutItem {...props} />
 				</Tabs.TabPane>
 				<Tabs.TabPane tab={tabResult} key="2">
 					<ResultBookingTickes />
@@ -70,90 +37,79 @@ export default function Checkout(props) {
 	)
 }
 function CheckoutItem(props) {
-	const { thongTinPhim, danhSachGhe, managingInfoUser, listChairIsOrderingByCustomer, listOrderingCinemaChairs, match } = props;
 	const dispatch = useDispatch()
 	//CALL API TO TAKE DATA 
+	useEffect(() => {
+		// DISPATH FUNCTION WITH THE HELP OF REDUX-THUNK
+		dispatch(fetchManagingBookingTickets(props.match.params.id))
+		dispatch(fethInfoUser())
 
-	// useEffect(() => {
-	// DISPATH FUNCTION WITH THE HELP OF REDUX-THUNK
+		// LOADING LIST CHAIRS ARE ORDERED PEOPLE FROM THE SERVER
+		// CODING...................................................
 
+		// connection.on('loadDanhSachGheDaDat', (listChairAreOrderedByPeople) => {
+		// 	//STEP 1 REMOVE YOURSELF FROM THE LIST CHAIR ARE ORDERED BY PEOPLE
+		// 	let filterMyselfOutOfTheList = listChairAreOrderedByPeople.filter(itemFilter => itemFilter.taiKhoan !== userLogin.taiKhoan);
 
-	// dispatch(fetchManagingBookingTickets(props.match.params.id))
-	// dispatch(fethInfoUser())
-
-	//LOADING LIST CHAIRS ARE ORDERED PEOPLE FROM THE SERVER
-	// CODING...................................................
-
-	// 	connection.on('loadDanhSachGheDaDat', (listChairAreOrderedByPeople) => {
-	// 		// STEP 1 REMOVE YOURSELF FROM THE LIST CHAIR ARE ORDERED BY PEOPLE
-	// 		let filterMyselfOutOfTheList = listChairAreOrderedByPeople.filter(itemFilter => itemFilter.taiKhoan !== userLogin.taiKhoan);
-
-	// 		// STEP 2 MERGE ALL LIST CHAIRS INTO 1 GENERAL ARRAY
-	// 		let mergeListChairFromUser = filterMyselfOutOfTheList.reduce((result, itemMergerChair) => {
-	// 			let parseListChairs = JSON.parse(itemMergerChair.danhSachGhe);
-	// 			return [...result, ...parseListChairs]
-	// 		}, []);
-	// 		mergeListChairFromUser = _.uniqBy(mergeListChairFromUser, 'maGhe')
-	// 		console.log(mergeListChairFromUser);
-	// 		dispatch({ type: "ORDER_CHAIR_REAL_TIME", payload: mergeListChairFromUser })
-	// 	})
-
-	// }, [])
+		// 	// STEP 2 MERGE ALL LIST CHAIRS INTO 1 GENERAL ARRAY
+		// 	let mergeListChairFromUser = filterMyselfOutOfTheList.reduce((result, itemMergerChair) => {
+		// 		let parseListChairs = JSON.parse(itemMergerChair.danhSachGhe);
+		// 		return [...result, ...parseListChairs]
+		// 	}, [])
+		// 	console.log({ mergeListChairFromUser });
+		// })
+	}, [])
 
 	// GET VALUE FROM REDUCER ACTUALLY WE WAS LOGGED SUCCESSFULLY
-	// const { detailCinemaShowtimes, listOrderingCinemaChairs, listChairIsOrderingByCustomer } = useSelector(state => state.managingBookingTicketsStore);
-	// const { managingInfoUser, userLogin } = useSelector(state => state.managingUserStore);
-	// const { danhSachGhe, thongTinPhim } = detailCinemaShowtimes;
+	const { detailCinemaShowtimes, listOrderingCinemaChairs, listChairIsOrderingByCustomer } = useSelector(state => state.managingBookingTicketsStore);
+	const { managingInfoUser, userLogin } = useSelector(state => state.managingUserStore);
+	const { danhSachGhe, thongTinPhim } = detailCinemaShowtimes;
 
 	// RENDER CHAIR
-
 	const renderChair = () => {
 		const vip = 'Vip';
 		const vipClass = 'theVipChair';
 		const theOrderChairClass = 'theOrderChair';
+
 		return danhSachGhe.map((itemChair, index) => {
 			let orderingChairClass = '';
 			let orderedChairClass = '';
 			let customersAreOrderingTheChairs = '';
-			const { maGhe, daDat, loaiGhe, stt, taiKhoanNguoiDat } = itemChair
+
 			// CHECK WHAT EVERY SEATS IS BOOKED BY CUSTOMERS?
-			let indexCustomerOrderClass = listChairIsOrderingByCustomer.findIndex(itemChairOrderByPeople => itemChairOrderByPeople.maGhe === maGhe)
+			let indexCustomerOrderClass = listChairIsOrderingByCustomer.findIndex(itemChairOrderByPeople => itemChairOrderByPeople.maGhe === itemChair.maGhe)
 			if (indexCustomerOrderClass !== -1) {
 				customersAreOrderingTheChairs = 'theChairAreOrderingByByCustomer'
 			}
 			// CHECK IF USER CLICK ON OR NOT 
-			let indexOrderingChairs = listOrderingCinemaChairs.findIndex(orderingChair => orderingChair.maGhe === maGhe);
+			let indexOrderingChairs = listOrderingCinemaChairs.findIndex(orderingChair => orderingChair.maGhe === itemChair.maGhe);
 			// IF CLICK IT AND THEY EQUALS ID, THE BUTTON WILL TRANSFORM GREEN
 			if (indexOrderingChairs !== -1) {
-				orderingChairClass = 'theOrderingChair';
+				orderingChairClass = 'theOrderingChair'
 			}
 
-			if (managingInfoUser.taiKhoan === taiKhoanNguoiDat) {
+			if (managingInfoUser.taiKhoan === itemChair.taiKhoanNguoiDat) {
 				orderedChairClass = 'theYourOrderChair'
 			}
-
-			let disableButton = daDat || customersAreOrderingTheChairs !== '';
-			let typeOfChairs = loaiGhe.trim().toLocaleLowerCase() === vip.toLocaleLowerCase() ? vipClass : '';
-			let checkOrder = daDat === true ? theOrderChairClass : '';
-			let checkCustomerAreOrderingChairs = customersAreOrderingTheChairs !== '' ? <UsergroupAddOutlined /> : stt;
-			let checkCondiTionToShowColorForButton = ` theChair ${typeOfChairs} ${checkOrder} ${orderingChairClass} ${orderedChairClass} ${customersAreOrderingTheChairs} text-center text-gray-800`
-			let takesSixteenRows = (index + 1) % 16 === 0 ? <br /> : '';
+			let typeOfChairs = itemChair.loaiGhe.trim().toLocaleLowerCase() === vip.toLocaleLowerCase() ? vipClass : '';
+			let checkOrder = itemChair.daDat === true ? theOrderChairClass : '';
 			return <>
 				<button
-					disabled={disableButton}
-					className={checkCondiTionToShowColorForButton}
+					disabled={itemChair.daDat | customersAreOrderingTheChairs !== ''}
+					className={` theChair ${typeOfChairs} ${checkOrder} ${orderingChairClass} ${orderedChairClass} ${customersAreOrderingTheChairs} text-center text-gray-800`}
 					key={index}
 
 					// HANDLE EVENT
 					onClick={() => {
-						dispatch(orderCinemaChair(itemChair, match.params.id))
+						dispatch(orderCinemaChair(itemChair, props.match.params.id))
 					}}
 				>
 					{/* IF I ORDER THE ICON IS USER ICON, BUT PEOPLE ORDER IS X */}
-					{daDat ? orderedChairClass !== '' || customersAreOrderingTheChairs !== '' ?
-						<UserOutlined /> : <CloseOutlined /> : checkCustomerAreOrderingChairs}
+					{itemChair.daDat ? orderedChairClass !== '' || customersAreOrderingTheChairs !== '' ?
+						<UserOutlined /> : <CloseOutlined /> :
+						customersAreOrderingTheChairs !== '' ? <UsergroupAddOutlined /> : itemChair.stt}
 				</button>
-				{takesSixteenRows}
+				{(index + 1) % 16 === 0 ? <br /> : ''}
 			</>
 		}
 		)
@@ -161,32 +117,31 @@ function CheckoutItem(props) {
 	const totalMoney = () => {
 		return (listOrderingCinemaChairs.length !== 0 ? listOrderingCinemaChairs.reduce((total, item) => total += item.giaVe, 0) : 0).toLocaleString()
 	}
+	let styleTItleButton = { width: '30px', height: '30px' }
 	return (
 		<div className="min-h-screen checkout-c">
 			<div className='grid grid-cols-12'>
-
 				{/* SHOW SCREEN */}
 				<div className="col-span-8">
 					{/* SCREEN */}
-					<div className="bg-black w-full h-5 rounded-sm text-white text-center" style={{ width: '75%', margin: '0 auto' }}>Màn hình</div>
+					<div className="bg-black w-full  rounded-sm text-white text-center" style={{ width: '75%', margin: '0 auto' }}>Màn hình</div>
 					<div className={'trapezoid'} style={{ textAlign: 'center' }}>
 					</div>
 
 					{/* THE LIST CINEMA CHAIRS */}
-					<div className='mt-10 mx-auto' style={{ width: '75%' }}>
+					<div className='mt-5 mx-auto' style={{ width: '75%' }}>
 						{renderChair()}
 					</div>
-
 					{/* DESCIPTION */}
 					<div className="flex justify-center" style={{ width: '70%', margin: '0 auto' }}>
 						<div className='w-full'>
 							<ul className='flex justify-between'>
-								<li>Ghế đang đặt <button className='theChair theOrderingChair'>00</button></li>
-								<li>Ghế đã được đặt <button className='theChair theOrderChair'>X</button></li>
-								<li>Ghế chưa đặt <button className='theChair'>00</button></li>
-								<li>Ghế vip <button className='theChair theVipChair'>00</button></li>
-								<li>Ghế mình đặt <button className='theChair theYourOrderChair'><UserOutlined /></button></li>
-								<li>Ghế người khác đang đặt<button className='theChair theChairAreOrderingByByCustomer'>00</button></li>
+								<li>Ghế đang đặt <button className='theChair theOrderingChair' style={styleTItleButton}></button></li>
+								<li>Ghế đã được đặt <button className='theChair theOrderChair' style={styleTItleButton}></button></li>
+								<li>Ghế chưa đặt <button className='theChair' style={styleTItleButton}></button></li>
+								<li>Ghế vip <button className='theChair theVipChair' style={styleTItleButton}></button></li>
+								<li>Ghế mình đặt <button className='theChair theYourOrderChair' style={styleTItleButton}></button></li>
+								{/* <li>Ghế người khác đang đặt<button className='theChair theChairAreOrderingByByCustomer' style={styleTItleButton}></button></li> */}
 							</ul>
 						</div>
 					</div>
@@ -245,7 +200,7 @@ function CheckoutItem(props) {
 					<div className='flex flex-col mt-10 justify-start'
 						onClick={() => {
 							const infoBooking = new BookingTicketClass()
-							infoBooking.maLichChieu = match.params.id;
+							infoBooking.maLichChieu = props.match.params.id;
 							infoBooking.danhSachVe = []
 							listOrderingCinemaChairs.map((itemOrderCinemaChairs, index) => {
 								const { maGhe, giaVe } = itemOrderCinemaChairs;
@@ -256,11 +211,14 @@ function CheckoutItem(props) {
 							return dispatch(postBookingTickets(infoBooking))
 						}}
 					>
+						{/* CODING.......................................................................... */}
 						<button className="w-full bg-green-600 text-white py-2 px-4 border border-gray-400 rounded shadow uppercase">
 							Đặt vé
 						</button>
 					</div>
 				</div>
+
+
 			</div>
 		</div >
 	)
@@ -279,11 +237,11 @@ function ResultBookingTickes() {
 	}, [])
 
 	const renderInfoBookingTickets = () => {
-		return managingInfoUser.thongTinDatVe && managingInfoUser.thongTinDatVe.map((itemInfoTickets, indexInfoTickets) => {
-			const seats = _.first(itemInfoTickets.danhSachGhe);
+		return managingInfoUser.thongTinDatVe.map((itemInfoTickets, indexInfoTickets) => {
+			const seats = (itemInfoTickets.danhSachGhe);
 			const { ngayDat, tenPhim } = itemInfoTickets
 			return (
-				<div className="p-2 lg:w-1/3 md:w-1/2 w-full" key={indexInfoTickets}>
+				<div className="p-2 lg:w-1/3 md:w-1/2 w-full " key={indexInfoTickets}>
 					<div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
 						<img alt="team" className="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src={itemInfoTickets.hinhAnh} />
 						<div className="flex-grow">
@@ -298,7 +256,7 @@ function ResultBookingTickes() {
 			)
 		})
 	}
-	return <div className='result-booking-tickets container'>
+	return <div className='result-booking-tickets container h-full	'>
 		<section className="text-gray-600 body-font">
 			<div className="container px-5 py-10 mx-auto">
 				<div className="flex flex-col text-center w-full mb-20">

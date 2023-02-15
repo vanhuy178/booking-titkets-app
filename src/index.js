@@ -10,7 +10,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { DOMAIN } from './utils/settings/config';
 // const signalR = require("@microsoft/signalr");
 
-// // import { HubConnection, HubConnectionBuilder } from "@microsoft/signalr";
+// // // import { HubConnection, HubConnectionBuilder } from "@microsoft/signalr";
 // export const connection = new signalR.HubConnectionBuilder().withUrl(`${DOMAIN}/DatVeHub`).configureLogging(signalR.LogLevel.Information).build();
 
 // if (connection) {
@@ -18,12 +18,10 @@ import { DOMAIN } from './utils/settings/config';
 //     .then(() => {
 
 
-
 //     }).catch(error => {
 //       console.log(error);
 //     })
-//   }
-
+// }
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
@@ -31,3 +29,5 @@ root.render(
   </Provider>
 );
 reportWebVitals();
+
+
