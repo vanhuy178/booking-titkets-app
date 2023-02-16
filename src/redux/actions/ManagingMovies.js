@@ -58,3 +58,16 @@ export const orderCinemaChair = (chair, idShowtimes) => {
         // connection.invoke('datGhe', userName, listOrderingCinemaChairsStringify, idShowtimes)
     }
 }
+export const uploadingFormData = (formData) => {
+    return async (dispatch) => {
+        try {
+            let result = await managingMovieService.uploadTheMovie(formData);
+            console.log(result.data.content);
+            if (result.status === 200) {
+                alert('thêm thành công')
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}

@@ -55,9 +55,11 @@ export const AdminTemplate = (props) => { //path, exact, Component
                         <img src="https://cyberlearn.vn/wp-content/uploads/2020/03/cyberlearn-min-new-opt2.png" alt="..." />
                     </div>
                     <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+                        {/* User */}
                         <Menu.Item key="1" icon={<UserOutlined />}>
                             <NavLink to="/admin/users">Users</NavLink>
                         </Menu.Item>
+                        {/* Movies */}
                         <SubMenu key="sub1" icon={<FileOutlined />} title="Films">
                             <Menu.Item key="10" icon={<FileOutlined />}>
                                 <NavLink to="/admin/movies">Films</NavLink>

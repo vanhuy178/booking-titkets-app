@@ -14,6 +14,7 @@ class ManageingBookingTickets extends BaseServices {
     bookTickets = (contentShowtimesPost) => { // params is a object
         return this.post('/api/QuanLyDatVe/DatVe', contentShowtimesPost)
     }
+
 }
 export const managingBookingTickets = new ManageingBookingTickets();
 
