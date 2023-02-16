@@ -13,6 +13,7 @@ import { AdminTemplate } from './template/admin/AdminTemplate';
 
 import DashBoard from './template/admin/Dashboard/DashBoard';
 import AddMovies from './template/admin/Movies/AddMovies/AddMovies';
+import EditMovies from './template/admin/Movies/EditMovies/EditMovies';
 import AdminMovies from './template/admin/Movies/Movies';
 import Showtime from './template/admin/Showtimes/Showtime';
 import { CheckoutTemplate } from './template/home/CheckoutTemplate/CheckoutTemplate';
@@ -46,6 +47,7 @@ function App() {
 
           <AdminTemplate path='/admin/movies' exact Component={AdminMovies} />
           <AdminTemplate path='/admin/movies/addnew' exact Component={AddMovies} />
+          <AdminTemplate path='/admin/movies/edit/:id' exact Component={EditMovies} />
           <AdminTemplate path='/admin/dashboard' Component={DashBoard} />
           <AdminTemplate path='/admin/showtimes' Component={Showtime} />
 

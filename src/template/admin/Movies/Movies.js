@@ -89,10 +89,10 @@ export default function AdminMovies() {
         {
             title: 'Hành động',
             dataIndex: 'action',
-            render: () => {
+            render: (text, movies) => {
                 return <>
-                    <NavLink to='/' className='bg-blue-600 text-white p-4 mr-2'><EditOutlined /></NavLink>
-                    <NavLink to='/' className='bg-red-700 text-white p-4'><DeleteOutlined /></NavLink>
+                    <NavLink key={1} to={`/admin/movies/edit/${movies.maPhim}`} className='bg-blue-600 text-white p-4 mr-2'><EditOutlined /></NavLink>
+                    <NavLink to='/' key={2} className='bg-red-700 text-white p-4'><DeleteOutlined /></NavLink>
                 </>
             }
         }

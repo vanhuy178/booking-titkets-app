@@ -1,7 +1,6 @@
-import { connection } from '../..';
 import { managingMovieService } from '../../services/manageMovieServices';
 import { ORDER_CINEMA_CHAIR } from '../types/ManagingDetailShowtimeMovies';
-import { GET_DETAIL_MOVIE, GET_MOVIES } from '../types/ManagingMoviesType';
+import { GET_DETAIL_MOVIE, GET_INFO_SPECIFIC_MOVIES, GET_MOVIES } from '../types/ManagingMoviesType';
 export const fetchMovies = () => {
     return async (dispatch) => {
         try {
@@ -65,6 +64,18 @@ export const uploadingFormData = (formData) => {
             console.log(result.data.content);
             if (result.status === 200) {
                 alert('thêm thành công')
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+export const getInfoMovies = (idMovies) => {
+    return async (dispatch) => {
+        try {
+            let result = await managingMovieService.getInfoMoviesToEditMovies(idMovies);
+            if (result.status === 200) {
+                dispatch({ type: GET_INFO_SPECIFIC_MOVIES, payload: result.data.content })
             }
         } catch (error) {
             console.log(error);
