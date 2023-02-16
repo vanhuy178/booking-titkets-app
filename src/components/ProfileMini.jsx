@@ -17,9 +17,9 @@ export default function ProfileMini(userName) {
         className='block mr-5'>
         <div className='flex items-center justify-center'>
             <div className='w-10 h-10 bg-slate-500 rounded-full'>
-            </div><p className='ml-2'>{userName}</p></div></NavLink>
+            </div><p className='ml-2 text-white'>{userName}</p></div></NavLink>
 
     return (
-        <div className='flex items-center text-xl'>{profileLink}{logOut}</div>
+        <div className='flex items-center text-xl text-white'>{profileLink}{logOut}</div>
     )
 }

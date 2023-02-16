@@ -15,9 +15,8 @@ export default function Header() {
     const handleChange = (value) => {
         i18n.changeLanguage(value)
     }
-
+    console.log(userLogin);
     const renderLogin = () => {
-        console.log(userLogin);
         if (userLogin.taiKhoan === "") {
             return (
                 <>
@@ -29,10 +28,6 @@ export default function Header() {
         }
         else {
             return <>
-                {/* <div className="profile">
-                    <NavLink to='/profile' className='text-white'>Hello !{userLogin.taiKhoan}</NavLink>
-                </div> */}
-
                 {ProfileMini(userLogin.taiKhoan)}
             </>
         }
@@ -61,7 +56,7 @@ export default function Header() {
 
                 {/* LOGIN AND RESGISTER */}
                 <div className="items-center flex-shrink-0 hidden lg:flex">
-                    {renderLogin()}
+                    {/* {renderLogin()} */}
                     <Select className='ml-2' defaultValue="en" style={{ width: 100 }} onChange={handleChange}>
                         <Option value="vi">Vi</Option>
                         <Option value="en">Eng</Option>

@@ -5,21 +5,6 @@ export default function Profile() {
     const { userLogin } = useSelector(state => state.managingUserStore);
     const { maNhom, taiKhoan, soDT, hoTen, maLoaiNguoiDung } = userLogin;
 
-    const spaceCapitalizeLetter = (string) => {
-        let splitString = string.split('');
-        for (let i = 0, lengthString = splitString.length; i < lengthString; i++) {
-            if (splitString[i] === " ") {
-                splitString.splice(i, 1);
-            }
-        }
-        for (let i = 0, lengthString = splitString.length; i < lengthString; i++) {
-            if (splitString[i].toUpperCase() === splitString[i]) {
-                splitString[i] = " " + splitString[i]
-            }
-        }
-        return splitString.join('')
-    }
-
     return (
         <div classname="profile">
             <div className="p-16"><div className="p-8 bg-white shadow mt-24">  <div className="grid grid-cols-1 md:grid-cols-3">
@@ -56,7 +41,7 @@ export default function Profile() {
                         sdt: {soDT}
                     </p>
                     <p className="mt-2 text-gray-500">
-                        Loai nguoi dung: {spaceCapitalizeLetter(maLoaiNguoiDung)}
+                        Loai nguoi dung: {(maLoaiNguoiDung)}
                     </p>
                 </div>
                 <div className="mt-12 flex flex-col justify-center">
@@ -65,8 +50,6 @@ export default function Profile() {
                 </div>
             </div>
             </div>
-
-
             {/* LIST USER */}
         </div>
 

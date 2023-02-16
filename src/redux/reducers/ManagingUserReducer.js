@@ -13,7 +13,10 @@ const initialState = {
     managingInfoUser: new ManagingUserClass()
 }
 
+console.log({ initialState });
+
 export const managingUserReducer = (state = initialState, action) => {
+
     switch (action.type) {
         case USER_LOGIN_ACTION: {
             localStorage.setItem(USER_LOGIN, JSON.stringify(action.payload));
