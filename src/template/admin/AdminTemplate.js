@@ -42,7 +42,7 @@ export const AdminTemplate = (props) => { //path, exact, Component
 
 
     const operations = <Fragment>
-        {!userLogin.taiKhoan === "" ? ProfileMini(userLogin.taiKhoan) : ''}
+        {userLogin.taiKhoan === null || !userLogin.taiKhoan === "" ? ProfileMini(userLogin.taiKhoan) : null}
     </Fragment>
 
     console.log(operations);
@@ -64,7 +64,7 @@ export const AdminTemplate = (props) => { //path, exact, Component
 
                             </Menu.Item>
                             <Menu.Item key="11" icon={<FileOutlined />}>
-                                {/* <NavLink to="/admin/movies/addnew">Add new</NavLink> */}
+                                <NavLink to="/admin/movies/addnew">Add new</NavLink>
 
 
                             </Menu.Item>

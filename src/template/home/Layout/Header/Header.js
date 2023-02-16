@@ -15,9 +15,9 @@ export default function Header() {
     const handleChange = (value) => {
         i18n.changeLanguage(value)
     }
-    console.log(userLogin);
+    console.log(typeof userLogin);
     const renderLogin = () => {
-        if (userLogin.taiKhoan === "") {
+        if (userLogin === null || userLogin.taiKhoan === "") {
             return (
                 <>
                     {/* LOGIN AND RESGISTER */}
@@ -56,7 +56,7 @@ export default function Header() {
 
                 {/* LOGIN AND RESGISTER */}
                 <div className="items-center flex-shrink-0 hidden lg:flex">
-                    {/* {renderLogin()} */}
+                    {renderLogin()}
                     <Select className='ml-2' defaultValue="en" style={{ width: 100 }} onChange={handleChange}>
                         <Option value="vi">Vi</Option>
                         <Option value="en">Eng</Option>
