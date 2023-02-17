@@ -137,6 +137,8 @@ const AddMovies = () => {
                     <br />
                     <img src={imgSource} alt="chèn hình ảnh vào đây" width={150} height={150} />
                 </Form.Item>
+
+                {/* ADD MESSAGE WHEN WE ADD ITEM SUCCESSFULLY */}
                 <Form.Item label="Tác vụ">
                     <button type='submit' className='bg-blue-500 text-white py-2 px-4 rounded-sm'>Add</button>
                 </Form.Item>

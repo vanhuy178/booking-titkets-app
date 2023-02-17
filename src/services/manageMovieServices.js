@@ -18,8 +18,9 @@ export class ManageMovieService extends BaseServices {
     }
 
     // I am using get method to get list movies from api 
-    getListMovies = () => {
-        return this.get(`/api/QuanLyPhim/LayDanhSachPhim?maNhom=${IDGROUP}`)
+    getListMovies = (moviesName) => {
+        let check = moviesName !== '' ? `/api/QuanLyPhim/LayDanhSachPhim?maNhom=${IDGROUP}&tenPhim=${moviesName}` : `/api/QuanLyPhim/LayDanhSachPhim?maNhom=${IDGROUP}`
+        return this.get(check)
     }
     // GET DATA FOR SHOWTIMES INFO
     getListMoviesShowTimesInfo = (idMovies) => {
@@ -38,6 +39,10 @@ export class ManageMovieService extends BaseServices {
 
     updatedInfoMovies = (infoUpdatedMovies) => {
         return this.post('/api/QuanLyPhim/CapNhatPhimUpload', infoUpdatedMovies)
+    }
+
+    deleteMovies = (idMovie) => {
+        return this.delete(`/api/QuanLyPhim/XoaPhim?MaPhim=${idMovie}`)
     }
 }
 

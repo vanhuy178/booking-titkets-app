@@ -3,25 +3,21 @@ import { ORDER_CINEMA_CHAIR } from '../types/ManagingDetailShowtimeMovies';
 import { GET_DETAIL_MOVIE, GET_INFO_SPECIFIC_MOVIES, GET_MOVIES } from '../types/ManagingMoviesType';
 import { history } from '../../App';
 import { hideLoadingAction, showLoadingAction } from './LoadingAction';
-export const fetchMovies = () => {
+export const fetchMovies = (moviesName = '') => {
     return async (dispatch) => {
         try {
             /*
-
             WE CONNECT TO BACK-END VIA CLASS IN SERVICE FOLFER
-
              */
-            dispatch(showLoadingAction)
-            let result = await managingMovieService.getListMovies();
+
+            let result = await managingMovieService.getListMovies(moviesName);
+            console.log({ result });
             dispatch({
                 type: GET_MOVIES,
                 payload: result.data.content
             })
-            await dispatch(hideLoadingAction)
 
         } catch (error) {
-            await dispatch(hideLoadingAction)
-
             console.log(error);
         }
     }
@@ -55,7 +51,6 @@ export const orderCinemaChair = (chair, idShowtimes) => {
     return async (dispatch, getState) => { // getState IS A FUNCTION OF REDUX-THUNK SUPPORT TO TAKE STATE IN REDUCER
 
         try {
-
             await dispatch(showLoadingAction)
             // DISPATH FUNCTION TO REDUCER
             dispatch({
@@ -93,7 +88,6 @@ export const uploadingFormData = (formData) => {
 
         } catch (error) {
             await dispatch(hideLoadingAction)
-
             console.log(error.response.content);
         }
     }
@@ -105,6 +99,7 @@ export const getInfoMovies = (idMovies) => {
             await dispatch(showLoadingAction)
 
             let result = await managingMovieService.getInfoMoviesToEditMovies(idMovies);
+            console.log(result);
             if (result.status === 200) {
                 dispatch({ type: GET_INFO_SPECIFIC_MOVIES, payload: result.data.content })
             }
@@ -124,15 +119,32 @@ export const updatedInfoMoviesAction = (updatedValue) => {
 
             let result = await managingMovieService.updatedInfoMovies(updatedValue);
             if (result.status === 200) {
-                dispatch(fetchMovies())
+                dispatch(fetchMovies());
+                // 403 Forbidden
+
+                // The HTTP 403 Forbidden response status code indicates that the server understands the request but refuses to authorize it.
+                // console.log(result);
                 return history.goBack()
             }
             await dispatch(hideLoadingAction)
 
         } catch (error) {
             await dispatch(hideLoadingAction)
+            console.log(error.response.data);
+        }
+    }
+}
 
-            console.log(error);
+export const deleteMoviesAcition = (idMoves) => {
+    return async (dispatch) => {
+        try {
+            await dispatch(showLoadingAction)
+            await managingMovieService.deleteMovies(idMoves);
+            dispatch(fetchMovies())
+            await dispatch(hideLoadingAction)
+        } catch (error) {
+            await dispatch(hideLoadingAction)
+            console.log(error.response.data)
         }
     }
 }

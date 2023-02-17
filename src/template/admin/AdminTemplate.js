@@ -42,7 +42,14 @@ export const AdminTemplate = (props) => { //path, exact, Component
 
 
     const operations = <Fragment>
-        {userLogin.taiKhoan === null || !userLogin.taiKhoan === "" ? ProfileMini(userLogin.taiKhoan) : ""}
+        {userLogin.taiKhoan === null || userLogin.taiKhoan === "" ?
+            <>
+                <NavLink to='/register' className="text-white self-center px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900">Đăng ký</NavLink>
+                <NavLink to='/login' className="text-white self-center px-8 py-3 rounded" >Đăng nhập</NavLink>
+            </>
+            :
+            ProfileMini(userLogin.taiKhoan)}
+        {/* ....!userLogin.taiKhoan */}
     </Fragment>
 
     return <Route {...restProps} render={(propRoute) => { //props.location,props.history,props.match
@@ -70,10 +77,10 @@ export const AdminTemplate = (props) => { //path, exact, Component
 
                             </Menu.Item>
                         </SubMenu>
-                        <Menu.Item key="3" icon={<DesktopOutlined />}>
+                        {/* <Menu.Item key="3" icon={<DesktopOutlined />}>
                             <NavLink to="/admin/showtimes">Showtime</NavLink>
 
-                        </Menu.Item>
+                        </Menu.Item> */}
                         {/* <SubMenu key="sub1" icon={<UserOutlined />} title="User">
                             <Menu.Item key="3">Tom</Menu.Item>
                             <Menu.Item key="4">Bill</Menu.Item>

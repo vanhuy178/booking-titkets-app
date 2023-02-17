@@ -1,20 +1,39 @@
 import { Table } from 'antd';
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchMovies } from '../../../redux/actions/ManagingMovies';
+import { deleteMoviesAcition, fetchMovies } from '../../../redux/actions/ManagingMovies';
 import './style.scss';
-import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
+import { CalendarFilled, CalendarOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { NavLink } from 'react-router-dom';
+
+
+// function useDebounce(effect, dependencies, delay) {
+//     const callback = useCallback(effect, dependencies);
+//     useEffect(() => {
+//         const timeout = setTimeout(callback, delay);
+//         return () => clearTimeout(timeout);
+//     }, [callback, delay]);
+// }
+
 export default function AdminMovies() {
     const dispatch = useDispatch();
     const { listMovies } = useSelector(state => state.managingMoviesStore);
+    const [search, setSearch] = useState('');
+    const [filteredTitle, setFilteredTitle] = useState([]);
 
-
+    // const handleSearch = (e) => setSearch(e.target.value);
     useEffect(() => {
         window.scrollTo(0, 0);
         dispatch(fetchMovies());
     }, [])
 
+    // DeBounce Function
+    // useDebounce(() => {
+    //     setFilteredTitle(
+    //         listMovies.filter((d) => d.tenPhim.toLowerCase().includes(search.toLowerCase()))
+    //     );
+    // }, [listMovies, search], 800
+    // );
     const columns = [
         {
             title: 'Mã phim',
@@ -23,8 +42,8 @@ export default function AdminMovies() {
                 return <a> {row.maPhim} </a>
             },
             // here is that finding the name started with `value`
-            onFilter: (value, record) => record.name.indexOf(value) === 0,
             sorter: (a, b) => a.maPhim - b.maPhim,
+            sortDirections: ['descend', 'ascend'],
             width: '10%'
         },
         {
@@ -91,8 +110,17 @@ export default function AdminMovies() {
             dataIndex: 'action',
             render: (text, movies) => {
                 return <>
-                    <NavLink key={1} to={`/admin/movies/edit/${movies.maPhim}`} className='bg-blue-600 text-white p-4 mr-2'><EditOutlined /></NavLink>
-                    <NavLink to='/' key={2} className='bg-red-700 text-white p-4'><DeleteOutlined /></NavLink>
+                    <NavLink key={1} to={`/admin/movies/edit/${movies.maPhim}`} className='text-2xl text-blue-500 leading-3'><EditOutlined /></NavLink>
+                    <span onClick={() => {
+                        // CONFRIM
+                        if (window.confirm('Bạn chắc có muốn xóa phim' + movies.tenPhim)) {
+                            // INVOKE ACTION
+                            dispatch(deleteMoviesAcition(movies.maPhim))
+                        }
+                    }} key={2} className=' text-2xl text-red-500 leading-3 cursor-pointer mx-3'
+                    ><DeleteOutlined /></span>
+
+                    <NavLink to={`/admin/movies/showtimes/${movies.maPhim}`} className='text-2xl text-yellow-500 leading-3'><CalendarOutlined /></NavLink>
                 </>
             }
         }
@@ -101,6 +129,8 @@ export default function AdminMovies() {
     const onChange = (pagination, filters, sorter, extra) => {
         console.log('params', pagination, filters, sorter, extra);
     };
+
+
     return (
         <>
             {/* SEARCH BAR */}
@@ -114,8 +144,27 @@ export default function AdminMovies() {
                                 </svg>
                             </div>
                         </div>
-                        <input className="font-bold uppercase rounded-full w-full p-2 pl-4 text-gray-700 bg-gray-100 leading-tight focus:outline-none focus:shadow-outline lg:text-sm text-xs" type="text" placeholder="Search" />
-                        <div className="bg-gray-600 p-2 hover:bg-blue-400 cursor-pointer mx-2 rounded-full">
+                        <input className="rounded-full w-full p-2 pl-4 text-gray-700 bg-gray-100 leading-tight focus:outline-none focus:shadow-outline lg:text-sm text-xs"
+                            type="text"
+                            placeholder="Tên phim"
+                            value={search || ''}
+                            // onChange={handleSearch}
+
+                            onChange={(e) => { setSearch(e.target.value) }}
+
+                        />
+                        {/* <div>
+                            {filteredTitle.map((f) => (
+                                <p key={f.id}>{f.title}</p>
+                            ))}
+                        </div> */}
+                        <div className="bg-gray-600 p-2 hover:bg-blue-400 cursor-pointer mx-2 rounded-full"
+                            onClick={() => {
+                                console.log(search);
+                                dispatch(fetchMovies(search))
+                            }
+                            }
+                        >
                             <svg className="w-4 h-4 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                 <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
                             </svg>
@@ -134,7 +183,7 @@ export default function AdminMovies() {
 
 
                 {/* TABLE */}
-                <Table columns={columns} dataSource={data} onChange={onChange} />
+                <Table columns={columns} dataSource={data} onChange={onChange} rowKey="Id of the movie" />
             </div>
         </>
     )

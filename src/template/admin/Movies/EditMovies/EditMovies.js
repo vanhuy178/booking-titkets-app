@@ -101,13 +101,6 @@ const EditMovies = (props) => {
     /**
      * WE NEED ID IS PASSED BY MOVIES COMPONENT
      * WE NEED A STATE TO STORE IT IN MANAGING MOVIES REDUCER
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
      */
 
     // let setupTime = moment(formik.values.ngayKhoiChieu)

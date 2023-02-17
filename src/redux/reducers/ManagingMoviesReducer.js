@@ -1,5 +1,5 @@
 import { DetailInfoMovies } from "../../models/InfoMoviesClass";
-import { GET_DETAIL_MOVIE, GET_INFO_SPECIFIC_MOVIES, GET_MOVIES, SET_UPCOMING_FILM, SET_WATCHNG_FILM } from "../types/ManagingMoviesType";
+import { ADD_MOIVE_SUCCESSFULLY, ADD_MOVIE_DEPEAT, GET_DETAIL_MOVIE, GET_INFO_SPECIFIC_MOVIES, GET_MOVIES, SET_UPCOMING_FILM, SET_WATCHNG_FILM, UPDATE_MOVIE_DEPEAT, UPDATE_MOVIE_SUCCESSFULLY } from "../types/ManagingMoviesType";
 
 const initialState = {
     // listMovies: [
@@ -28,7 +28,9 @@ const initialState = {
     detailMoviesShowTimesInfo: {},
 
     // CONTAIN DATA FOR INFO MOVIES TO EDIT
-    infoMoviesForEdit: new DetailInfoMovies()
+    infoMoviesForEdit: new DetailInfoMovies(),
+
+    messageResponsive: ''
 }
 
 export const ManagingMovieReducer = (state = initialState, action) => {
@@ -58,6 +60,19 @@ export const ManagingMovieReducer = (state = initialState, action) => {
 
         case GET_INFO_SPECIFIC_MOVIES:
             return { ...state, infoMoviesForEdit: action.payload }
+
+        case ADD_MOIVE_SUCCESSFULLY: {
+            return { ...state, messageResponsive: action.payload }
+        }
+        case ADD_MOVIE_DEPEAT: {
+            return { ...state, messageResponsive: action.payload }
+        }
+        case UPDATE_MOVIE_SUCCESSFULLY: {
+            return { ...state, messageResponsive: action.payload }
+        }
+        case UPDATE_MOVIE_DEPEAT: {
+            return { ...state, messageResponsive: action.payload }
+        }
         default:
             return { ...state };
     }
