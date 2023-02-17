@@ -4,10 +4,7 @@ import { Redirect, Route } from "react-router";
 
 import { Layout, Menu, Breadcrumb } from 'antd';
 import {
-    DesktopOutlined,
-    PieChartOutlined,
     FileOutlined,
-    TeamOutlined,
     UserOutlined,
 } from '@ant-design/icons';
 import { NavLink } from "react-router-dom";

@@ -20,9 +20,9 @@ class HomeMenu extends React.PureComponent {
 
 
 	renderCinemaSystem = () => {
-		return this.props.listCenimaSystem?.map((item, index) => {
+		return this.props.listCenimaSystem && this.props.listCenimaSystem.map((item, index) => {
 			return (
-				<TabPane tab={<img src={item.logo} alt={item.tenHeThongRap} className='home-menu-c rounded-full' width='50' />} key={index}>
+				<TabPane tab={<img src={item.logo} alt={item.tenHeThongRap} className='home-menu-c rounded-full overflow-hidden max-h-96' width='50' />} key={index}>
 					<Tabs tabPosition={this.state.tabPosition}>
 						{item.lstCumRap?.map((itemCinema, indexCinema) => {
 							return (
@@ -38,7 +38,7 @@ class HomeMenu extends React.PureComponent {
 
 								} key={indexCinema}>
 									<div className="overflow-scrollY">
-										{itemCinema.danhSachPhim && itemCinema.danhSachPhim.slice(0, 5).map((movieItem, movieIndex) => {
+										{itemCinema.danhSachPhim && itemCinema.danhSachPhim.map((movieItem, movieIndex) => {
 											return (
 												<>
 													<div className='my-5 flex'>
