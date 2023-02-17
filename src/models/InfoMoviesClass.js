@@ -23,7 +23,7 @@ export class DetailInfoMovies {
         this.trailer = '';
         this.moTa = '';
         this.maNhom = IDGROUP;
-        this.ngayKhoiChieu = '';
+        this.ngayKhoiChieu = "";
         this.hinhAnh = null // TARGET
     }
 }

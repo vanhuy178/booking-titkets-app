@@ -1,3 +1,4 @@
+
 import {
     DatePicker,
     Form,
@@ -5,7 +6,7 @@ import {
     InputNumber,
     Switch,
 } from 'antd';
-import dayjs from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 import { useFormik } from 'formik';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
@@ -21,11 +22,10 @@ const EditMovies = (props) => {
     const onFormLayoutChange = ({ size }) => {
         setComponentSize(size);
     };
-
-    console.log({ infoMoviesForEdit });
     useEffect(() => {
         dispatch(getInfoMovies(props.match.params.id))
     }, [])
+
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
@@ -33,6 +33,7 @@ const EditMovies = (props) => {
             trailer: infoMoviesForEdit.trailer,
             moTa: infoMoviesForEdit.moTa,
             ngayKhoiChieu: infoMoviesForEdit.ngayKhoiChieu,
+            // ngayKhoiChieu had an error is invalid
             dangChieu: infoMoviesForEdit.dangChieu,
             sapChieu: infoMoviesForEdit.sapChieu,
             hot: infoMoviesForEdit.hot,
@@ -50,7 +51,10 @@ const EditMovies = (props) => {
                 if (key !== 'hinhAnh') {
                     formData.append(key, values[key]);
                 } else {
-                    formData.append('File', values.hinhAnh, values.hinhAnh.name);
+
+                    if (values.hinhAnh !== null) {
+                        formData.append('File', values.hinhAnh, values.hinhAnh.name);
+                    }
                 }
             }
             // USING POST REQUEST TO POST DATA 
@@ -60,7 +64,7 @@ const EditMovies = (props) => {
 
     const handleChageDatePicker = (value) => {
         // IF YOU WANT TO SET VALUE FOR ngayKhoiChieu of initialValues using setFieldValue
-        let ngayKhoiChieu = moment(value).format('DD/MM/YYYY')
+        let ngayKhoiChieu = dayjs(value)
         formik.setFieldValue('ngayKhoiChieu', ngayKhoiChieu)
     }
 
@@ -102,6 +106,9 @@ const EditMovies = (props) => {
      * 
      * 
      */
+
+    // let setupTime = moment(formik.values.ngayKhoiChieu)
+    console.log(formik.values.ngayKhoiChieu);
     return (
 
         <>
@@ -131,14 +138,9 @@ const EditMovies = (props) => {
                     <Input name="moTa" onChange={formik.handleChange} value={formik.values.moTa} />
                 </Form.Item>
 
-
-
                 <Form.Item label="Ngày khởi chiếu">
-                    <DatePicker format="DD/MM/YYYY" onChange={handleChageDatePicker} value={moment(formik.values.ngayKhoiChieu, 'DD/MM/YYYY')} />
+                    <DatePicker format="DD/MM/YYYY" onChange={handleChageDatePicker} value={dayjs(formik.values.ngayKhoiChieu)} />
                 </Form.Item>
-
-
-
 
                 <Form.Item label="Số sao">
                     <InputNumber name='danhGia' onChange={handleChangeNumber('danhGia')} min={1} max={10} value={formik.values.danhGia} />
@@ -146,6 +148,8 @@ const EditMovies = (props) => {
                 <Form.Item label="Đang chiếu" valuePropName="checked">
                     <Switch name='dangChieu' className='bg-slate-400' onChange={handleChangeSwitch('dangChieu')} checked={formik.values.dangChieu} />
                 </Form.Item>
+
+
                 <Form.Item label="Sắp chiếu" valuePropName="checked">
                     <Switch name='sapChieu' className='bg-slate-400' onChange={handleChangeSwitch('sapChieu')} checked={formik.values.sapChieu} />
                 </Form.Item>
