@@ -1,10 +1,12 @@
 import { history } from "../../App";
 import { managingUser } from "../../services/ManagingUser";
 import { TAKE_INFO_USER, USER_LOGIN_ACTION } from "../types/User";
+import { hideLoadingAction, showLoadingAction } from "./LoadingAction";
 
 export const postUserLogin = (data) => {
     return async (dispatch) => {
         try {
+            await dispatch(showLoadingAction)
             const result = await managingUser.postInfoLogin(data)
             if (result.status === 200) {
                 dispatch({
@@ -17,8 +19,10 @@ export const postUserLogin = (data) => {
                 // REDIRECT TO PREV PAGE
                 history.goBack()
             }
+            await dispatch(hideLoadingAction)
             // console.log(result);
         } catch (error) {
+            await dispatch(hideLoadingAction)
             console.log(error);
         }
     }
@@ -26,6 +30,7 @@ export const postUserLogin = (data) => {
 export const fethInfoUser = () => {
     return async (dispatch) => {
         try {
+            await dispatch(showLoadingAction)
             const result = await managingUser.takeInfouser()
             if (result.status === 200) {
                 dispatch({
@@ -33,7 +38,10 @@ export const fethInfoUser = () => {
                     payload: result.data.content
                 })
             }
+            await dispatch(hideLoadingAction)
+
         } catch (error) {
+            await dispatch(hideLoadingAction)
             console.log(error);
         }
     }

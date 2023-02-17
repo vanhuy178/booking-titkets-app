@@ -8,10 +8,9 @@ import {
 } from 'antd';
 import dayjs, { Dayjs } from 'dayjs';
 import { useFormik } from 'formik';
-import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getInfoMovies, uploadingFormData } from '../../../../redux/actions/ManagingMovies';
+import { getInfoMovies, updatedInfoMoviesAction } from '../../../../redux/actions/ManagingMovies';
 import { IDGROUP } from '../../../../utils/settings/config'
 const EditMovies = (props) => {
     const [componentSize, setComponentSize] = useState('default');
@@ -29,6 +28,8 @@ const EditMovies = (props) => {
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
+            maNhom: IDGROUP,
+            maPhim: infoMoviesForEdit.maPhim,
             tenPhim: infoMoviesForEdit.tenPhim,
             trailer: infoMoviesForEdit.trailer,
             moTa: infoMoviesForEdit.moTa,
@@ -43,22 +44,23 @@ const EditMovies = (props) => {
         // WE NEED EXACT FORMATVALUE TO SEND DATA FOR BACKEND
 
         onSubmit: (values) => {
-            values.maNhom = IDGROUP;
-            console.log(values);
+            values.maNhom = IDGROUP
             //CREATE JSON PORMAT FROM FORMDATA
             let formData = new FormData();
             for (let key in values) {
                 if (key !== 'hinhAnh') {
                     formData.append(key, values[key]);
-                } else {
-
+                }
+                else {
                     if (values.hinhAnh !== null) {
-                        formData.append('File', values.hinhAnh, values.hinhAnh.name);
+                        formData.append('File', values.hinhAnh);
                     }
                 }
             }
+
+            console.log({ formData });
             // USING POST REQUEST TO POST DATA 
-            dispatch(uploadingFormData(formData))
+            dispatch(updatedInfoMoviesAction(formData))
         }
     })
 
@@ -81,19 +83,20 @@ const EditMovies = (props) => {
         }
     }
 
-    const handleChangeUploadFile = (e) => {
+    const handleChangeUploadFile = async (e) => {
         let file = e.target.files[0];
         // CREATE OBJECT TO READ FILE
+        console.log(file);
         if (file.type === 'image/png' || file.type === "image/jpeg" || file.type === 'image/jpg') {
+            await formik.setFieldValue('hinhAnh', file)
             let reader = new FileReader();
             reader.readAsDataURL(file)
             reader.onload = e => {
                 let base = e.target.result;
+                // console.log(base);
                 setImageSource(base)
             }
         }
-
-        formik.setFieldValue('hinhAnh', file)
     }
     /**
      * WE NEED ID IS PASSED BY MOVIES COMPONENT
@@ -108,7 +111,6 @@ const EditMovies = (props) => {
      */
 
     // let setupTime = moment(formik.values.ngayKhoiChieu)
-    console.log(formik.values.ngayKhoiChieu);
     return (
 
         <>
@@ -135,7 +137,7 @@ const EditMovies = (props) => {
                     <Input name="trailer" onChange={formik.handleChange} value={formik.values.trailer} />
                 </Form.Item>
                 <Form.Item label="Mô tả">
-                    <Input name="moTa" onChange={formik.handleChange} value={formik.values.moTa} />
+                    <Input as="textarea" name="moTa" onChange={formik.handleChange} value={formik.values.moTa} />
                 </Form.Item>
 
                 <Form.Item label="Ngày khởi chiếu">
@@ -159,7 +161,7 @@ const EditMovies = (props) => {
                 <Form.Item label='Hình ảnh'>
                     <input type='file' onChange={handleChangeUploadFile} accept='image/png, imagejpg' />
                     <br />
-                    <img src={imgSource === "" ? infoMoviesForEdit.hinhAnh : imgSource} alt="chèn hình ảnh vào đây" width={150} height={150} />
+                    <img src={imgSource === '' ? infoMoviesForEdit.hinhAnh : imgSource} alt="chèn hình ảnh vào đây" width={150} height={150} />
                 </Form.Item>
                 <Form.Item label="Tác vụ">
                     <button type='submit' className='bg-blue-500 text-white py-2 px-4 rounded-sm'>Cập nhật</button>

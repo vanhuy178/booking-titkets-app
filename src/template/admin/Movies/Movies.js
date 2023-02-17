@@ -28,7 +28,7 @@ export default function AdminMovies() {
             width: '10%'
         },
         {
-            title: 'Hỉnh ảnh',
+            title: 'Hình ảnh',
             dataIndex: 'hinhAnh',
             render: (text, row) => {
                 return <>

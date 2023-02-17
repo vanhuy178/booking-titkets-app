@@ -10,7 +10,7 @@ export const fetchManagingBookingTickets = (idShowtimes) => {
             /*
             WE CONNECT TO BACK-END VIA CLASS IN SERVICE FOLFER
              */
-            dispatch(showLoadingAction)
+            await dispatch(showLoadingAction)
             let result = await managingBookingTickets.getBookingTickets(idShowtimes);
             if (result.status === 200) {
                 dispatch({
@@ -21,6 +21,7 @@ export const fetchManagingBookingTickets = (idShowtimes) => {
             }
 
         } catch (error) {
+            await dispatch(hideLoadingAction)
             console.log(error.response.data);
         }
     }
@@ -29,17 +30,17 @@ export const fetchManagingBookingTickets = (idShowtimes) => {
 export const postBookingTickets = (infoBookingTicket = new BookingTicketClass()) => {
     return async (dispatch) => {
         try {
-            dispatch(showLoadingAction)
+            await dispatch(showLoadingAction)
             let result = await managingBookingTickets.bookTickets(infoBookingTicket);
             console.log(result.data.content);
             await dispatch(fetchManagingBookingTickets(infoBookingTicket.maLichChieu));
             await dispatch({ type: COMPLETED_BOOKING })
             await dispatch(hideLoadingAction);
-            dispatch({ type: REDIRECT_TABS })
+            await dispatch({ type: REDIRECT_TABS })
         }
 
         catch (error) {
-            dispatch(hideLoadingAction)
+            await dispatch(hideLoadingAction)
             console.log(error)
         }
     }

@@ -42,10 +42,9 @@ export const AdminTemplate = (props) => { //path, exact, Component
 
 
     const operations = <Fragment>
-        {userLogin.taiKhoan === null || !userLogin.taiKhoan === "" ? ProfileMini(userLogin.taiKhoan) : null}
+        {userLogin.taiKhoan === null || !userLogin.taiKhoan === "" ? ProfileMini(userLogin.taiKhoan) : ""}
     </Fragment>
 
-    console.log(operations);
     return <Route {...restProps} render={(propRoute) => { //props.location,props.history,props.match
 
         return <Fragment>

@@ -41,11 +41,19 @@ const AddMovies = () => {
                 if (key !== 'hinhAnh') {
                     formData.append(key, values[key]);
                 } else {
-                    formData.append('File', values.hinhAnh, values.hinhAnh.name);
+                    formData.append('File', values.hinhAnh);
                 }
             }
-            // USING POST REQUEST TO POST DATA 
+            // USING POST REQUEST TO POST DATA
             dispatch(uploadingFormData(formData))
+            formik.values.tenPhim = '';
+            formik.values.trailer = '';
+            formik.values.ngayKhoiChieu = '';
+            formik.values.dangChieu = '';
+            formik.values.sapChieu = '';
+            formik.values.danhGia = '';
+            formik.values.hinhAnh = {};
+            formik.values.hot = '';
         }
     })
 

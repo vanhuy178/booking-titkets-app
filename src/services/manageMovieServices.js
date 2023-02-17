@@ -35,6 +35,10 @@ export class ManageMovieService extends BaseServices {
     getInfoMoviesToEditMovies = (idMovies) => {
         return this.get(`/api/QuanLyPhim/LayThongTinPhim?MaPhim=${idMovies}`)
     }
+
+    updatedInfoMovies = (infoUpdatedMovies) => {
+        return this.post('/api/QuanLyPhim/CapNhatPhimUpload', infoUpdatedMovies)
+    }
 }
 
 export const managingMovieService = new ManageMovieService();
