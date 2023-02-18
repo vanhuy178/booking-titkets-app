@@ -1,4 +1,4 @@
-import { Carousel, Radio } from 'antd';
+import { Carousel } from 'antd';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
@@ -29,7 +29,7 @@ export default function HomeCarousel() {
     const renderImage = () => {
         return listCarouselBanner.map((item, index) => {
             return (
-                <div key={index}>
+                <div key={index} >
                     <div style={{ ...contentStyle, backgroundImage: `url(${item.hinhAnh})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundAttachment: 'fixed' }}>
                     </div>
                 </div>
@@ -39,7 +39,7 @@ export default function HomeCarousel() {
 
     return (
         <>
-            <Carousel >
+            <Carousel className='home-carousel'>
                 {renderImage()}
             </Carousel>
         </>

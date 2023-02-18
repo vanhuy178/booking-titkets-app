@@ -2,12 +2,16 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 export default function Profile() {
-    const { userLogin } = useSelector(state => state.managingUserStore);
-    const { maNhom, taiKhoan, soDT, hoTen, maLoaiNguoiDung } = userLogin;
+    // const { userLogin } = useSelector(state => state.managingUserStore);
+    let userInfo = '';
+    if (localStorage.getItem('USER_LOGIN')) {
+        userInfo = JSON.parse(localStorage.getItem('USER_LOGIN'))
+    }
+    const { maNhom, taiKhoan, soDT, hoTen, maLoaiNguoiDung } = userInfo;
 
     return (
         <div classname="profile">
-            <div className="p-16"><div className="p-8 bg-white shadow mt-24">  <div className="grid grid-cols-1 md:grid-cols-3">
+            <div className="p-16"><div className="p-8 bg-white shadow mt-32">  <div className="grid grid-cols-1 md:grid-cols-3">
                 <div className="grid grid-cols-3 text-center order-last md:order-first mt-20 md:mt-0">
                     <div>
                         <p className="font-bold text-gray-700 text-xl">22</p>
@@ -36,17 +40,13 @@ export default function Profile() {
             </div>
                 <div className="mt-20 text-center border-b pb-12">
                     <h1 className="text-4xl font-medium text-gray-700">{hoTen}</h1>
-                    <p className="mt-8 text-gray-500">UserName {taiKhoan}-{maNhom}-{Math.floor(Math.random() * 1000) + 1}</p>
+                    <p className="mt-8 text-gray-500">UserName: {taiKhoan}-{maNhom}-{Math.floor(Math.random() * 1000) + 1}</p>
                     <p className="mt-2 text-gray-500">
-                        sdt: {soDT}
+                        Số điện thoại: {soDT}
                     </p>
                     <p className="mt-2 text-gray-500">
                         Loai nguoi dung: {(maLoaiNguoiDung)}
                     </p>
-                </div>
-                <div className="mt-12 flex flex-col justify-center">
-                    <p className="text-gray-600 text-center font-light lg:px-16">An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.</p>
-                    <button className="text-indigo-500 py-2 px-4  font-medium mt-4">  Show more</button>
                 </div>
             </div>
             </div>

@@ -120,7 +120,11 @@ export default function AdminMovies() {
                     }} key={2} className=' text-2xl text-red-500 leading-3 cursor-pointer mx-3'
                     ><DeleteOutlined /></span>
 
-                    <NavLink to={`/admin/movies/showtimes/${movies.maPhim}`} className='text-2xl text-yellow-500 leading-3'><CalendarOutlined /></NavLink>
+                    <NavLink
+                        to={`/admin/movies/showtimes/${movies.maPhim}/${movies.tenPhim}`}
+                        className='text-2xl text-yellow-500 leading-3'><CalendarOutlined
+                            onClick={() => localStorage.setItem('moviesparam', JSON.stringify(movies))}
+                        /></NavLink>
                 </>
             }
         }
@@ -137,13 +141,17 @@ export default function AdminMovies() {
             <div>
                 <div className="flex flex-col p-2 py-1 m-h-screen">
                     <div className="bg-white items-center justify-between w-full flex rounded-full shadow-lg p-1 mb-2 sticky" style={{ top: 5 }}>
-                        <div>
+
+
+                        <div onClick={() => setSearch('')}>
                             <div className="p-2 mr-1 rounded-full hover:bg-gray-100 cursor-pointer">
                                 <svg className="h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                     <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
                                 </svg>
                             </div>
                         </div>
+
+
                         <input className="rounded-full w-full p-2 pl-4 text-gray-700 bg-gray-100 leading-tight focus:outline-none focus:shadow-outline lg:text-sm text-xs"
                             type="text"
                             placeholder="Tên phim"

@@ -121,12 +121,11 @@ export const updatedInfoMoviesAction = (updatedValue) => {
             if (result.status === 200) {
                 dispatch(fetchMovies());
                 // 403 Forbidden
-
                 // The HTTP 403 Forbidden response status code indicates that the server understands the request but refuses to authorize it.
                 // console.log(result);
-                return history.goBack()
+                history.goBack()
+                await dispatch(hideLoadingAction)
             }
-            await dispatch(hideLoadingAction)
 
         } catch (error) {
             await dispatch(hideLoadingAction)

@@ -8,8 +8,10 @@ import {
     DatePicker,
     InputNumber,
     Select,
+    Rate,
 
 } from 'antd';
+import { history } from '../../../App'
 import { useEffect } from 'react';
 import { managingCenima } from '../../../services/manageCinema';
 import { useFormik } from 'formik';
@@ -37,6 +39,7 @@ export default function Showtime(props) {
             try {
                 let result = await managingCenima.postShowtime(value);
                 dispatch({ type: ADD_SHOWTIME_CINEMA_SUCCESSFULLY, payload: result.data.content })
+                history.goBack()
             } catch (error) {
                 dispatch({ type: ADD_SHOWTIME_CINEMA_DEPEAT, payload: error.response.data })
             }
@@ -102,8 +105,14 @@ export default function Showtime(props) {
         formik.setFieldValue('ngayChieuGioChieu', dayjs(value).format('DD/MM/YYYY hh:mm:ss'))
     }
 
+
     const handleChangeNumber = value => {
         formik.setFieldValue('giaVe', value)
+    }
+
+    let movies = {}
+    if (localStorage.getItem('moviesparam')) {
+        movies = JSON.parse(localStorage.getItem('moviesparam'))
     }
     return (
         <>
@@ -120,42 +129,51 @@ export default function Showtime(props) {
                     maxWidth: 1000,
                 }}
             >
+                <h1 className='text-3xl font-bold text-center mb-5'>Tạo lịch chiếu: {props.match.params.tenphim}</h1>
+                <div className='flex items-center'>
+                    <div className="image w-2/4">
+                        <img src={movies.hinhAnh} alt="" className='w-50 h-60 mx-5 block' />
+                        <p className='mt-2'>Thông tin lịch chiếu: {dayjs(movies.ngayKhoiChieu).format('DD/MM/YYYY')}</p>
+                        <p>Đánh giá:</p>
+                        <Rate allowHalf value={Number(movies.danhGia) / 2} className='text-yellow-500' />
+                    </div>
+                    <div className="input-form w-full">
 
-                <h1 className='text-4xl font-bold text-center mb-5'>Tạo lịch chiếu</h1>
+                        <Form.Item label="Hệ thống rạp">
+                            <Select
+                                onChange={handleChangeValueCenimaSystem}
+                                placeholder='Chọn hệ thống rạp'
+                                options={renderCenimaSystem()}
 
-                <Form.Item label="Hệ thống rạp">
-                    <Select
-                        onChange={handleChangeValueCenimaSystem}
-                        placeholder='Chọn hệ thống rạp'
-                        options={renderCenimaSystem()}
-
-                    />
-                </Form.Item>
-
-
-                <Form.Item label="Cụm rạp">
-                    <Select style={{
-                        maxWidth: 600,
-                    }}
-                        onChange={handleChangeValueGroupCinemaSystem}
-                        placeholder='Chọn cụm rạp'
-                        options={renderGroupCinema()}
-                    />
-                </Form.Item>
+                            />
+                        </Form.Item>
 
 
-                <Form.Item label="DatePicker">
-                    <DatePicker showTime format='DD/MM/YYY hh:mm:ss' onOk={handleOnOK} onChange={handleChangeDate} className={style['ant-picker-footer']} />
-                </Form.Item>
+                        <Form.Item label="Cụm rạp">
+                            <Select style={{
+                                maxWidth: 600,
+                            }}
+                                onChange={handleChangeValueGroupCinemaSystem}
+                                placeholder='Chọn cụm rạp'
+                                options={renderGroupCinema()}
+                            />
+                        </Form.Item>
 
-                <Form.Item label="Giá vé">
-                    <InputNumber min={75000} max={150000} onChange={handleChangeNumber} />
-                </Form.Item>
+
+                        <Form.Item label="DatePicker">
+                            <DatePicker showTime format='DD/MM/YYY hh:mm:ss' onOk={handleOnOK} onChange={handleChangeDate} className={style['ant-picker-footer']} />
+                        </Form.Item>
+
+                        <Form.Item label="Giá vé">
+                            <InputNumber min={75000} max={150000} onChange={handleChangeNumber} />
+                        </Form.Item>
 
 
-                <Form.Item style={{ marginLeft: '160px', }}>
-                    <button type='submit' className='rounded-sm' style={{ backgroundColor: '#007bff', fontSize: '20px', lineHeight: '10px', padding: '10px' }}>Tạo lịch chiếu</button>
-                </Form.Item>
+                        <Form.Item style={{ marginLeft: '160px', }}>
+                            <button type='submit' className='rounded-sm' style={{ backgroundColor: '#007bff', fontSize: '20px', lineHeight: '10px', padding: '10px' }}>Tạo lịch chiếu</button>
+                        </Form.Item>
+                    </div>
+                </div>
 
             </Form>
         </>

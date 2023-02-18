@@ -16,8 +16,13 @@ const { SubMenu } = Menu;
 
 export const AdminTemplate = (props) => { //path, exact, Component
     const { Component, ...restProps } = props;
-    const { managingInfoUser, userLogin } = useSelector(state => state.managingUserStore);
+    const { userLogin } = useSelector(state => state.managingUserStore);
 
+    let userInfo = ''
+    if (localStorage.getItem('USER_LOGIN')) {
+        userInfo = JSON.parse(localStorage.getItem('USER_LOGIN'))
+
+    }
     const [collapsed, setCollapsed] = useState(false);
 
     const onCollapse = collapsed => {
@@ -25,29 +30,26 @@ export const AdminTemplate = (props) => { //path, exact, Component
         setCollapsed(collapsed);
     };
 
+    if (userInfo.maLoaiNguoiDung !== 'QuanTri') {
+        alert('Bạn không có quyền truy cập vào trang này !')
+        return <Redirect to='/home' />
 
-    // if (!localStorage.getItem(USER_LOGIN)) {
-    //     alert('Bạn không có quyền truy cập vào trang này !')
-    //     return <Redirect to='/' />
-    // }
-
-    // if (userLogin.maLoaiNguoiDung !== 'QuanTri') {
-    //     alert('Bạn không có quyền truy cập vào trang này !')
-    //     return <Redirect to='/' />
-
-    // }    
-
+    }
 
     const operations = <Fragment>
-        {userLogin.taiKhoan === null || userLogin.taiKhoan === "" ?
-            <>
+        {userInfo === null || userInfo.taiKhoan === "" ?
+            <div>
                 <NavLink to='/register' className="text-white self-center px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900">Đăng ký</NavLink>
                 <NavLink to='/login' className="text-white self-center px-8 py-3 rounded" >Đăng nhập</NavLink>
-            </>
+            </div>
             :
-            ProfileMini(userLogin.taiKhoan)}
-        {/* ....!userLogin.taiKhoan */}
+            <div>
+                {ProfileMini(userInfo)}
+            </div>
+
+        }
     </Fragment>
+
 
     return <Route {...restProps} render={(propRoute) => { //props.location,props.history,props.match
 
@@ -58,6 +60,8 @@ export const AdminTemplate = (props) => { //path, exact, Component
                         <img src="https://cyberlearn.vn/wp-content/uploads/2020/03/cyberlearn-min-new-opt2.png" alt="..." />
                     </div>
                     <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+
+
                         {/* User */}
                         <Menu.Item key="1" icon={<UserOutlined />}>
                             <NavLink to="/admin/users">Users</NavLink>

@@ -1,10 +1,9 @@
-
-import { Tabs, Select } from 'antd';
+import { Tabs } from 'antd';
 import React from 'react';
-import { fetchListCenimaSystem } from '../../../redux/actions/CenimaAction';
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom';
 import moment from 'moment/moment';
+import TitleHeader from '../../../components/TitleHeader';
 const { TabPane } = Tabs;
 
 class HomeMenu extends React.PureComponent {
@@ -22,7 +21,7 @@ class HomeMenu extends React.PureComponent {
 	renderCinemaSystem = () => {
 		return this.props.listCenimaSystem && this.props.listCenimaSystem.map((item, index) => {
 			return (
-				<TabPane tab={<img src={item.logo} alt={item.tenHeThongRap} className='home-menu-c rounded-full overflow-hidden max-h-96' width='50' />} key={index}>
+				<TabPane tab={<img src={item.logo} alt={item.tenHeThongRap} className='home-menu-c rounded-full max-h-96' width='50' />} key={index}>
 					<Tabs tabPosition={this.state.tabPosition}>
 						{item.lstCumRap?.map((itemCinema, indexCinema) => {
 							return (
@@ -37,7 +36,7 @@ class HomeMenu extends React.PureComponent {
 									</div>
 
 								} key={indexCinema}>
-									<div className="overflow-scrollY">
+									<div >
 										{itemCinema.danhSachPhim && itemCinema.danhSachPhim.map((movieItem, movieIndex) => {
 											return (
 												<>
@@ -61,13 +60,13 @@ class HomeMenu extends React.PureComponent {
 															<p className={`uppercase  font-bold ${movieItem.sapChieu === true ? 'text-yellow-500' : ''}`}>{movieItem.sapChieu === true ? 'SẮP CHIẾU' : ''}</p>
 															<p>{itemCinema.diaChi}</p>
 															<p className='text-lg mt-1'>Ngày chiếu và thời gian chiếu: </p>
-															<div className="grid grid-cols-6 gap-20">
-																{movieItem.lstLichChieuTheoPhim && movieItem.lstLichChieuTheoPhim.slice(0, 5).map((itemShowTimeMovies, indexShowTimeMovies) => {
+															<div className="grid grid-cols-6 gap-10" style={{ overflow: 'scroll' }}>
+																{movieItem.lstLichChieuTheoPhim && movieItem.lstLichChieuTheoPhim.slice(0, 12).map((itemShowTimeMovies, indexShowTimeMovies) => {
 
 																	return (
 																		<>
 																			{/* // USING MOMENT LIB TO FOTMAT TIME */}
-																			<NavLink to={`/checkout/${itemShowTimeMovies.maLichChieu}`} className='text-green-500 text-xs w-56' key={indexShowTimeMovies}>
+																			<NavLink to={`/checkout/${itemShowTimeMovies.maLichChieu}`} className='text-green-500 text-xs w-56 mb-3' key={indexShowTimeMovies}>
 																				<p>
 																					{moment(itemShowTimeMovies.ngayChieuGioChieu).format('d/m/yy')}
 																				</p>
@@ -78,9 +77,8 @@ class HomeMenu extends React.PureComponent {
 																		</>
 																	)
 																})}
-
-
 															</div>
+															<p className='text-blue-600 uppercase mt-2'>kéo qua thêm tin thêm</p>
 														</div>
 													</div>
 													<hr />
@@ -99,11 +97,16 @@ class HomeMenu extends React.PureComponent {
 	}
 	render() {
 		return (
-			<div className='container'>
-				<Tabs tabPosition={this.state.tabPosition} className='home-menu'>
-					{this.renderCinemaSystem()}
-				</Tabs>
-			</div>
+			<>
+				<TitleHeader titleHeader={'Danh sách hệ thống rạp'} />
+				<div style={{ maxHeight: '700px', overflow: 'auto' }}>
+					<div className='container'>
+						<Tabs tabPosition={this.state.tabPosition} className='home-menu'>
+							{this.renderCinemaSystem()}
+						</Tabs>
+					</div>
+				</div>
+			</>
 		);
 	}
 }
