@@ -23,7 +23,7 @@ export const fetchListCenimaSystem = () => {
             dispatch(hideLoadingAction)
         } catch (error) {
             await dispatch(hideLoadingAction)
-            console.log(error);
+            console.log(error.response.data.content);
         }
     }
 }

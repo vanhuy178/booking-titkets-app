@@ -12,7 +12,9 @@ class ManagingUser extends BaseServices {
     takeInfouser = () => {
         return this.post('/api/QuanLyNguoiDung/ThongTinTaiKhoan')
     }
-
+    postInfoRegister = (infoRegister) => {
+        return this.post('/api/QuanLyNguoiDung/DangKy', infoRegister)
+    }
 }
 export const managingUser = new ManagingUser()
 

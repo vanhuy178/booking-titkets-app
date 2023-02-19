@@ -22,7 +22,7 @@ export const fetchManagingBookingTickets = (idShowtimes) => {
 
         } catch (error) {
             await dispatch(hideLoadingAction)
-            console.log(error.response.data);
+            console.log(error.response.data.content);
         }
     }
 }
@@ -41,7 +41,7 @@ export const postBookingTickets = (infoBookingTicket = new BookingTicketClass())
 
         catch (error) {
             await dispatch(hideLoadingAction)
-            console.log(error)
+            console.log(error.response.data.content)
         }
     }
 }

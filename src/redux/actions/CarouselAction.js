@@ -20,7 +20,7 @@ export const fetchCarousel = () => {
             await dispatch(hideLoadingAction)
 
         } catch (error) {
-            console.log(error);
+            console.log(error.content);
         }
     }
 }

@@ -10,6 +10,8 @@ import './StylePage/home.scss'
 import { mainBackgroundColor } from '../assets/constant';
 import TitleHeader from '../components/TitleHeader';
 export default function Home(propsRoute) {
+    const { listMovies } = useSelector(state => state.managingMoviesStore);
+    const { listCenimaSystem } = useSelector(state => state.managingCenimaStore)
     // CALL API
     const dispatch = useDispatch()
     useEffect(
@@ -27,18 +29,18 @@ export default function Home(propsRoute) {
         }, [])
 
 
-    const { listMovies } = useSelector(state => state.managingMoviesStore);
-    const { listCenimaSystem } = useSelector(state => state.managingCenimaStore)
+
 
     const renderHotMovies = () => {
         return listMovies.map((itemHotMovies, indexHotMovies) => {
-            if (itemHotMovies.hot === true) {
+            const { hot, moTa, tenPhim, hinhAnh } = itemHotMovies
+            if (hot === true) {
                 return (
-                    <div className="card mb-2 relative bg-pink-300" style={{ width: '18rem' }}>
-                        <img src={itemHotMovies.hinhAnh} className="card-img-top" alt={itemHotMovies.tenPhim} />
+                    <div className="card mb-2 relative bg-pink-300" style={{ width: '18rem' }} key={indexHotMovies}>
+                        <img src={hinhAnh} className="card-img-top" alt={tenPhim} />
                         <div className="card-body px-1">
-                            <h5 className="card-title uppercase text-red-500 font-bold text-2xl">{itemHotMovies.tenPhim}</h5>
-                            <p className="card-text mb-10">{itemHotMovies.moTa.length > 50 ? itemHotMovies.moTa.slice(0, 50) + "..." : itemHotMovies.moTa}</p>
+                            <h5 className="card-title uppercase text-red-500 font-bold text-2xl">{tenPhim}</h5>
+                            <p className="card-text mb-10">{moTa.length > 50 ? moTa.slice(0, 50) + "..." : moTa}</p>
                             <NavLink to="#" className="btn btn-primary inline-block absolute bottom-2 left-20 px-10">Đặt vé</NavLink>
                         </div>
                     </div>

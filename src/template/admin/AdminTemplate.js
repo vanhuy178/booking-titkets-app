@@ -10,20 +10,19 @@ import {
 import { NavLink } from "react-router-dom";
 import _ from "lodash";
 import ProfileMini from "../../components/ProfileMini";
-import { fetchMovies } from "../../redux/actions/ManagingMovies";
+import { mainTextTitle } from "../../assets/constant";
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
 export const AdminTemplate = (props) => { //path, exact, Component
     const { Component, ...restProps } = props;
-    const { userLogin } = useSelector(state => state.managingUserStore);
+    let userInfo = '';
+    const [collapsed, setCollapsed] = useState(false);
 
-    let userInfo = ''
     if (localStorage.getItem('USER_LOGIN')) {
         userInfo = JSON.parse(localStorage.getItem('USER_LOGIN'))
 
     }
-    const [collapsed, setCollapsed] = useState(false);
 
     const onCollapse = collapsed => {
         // console.log(collapsed);
@@ -37,10 +36,10 @@ export const AdminTemplate = (props) => { //path, exact, Component
     }
 
     const operations = <Fragment>
-        {userInfo === null || userInfo.taiKhoan === "" ?
+        {userInfo === "" || userInfo.taiKhoan === "" ?
             <div>
-                <NavLink to='/register' className="text-white self-center px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900">Đăng ký</NavLink>
-                <NavLink to='/login' className="text-white self-center px-8 py-3 rounded" >Đăng nhập</NavLink>
+                <NavLink to='/register' className={`${mainTextTitle} px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900`}>Đăng ký</NavLink>
+                <NavLink to='/login' className={`${mainTextTitle} px-8 py-3 rounded`}>Đăng nhập</NavLink>
             </div>
             :
             <div>

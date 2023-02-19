@@ -59,7 +59,7 @@ export const orderCinemaChair = (chair, idShowtimes) => {
             })
             await dispatch(hideLoadingAction)
         } catch (error) {
-            console.log(error.response.content);
+            console.log(error.response.data.content);
         }
 
 
@@ -88,7 +88,7 @@ export const uploadingFormData = (formData) => {
 
         } catch (error) {
             await dispatch(hideLoadingAction)
-            console.log(error.response.content);
+            console.log(error.response.data.content);
         }
     }
 }
@@ -129,7 +129,7 @@ export const updatedInfoMoviesAction = (updatedValue) => {
 
         } catch (error) {
             await dispatch(hideLoadingAction)
-            console.log(error.response.data);
+            console.log(error.content);
         }
     }
 }
@@ -143,7 +143,7 @@ export const deleteMoviesAcition = (idMoves) => {
             await dispatch(hideLoadingAction)
         } catch (error) {
             await dispatch(hideLoadingAction)
-            console.log(error.response.data)
+            console.log(error.content)
         }
     }
 }

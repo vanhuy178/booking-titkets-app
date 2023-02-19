@@ -3,17 +3,18 @@ import { NavLink } from 'react-router-dom';
 import { Select } from 'antd';
 import MainLogo from '../../../../components/MainLogo';
 import { useTranslation } from 'react-i18next';
-import { BarsOutlined } from '@ant-design/icons'
-import ProfileMini from '../../../../components/ProfileMini'
-import _ from 'lodash';
+import { BarsOutlined } from '@ant-design/icons';
+import ProfileMini from '../../../../components/ProfileMini';
 import './style.scss';
 import { mainTextTitle } from '../../../../assets/constant';
 const { Option } = Select;
 export default function Header() {
-
+    // const userLogin = 
+    let titleNav = `text-2xl ${mainTextTitle} font-bold hover:text-yellow-400`;
+    let hover = 'font-bold hover:text-yellow-200 block lg:inline py-1 lg:py-0 hover:no-underline'
+    let infoUserName = "";
 
     // take from localstorage
-    let infoUserName = null;
     if (localStorage.getItem('USER_LOGIN')) {
         infoUserName = JSON.parse(localStorage.getItem('USER_LOGIN'))
     }
@@ -22,17 +23,15 @@ export default function Header() {
     const handleChange = (value) => {
         i18n.changeLanguage(value)
     }
-    console.log(typeof userLogin);
-
 
     const renderLogin = () => {
-        if (infoUserName === null || infoUserName.taiKhoan === "") {
+        if (infoUserName === "" || infoUserName.taiKhoan === "") {
             return (
                 <>
                     {/* LOGIN AND RESGISTER */}
-                    <NavLink to='/login' className="self-center rounded" i18nKey={'login'}>{t('login')}</NavLink>
-                    <NavLink to='/register' className="self-center font-semibold rounded dark:bg-violet-400 dark:text-gray-900" i18nKey={'register'}>{t('register')}</NavLink>
-                    <NavLink to='/admin' className="self-center rounded">Admin</NavLink>
+                    <NavLink to='/login' className={`${mainTextTitle} ${hover} `} i18nKey={'login'}>{t('login')}</NavLink>
+                    <NavLink to='/register' className={`${mainTextTitle} lg:mx-4  ${hover}`} i18nKey={'register'}>{t('register')}</NavLink>
+                    <NavLink to='/admin' className={`${mainTextTitle} lg:mr-3 ${hover}`}>Admin</NavLink>
                 </>
             )
         }
@@ -43,10 +42,9 @@ export default function Header() {
         }
     }
 
-    let titleNav = `text-2xl ${mainTextTitle} font-bold hover:text-yellow-400`
     return (
         // WE ARE USING MAMBA LIB IT IS A LIB SUPPORT FOR TAILWIND WITH CLASS NAME THE SAME TAILWIND
-        <header className="p-4 dark:bg-gray-800 dark:text-gray-100 bg-gray-700 bg-opacity-40 text-white w-full fixed z-10">
+        <header className={`p-4 bg-opacity-40 dark:bg-gray-800 dark:text-gray-100 bg-gray-700 w-full fixed z-10`}>
             <nav className="navbar navbar-expand-lg " >
                 <div className="container lg:flex lg:items-center">
                     <div className="hidden lg:block">
@@ -74,14 +72,14 @@ export default function Header() {
 
                     <div className="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul className="navbar-nav ml-auto lg:flex lg:items-center">
-                            <li className="nav-item active">
-                                <NavLink to="/home" className={`nav-link ${titleNav}`} i18nKey={'home'}>{t('home')}</NavLink>
+                            <li className="nav-item active mt-2 lg:mt-0">
+                                <NavLink to="/home" className={`nav-link lg:${titleNav}`} i18nKey={'home'}>{t('home')}</NavLink>
                             </li>
                             <li className="nav-item lg:mx-10">
-                                <NavLink to="/contact" className={`nav-link ${titleNav}`} i18nKey={'contact'}>{t('contact')}</NavLink>
+                                <NavLink to="/contact" className={`nav-link lg:${titleNav}`} i18nKey={'contact'}>{t('contact')}</NavLink>
                             </li>
                             <li className="nav-item lg:mr-52">
-                                <NavLink to="/news" className={`nav-link ${titleNav}`} i18nKey={'news'}>{t('news')}</NavLink>
+                                <NavLink to="/news" className={`nav-link lg:${titleNav}`} i18nKey={'news'}>{t('news')}</NavLink>
                             </li>
                             <li className="nav-item ml-0 lg:ml-80 lg:flex lg:items-center">
                                 {renderLogin()}
