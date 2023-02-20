@@ -9,6 +9,7 @@ import { NavLink } from 'react-router-dom';
 import './StylePage/home.scss'
 import { mainBackgroundColor } from '../assets/constant';
 import TitleHeader from '../components/TitleHeader';
+import { Section } from '../components/Section';
 export default function Home(propsRoute) {
     const { listMovies } = useSelector(state => state.managingMoviesStore);
     const { listCenimaSystem } = useSelector(state => state.managingCenimaStore)
@@ -57,27 +58,20 @@ export default function Home(propsRoute) {
             {/*WE USE <MultipleRows /> */}
             <HomeCarousel />
 
-            <section className="text-gray-600 body-font" >
-                <div className="container px-5 py-24 mx-auto " >
-                    {/* WE USING REACT-SLICK HERE https://react-slick.neostack.com/*/}
-                    <MultipleRows listMovies={listMovies} />
-                </div>
-            </section>
+            {/* CAROUSEL CARD */}
+            <Section>
+                <section className="text-gray-600 body-font carousel-card" >
+                    <div className="container px-0 md:px-5 mx-auto" style={{ maxHeight: '1000px' }}>
+                        {/* WE USING REACT-SLICK HERE https://react-slick.neostack.com/*/}
+                        <MultipleRows listMovies={listMovies} />
+                    </div>
+                </section>
+            </Section>
 
             {/* HOME MENU */}
             <div className="mx-36" >
                 <HomeMenu listCenimaSystem={listCenimaSystem} />
             </div>
-
-            {/* LIST HOT MOVIES */}
-            <div className="hot-movies container">
-                <TitleHeader titleHeader='Danh sách phim hot' />
-
-                <div className="hot-movies-list grid grid-cols-4">
-                    {renderHotMovies()}
-                </div>
-            </div>
-
         </div>
 
     )

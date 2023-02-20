@@ -7,11 +7,11 @@ import { fetchCarousel } from '../../../redux/actions/CarouselAction';
 
 export default function HomeCarousel() {
     const contentStyle = {
-        height: '640px',
+        height: '760px',
         color: '#fff',
         lineHeight: '160px',
         textAlign: 'center',
-        background: '#364d79',
+        background: '#364d79'
     };
     const dispatch = useDispatch()
     const { listCarouselBanner } = useSelector((state) => state.carouselStore);
@@ -30,9 +30,9 @@ export default function HomeCarousel() {
         return listCarouselBanner.map((item, index) => {
             return (
                 <div key={index} >
-                    <div style={{ ...contentStyle, backgroundImage: `url(${item.hinhAnh})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundAttachment: 'fixed' }}>
+                    <div className=" max-w-full" style={{ ...contentStyle, backgroundImage: `url(${item.hinhAnh})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundAttachment: 'fixed' }}>
                     </div>
-                </div>
+                </div >
             )
         })
     }

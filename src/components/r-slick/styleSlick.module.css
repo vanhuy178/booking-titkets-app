@@ -1,6 +1,5 @@
 .slick-prev:before,
 .slick-next:before {
-
     color: gray !important;
     font-size: 3rem !important;
 }
@@ -17,4 +16,8 @@
 
 .none_active_Film {
     @apply bg-white text-gray-800;
+}
+
+.slick-list {
+    max-height: 1000px;
 }

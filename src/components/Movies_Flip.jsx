@@ -2,22 +2,23 @@ import React from 'react'
 import './styleCompononent/Movies_Flip.css';
 import { PlayCircleOutlined } from '@ant-design/icons'
 import { NavLink } from 'react-router-dom';
-import { history } from '../App';
 export default function Movies_Flip(props) {
     const { biDanh, dangChieu, danhGia, hinhAnh, hot, moTa, maPhim, ngayKhoiChieu, sapChieu, tenPhim, trailer } = props.moviesItem
 
     return (
         <>
-            <div className="flip-card mt-2">
+            <div className="flip-card mt-1">
                 <div className="flip-card-inner">
                     <div className="flip-card-front">
-
                         <img src={hinhAnh} alt="Avatar" style={{ width: 300, height: 300 }} onError={e => { e.target.onerror = null; e.target.src = 'https://picsum.photos/300/300'; }} />
                     </div>
                     <div className="flip-card-back" style={{ position: 'relative', backgroundColor: 'rgba(0,0,0,.9)' }}>
+
                         <div style={{ position: 'absolute', top: 0, left: 0 }} >
                             <img src={hinhAnh} alt="Avatar" style={{ width: 300, height: 300 }} onError={e => { e.target.onerror = null; e.target.src = 'https://picsum.photos/300/300'; }} />
                         </div>
+
+                        {/* LAYOUT */}
                         <div className="w-full h-full" style={{ position: 'absolute', backgroundColor: 'rgba(0,0,0,.7)', display: 'flex', justifyContent: 'center', align: 'center' }}>
                             <div className='mt-28'>
                                 <div className="rounded-full cursor-pointer"><PlayCircleOutlined style={{ fontSize: '50px' }} /></div>
@@ -33,12 +34,9 @@ export default function Movies_Flip(props) {
                     REDIRECT TO DETAIL PAGE WITH AN ID
                 
                 */}
-
-
-                <div className="bg-orange-300 text-center cursor-pointer py-2 bg-indigo-300 my-2 text-success-50 font-bold"
+                <div className="text-center cursor-pointer py-4 bg-indigo-300 my-2 text-success-50 font-bold mb-1"
                 >
                     <NavLink to={`/detail/${maPhim}`}>ĐẶT VÉ</NavLink>
-
                 </div>
             </div>
         </>

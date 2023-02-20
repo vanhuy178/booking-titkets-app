@@ -1,6 +1,6 @@
 import { UserLoginClass } from "./LoginClass";
 
-export class Register extends UserLoginClass {
+export class RegisterClass extends UserLoginClass {
     constructor(props) {
         super(props);
         this.email = "";

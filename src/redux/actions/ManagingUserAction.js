@@ -60,7 +60,9 @@ export const registerUserAction = (registerValue) => {
             let result = await managingUser.postInfoRegister(registerValue);
             if (result.status === 200) {
                 console.log(result.data.content);
-                dispatch({ type: REGISTER_SUCESSFULLY, payload: result.data.message })
+                await dispatch({ type: REGISTER_SUCESSFULLY, payload: result.data.message })
+                await setTimeout(() => history.goBack(), 1000)
+
             }
             await dispatch(hideLoadingAction)
 
