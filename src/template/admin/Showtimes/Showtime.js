@@ -119,14 +119,14 @@ export default function Showtime(props) {
             <Form
                 onSubmitCapture={formik.handleSubmit}
                 labelCol={{
-                    span: 4,
+                    span: 7,
                 }}
                 wrapperCol={{
-                    span: 14,
+                    span: 15,
                 }}
                 layout="horizontal"
                 style={{
-                    maxWidth: 1000,
+                    width: '1000px',
                 }}
             >
                 <h1 className='text-3xl font-bold text-center mb-5'>Tạo lịch chiếu: {props.match.params.tenphim}</h1>

@@ -31,13 +31,12 @@ function HomeCarousel() {
         return listCarouselBanner.map((item, index) => {
             return (
                 <div key={index} >
-                    <div className=" max-w-full animate__animated animate__backInLeft" style={{ ...contentStyle, backgroundImage: `url(${item.hinhAnh})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundAttachment: 'fixed' }}>
+                    <div className={` max-w-full animate__animated animate__backInLeft animate__delay-${index + 1}00ms `} style={{ ...contentStyle, backgroundImage: `url(${item.hinhAnh})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundAttachment: 'fixed' }}>
                     </div>
                 </div >
             )
         })
     }
-    console.log('home carousel');
     return (
         <>
             <Carousel className='home-carousel'>
@@ -47,4 +46,4 @@ function HomeCarousel() {
     )
 }
 
-export default memo(HomeCarousel);
+export default (HomeCarousel);

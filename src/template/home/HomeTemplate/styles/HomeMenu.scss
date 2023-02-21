@@ -31,4 +31,11 @@
 @media screen and (max-width: 991.98px) {}
 
 // Large devices (desktops, less than 1200px)
-@media screen and (max-width: 1199.98px) {}
+@media screen and (min-width: 1299.98px) {
+    .main-home-menu {
+        .ant-tabs {
+            width: 1000px !important;
+            margin: 0 auto;
+        }
+    }
+}

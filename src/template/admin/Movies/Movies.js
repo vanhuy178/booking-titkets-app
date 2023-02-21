@@ -1,11 +1,11 @@
 import { Table } from 'antd';
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteMoviesAcition, fetchMovies } from '../../../redux/actions/ManagingMovies';
 import './style.scss';
-import { CalendarFilled, CalendarOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
+import { CalendarOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { NavLink } from 'react-router-dom';
-import { buttonAdd, seachBar, searchIcon } from '../../../assets/constant';
+
 
 export default function AdminMovies() {
     const dispatch = useDispatch();
@@ -123,7 +123,12 @@ export default function AdminMovies() {
             <div className="flex flex-col p-2 py-1 m-h-screen">
                 <div className="bg-white items-center justify-between w-full flex rounded-full shadow-lg p-1 mb-2 sticky" style={{ top: 5 }}>
 
-                    <div onClick={() => setSearch('')}>
+                    <div onClick={async () => {
+                        await dispatch(fetchMovies())
+                        await setSearch('')
+                    }
+
+                    }>
                         <div className="p-2 mr-1 rounded-full hover:bg-gray-100 cursor-pointer">
                             <svg className="h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                 <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />

@@ -1,7 +1,7 @@
 import { UserLoginClass } from "../../models/LoginClass"
 import { ManagingUserClass } from "../../models/ManagingUserClass"
 import { TOKEN, USER_LOGIN } from "../../utils/settings/config"
-import { LOGIN_DEPEAT, LOGIN_SUCESSFULLY, REGISTER_DEPEAT, REGISTER_SUCESSFULLY, TAKE_INFO_USER, USER_LOGIN_ACTION } from "../types/User"
+import { ADD_INFO_USER, GET_DATA_USERS, LOGIN_DEPEAT, LOGIN_SUCESSFULLY, MESSAGE_DELETE, REGISTER_DEPEAT, REGISTER_SUCESSFULLY, TAKE_INFO_USER, USER_LOGIN_ACTION } from "../types/User"
 
 
 let user = new UserLoginClass()
@@ -12,12 +12,17 @@ const initialState = {
     userLogin: user,
     managingInfoUser: new ManagingUserClass(),
     messageUserLogin: '',
-    messageUserRegister: ''
+    messageUserRegister: '',
+    messageDelete: '',
+    dataUser: []
 }
 
 export const managingUserReducer = (state = initialState, action) => {
 
     switch (action.type) {
+        case GET_DATA_USERS: {
+            return { ...state, dataUser: action.payload }
+        }
         case USER_LOGIN_ACTION: {
             localStorage.setItem(USER_LOGIN, JSON.stringify(action.payload));
             localStorage.setItem(TOKEN, action.payload.accessToken)
@@ -37,6 +42,9 @@ export const managingUserReducer = (state = initialState, action) => {
         }
         case REGISTER_DEPEAT: {
             return { ...state, messageUserRegister: action.payload }
+        }
+        case MESSAGE_DELETE: {
+            return { ...state, messageDelete: action.payload }
         }
         default:
             return { ...state }

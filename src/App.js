@@ -16,6 +16,8 @@ import AddMovies from './template/admin/Movies/AddMovies/AddMovies';
 import EditMovies from './template/admin/Movies/EditMovies/EditMovies';
 import AdminMovies from './template/admin/Movies/Movies';
 import Showtime from './template/admin/Showtimes/Showtime';
+import AddUsers from './template/admin/users/AddUsers';
+import EditUser from './template/admin/users/EditUser';
 import Users from './template/admin/users/Users';
 import { CheckoutTemplate } from './template/home/CheckoutTemplate/CheckoutTemplate';
 import { HomeTemplate } from './template/home/HomeTemplate/HomeTemplate';
@@ -48,6 +50,7 @@ function App() {
 
           <AdminTemplate path='/admin' exact Component={DashBoard} />
           <AdminTemplate path='/admin/users' exact Component={Users} />
+          <AdminTemplate path='/admin/users/adduser' exact Component={AddUsers} />
           <AdminTemplate path='/admin/movies' exact Component={AdminMovies} />
           <AdminTemplate path='/admin/movies/addnew' exact Component={AddMovies} />
           <AdminTemplate path='/admin/movies/edit/:id' exact Component={EditMovies} />

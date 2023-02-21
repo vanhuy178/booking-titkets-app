@@ -2,9 +2,6 @@ import React, { memo } from 'react'
 import './styleCompononent/Movies_Flip.css';
 import { PlayCircleOutlined } from '@ant-design/icons'
 import { NavLink } from 'react-router-dom';
-import { fadeIn } from 'react-animations';
-
-
 function Movies_Flip(props) {
     const { biDanh, dangChieu, danhGia, hinhAnh, hot, moTa, maPhim, ngayKhoiChieu, sapChieu, tenPhim, trailer } = props.moviesItem
 

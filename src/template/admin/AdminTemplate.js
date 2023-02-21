@@ -22,7 +22,6 @@ export const AdminTemplate = (props) => { //path, exact, Component
 
     if (localStorage.getItem('USER_LOGIN')) {
         userInfo = JSON.parse(localStorage.getItem('USER_LOGIN'))
-
     }
 
     const onCollapse = collapsed => {
@@ -66,6 +65,9 @@ export const AdminTemplate = (props) => { //path, exact, Component
                         <SubMenu key='sub1' icon={<UserOutlined />} title='Users'>
                             <Menu.Item key="1" >
                                 <NavLink to="/admin/users">Users</NavLink>
+                            </Menu.Item>
+                            <Menu.Item key="2" >
+                                <NavLink to="/admin/users/adduser">Add users</NavLink>
                             </Menu.Item>
                         </SubMenu>
                         {/* Movies */}

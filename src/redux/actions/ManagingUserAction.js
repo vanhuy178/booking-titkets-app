@@ -1,7 +1,28 @@
 import { history } from "../../App";
 import { managingUser } from "../../services/ManagingUser";
-import { LOGIN_DEPEAT, LOGIN_SUCESSFULLY, REGISTER_DEPEAT, REGISTER_SUCESSFULLY, TAKE_INFO_USER, USER_LOGIN_ACTION } from "../types/User";
+import { GET_DATA_USERS, LOGIN_DEPEAT, LOGIN_SUCESSFULLY, MESSAGE_DELETE, REGISTER_DEPEAT, REGISTER_SUCESSFULLY, TAKE_INFO_USER, USER_LOGIN_ACTION } from "../types/User";
 import { hideLoadingAction, showLoadingAction } from "./LoadingAction";
+
+
+export const getDataUserAction = (name) => {
+    return async (dispatch) => {
+        try {
+            await dispatch(showLoadingAction);
+            const result = await managingUser.fetchDataUser(name);
+            if (result.status === 200) {
+                await dispatch({ type: GET_DATA_USERS, payload: result.data.content })
+
+                console.log(GET_DATA_USERS, result);
+            }
+            await dispatch(hideLoadingAction);
+        } catch (error) {
+            await dispatch(hideLoadingAction);
+            console.log(error);
+        }
+    }
+}
+
+
 
 export const postUserLogin = (data) => {
     return async (dispatch) => {
@@ -32,6 +53,31 @@ export const postUserLogin = (data) => {
         }
     }
 }
+// POST USER TO SERVER IN ADMIN/ADD_USER
+export const addUserInfo = (data) => {
+    return async (dispatch) => {
+        try {
+            await dispatch(showLoadingAction)
+            const result = await managingUser.postUserInfo(data)
+            if (result.status === 200) {
+                await dispatch({ type: REGISTER_SUCESSFULLY, payload: result.data.message })
+                console.log('userContent', result.data.message);
+
+                // REDIRECT TO PREV PAGE
+                // await setTimeout(() => history.goBack(), 1000)
+                // history.goBack()
+            }
+            await dispatch(hideLoadingAction)
+            // console.log(result);
+        } catch (error) {
+            await dispatch(hideLoadingAction)
+            await dispatch({ type: REGISTER_DEPEAT, payload: error.response.data.content })
+            console.log(error.response.data.content);
+        }
+    }
+}
+
+// FETCH USER FROM API
 export const fethInfoUser = () => {
     return async (dispatch) => {
         try {
@@ -70,6 +116,25 @@ export const registerUserAction = (registerValue) => {
         catch (error) {
             await dispatch(hideLoadingAction);
             await dispatch({ type: REGISTER_DEPEAT, payload: error.response.data.content })
+            console.log(error.response.data.content);
+        }
+    }
+}
+
+export const deleteUserAction = (userName) => {
+    return async (dispatch) => {
+        try {
+            await dispatch(showLoadingAction)
+            let result = await managingUser.deleteUser(userName);
+            if (result.status === 200) {
+                dispatch(getDataUserAction())
+                console.log(result);
+                await dispatch({ type: MESSAGE_DELETE, payload: result.data.message })
+            }
+            await dispatch(hideLoadingAction)
+        } catch (error) {
+            await dispatch(hideLoadingAction)
+            await dispatch({ type: MESSAGE_DELETE, payload: error.response.data.content })
             console.log(error.response.data.content);
         }
     }

@@ -31,7 +31,7 @@ export default function Header() {
 					{/* LOGIN AND RESGISTER */}
 					<NavLink to='/login' className={`${mainTextTitle} ${hover} `} i18nKey={'login'}>{t('login')}</NavLink>
 					<NavLink to='/register' className={`${mainTextTitle} md:mx-3 xl:mx-4 ${hover}`} i18nKey={'register'}>{t('register')}</NavLink>
-					<NavLink to='/admin' className={`${mainTextTitle} mr-2 xl:mr-3 ${hover}`}>Admin</NavLink>
+					<NavLink to='/admin' className={`${mainTextTitle} mr-2 xl:mr-3 ${hover} hidden lg:block`}>Admin</NavLink>
 				</>
 			)
 		}
@@ -41,7 +41,6 @@ export default function Header() {
 			</>
 		}
 	}
-
 	return (
 		// WE ARE USING MAMBA LIB IT IS A LIB SUPPORT FOR TAILWIND WITH CLASS NAME THE SAME TAILWIND
 		<header className={`p-4 bg-opacity-40 dark:bg-gray-800 dark:text-gray-100 bg-gray-700 w-full fixed z-10 animate__animated animate__backInDown`}>
@@ -68,7 +67,6 @@ export default function Header() {
 						aria-expanded="false" aria-label="Toggle navigation">
 						<BarsOutlined className='navbar-toggler-icon' />
 					</button>
-
 
 					<div className="collapse navbar-collapse" id="navbarNavDropdown">
 						<ul className="navbar-nav ml-auto lg:flex lg:items-center">

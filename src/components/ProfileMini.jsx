@@ -39,7 +39,7 @@ export default function ProfileMini(info) {
             </NavLink>
         </li>
     let adminLink =
-        <li className="nav-item block lg:inline py-2 lg:mr-2">
+        <li className="nav-item hidden lg:inline py-2 lg:mr-2">
             <NavLink to='/admin' className="text-left md:ml-1 uppercase text-red-500">Admin</NavLink>
         </li>
 

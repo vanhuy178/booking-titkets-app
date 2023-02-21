@@ -12,7 +12,6 @@ export class ManagingUserClass extends UserLoginClass {
     }
 }
 
-
 class InfoBookingClass {
     constructor() {
         this.maVe = null;

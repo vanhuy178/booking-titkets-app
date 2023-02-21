@@ -18,6 +18,8 @@ class HomeMenu extends React.PureComponent {
 	};
 
 	renderCinemaSystem = () => {
+
+
 		return this.props.listCenimaSystem && this.props.listCenimaSystem.map((item, index) => {
 			return (
 				<TabPane tab={<img src={item.logo} alt={item.tenHeThongRap} className={`home-menu-c rounded-full animate__animated animate__backInDown animate__delay-${index + 1}00ms `} width='50' />} key={index}>
@@ -39,7 +41,7 @@ class HomeMenu extends React.PureComponent {
 										{itemCinema.danhSachPhim && itemCinema.danhSachPhim.map((movieItem, movieIndex) => {
 											return (
 												<>
-													<div className={`my-2 md:my-5 flex flex-col sm:flex-row animate__animated animate__backInDown animate__delay-${index + 1}00ms`} key={movieIndex}>
+													<div className={`my-3 md:my-5 flex flex-col sm:flex-row animate__animated animate__backInDown animate__delay-${index + 1}00ms`} key={movieIndex}>
 														<img src={movieItem.hinhAnh} alt={movieItem.tenPhim + movieIndex} style={{ width: '100px', height: '100px' }} onError={(e) =>
 															(e.target.onerror = null)(
 																(e.target.src =
@@ -121,9 +123,9 @@ class HomeMenu extends React.PureComponent {
 		return (
 			<div className='home-menu-layout'>
 				<TitleHeader titleHeader={'Danh sách hệ thống rạp'} />
-				<div style={{ maxHeight: '700px', overflow: 'auto' }} className='main-home-menu  bg-white' >
+				<div style={{ maxHeight: '700px', overflow: 'auto' }} className='main-home-menu ' >
 					<div className='xl:container'>
-						<Tabs tabPosition={this.state.tabPosition} className='home-menu' >
+						<Tabs tabPosition={this.state.tabPosition} className='home-menu  bg-white' >
 							{this.renderCinemaSystem()}
 						</Tabs>
 					</div>

@@ -129,7 +129,7 @@ export const updatedInfoMoviesAction = (updatedValue) => {
 
         } catch (error) {
             await dispatch(hideLoadingAction)
-            console.log(error.content);
+            console.log(error.response.data.content);
         }
     }
 }
@@ -143,7 +143,7 @@ export const deleteMoviesAcition = (idMoves) => {
             await dispatch(hideLoadingAction)
         } catch (error) {
             await dispatch(hideLoadingAction)
-            console.log(error.content)
+            console.log(error.response.data.content)
         }
     }
 }
