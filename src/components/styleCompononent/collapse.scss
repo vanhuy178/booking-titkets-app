@@ -1,0 +1,11 @@
+@media screen and (min-width: 401px) {
+    .collapse-home-menu {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 400.98px) {
+    .collapse-home-menu {
+        display: block;
+    }
+}

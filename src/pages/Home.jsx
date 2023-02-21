@@ -1,20 +1,19 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import MultipleRows from '../components/r-slick/MulipleRows';
 import { fetchMovies } from '../redux/actions/ManagingMovies';
 import HomeMenu from '../template/home/HomeTemplate/HomeMenu';
 import { fetchListCenimaSystem } from '../redux/actions/CenimaAction';
 import HomeCarousel from '../template/home/HomeTemplate/HomeCarousel';
-import { NavLink } from 'react-router-dom';
 import './StylePage/home.scss'
 import { mainBackgroundColor } from '../assets/constant';
-import TitleHeader from '../components/TitleHeader';
 import { Section } from '../components/Section';
+import CollapseCinema from '../components/CollapseCinema';
 export default function Home(propsRoute) {
     const { listMovies } = useSelector(state => state.managingMoviesStore);
-    const { listCenimaSystem } = useSelector(state => state.managingCenimaStore)
-    // CALL API
-    const dispatch = useDispatch()
+    const { listCenimaSystem } = useSelector(state => state.managingCenimaStore);
+    const dispatch = useDispatch();
+
     useEffect(
         () => {
             // DISPATCH ACTION WITH REDUX THUNK
@@ -23,55 +22,31 @@ export default function Home(propsRoute) {
             // Because we was setting redux thunk , so we can pass into dispatch with a function
             // dispatch(action)---> action ---> fetchCarousel() --> dispatch an action object to reducer
             dispatch(action)
-
-
             dispatch(fetchListCenimaSystem())
-
         }, [])
 
-
-
-
-    const renderHotMovies = () => {
-        return listMovies.map((itemHotMovies, indexHotMovies) => {
-            const { hot, moTa, tenPhim, hinhAnh } = itemHotMovies
-            if (hot === true) {
-                return (
-                    <div className="card mb-2 relative bg-pink-300" style={{ width: '18rem' }} key={indexHotMovies}>
-                        <img src={hinhAnh} className="card-img-top" alt={tenPhim} />
-                        <div className="card-body px-1">
-                            <h5 className="card-title uppercase text-red-500 font-bold text-2xl">{tenPhim}</h5>
-                            <p className="card-text mb-10">{moTa.length > 50 ? moTa.slice(0, 50) + "..." : moTa}</p>
-                            <NavLink to="#" className="btn btn-primary inline-block absolute bottom-2 left-20 px-10">Đặt vé</NavLink>
-                        </div>
-                    </div>
-
-
-                )
-            }
-        })
-
-
-    }
     return (
         <div className={mainBackgroundColor}>
             {/*WE USE <MultipleRows /> */}
             <HomeCarousel />
+
 
             {/* CAROUSEL CARD */}
             <Section>
                 <section className="text-gray-600 body-font carousel-card" >
                     <div className="container px-0 md:px-5 mx-auto" style={{ maxHeight: '1000px' }}>
                         {/* WE USING REACT-SLICK HERE https://react-slick.neostack.com/*/}
-                        <MultipleRows listMovies={listMovies} />
+                        {
+                            <MultipleRows listMovies={listMovies} />
+                        }
                     </div>
                 </section>
             </Section>
 
+
             {/* HOME MENU */}
-            <div className="mx-36" >
-                <HomeMenu listCenimaSystem={listCenimaSystem} />
-            </div>
+            <HomeMenu listCenimaSystem={listCenimaSystem} />
+            <CollapseCinema listCenimaSystem={listCenimaSystem} />
         </div>
 
     )

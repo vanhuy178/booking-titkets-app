@@ -44,7 +44,7 @@ export default function Header() {
 
 	return (
 		// WE ARE USING MAMBA LIB IT IS A LIB SUPPORT FOR TAILWIND WITH CLASS NAME THE SAME TAILWIND
-		<header className={`p-4 bg-opacity-40 dark:bg-gray-800 dark:text-gray-100 bg-gray-700 w-full fixed z-10`}>
+		<header className={`p-4 bg-opacity-40 dark:bg-gray-800 dark:text-gray-100 bg-gray-700 w-full fixed z-10 animate__animated animate__backInDown`}>
 			<nav className="navbar navbar-expand-lg " >
 				<div className="container lg:flex lg:items-center">
 					<div className="hidden lg:block md:-ml-10">

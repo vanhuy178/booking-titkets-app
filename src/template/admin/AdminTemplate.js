@@ -11,6 +11,7 @@ import { NavLink } from "react-router-dom";
 import _ from "lodash";
 import ProfileMini from "../../components/ProfileMini";
 import { mainTextTitle } from "../../assets/constant";
+import HeaderAmin from "../../components/styleCompononent/HeaderAmin";
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
@@ -43,7 +44,7 @@ export const AdminTemplate = (props) => { //path, exact, Component
             </div>
             :
             <div>
-                {ProfileMini(userInfo)}
+                {HeaderAmin(userInfo)}
             </div>
 
         }
@@ -62,19 +63,18 @@ export const AdminTemplate = (props) => { //path, exact, Component
 
 
                         {/* User */}
-                        <Menu.Item key="1" icon={<UserOutlined />}>
-                            <NavLink to="/admin/users">Users</NavLink>
-                        </Menu.Item>
-                        {/* Movies */}
-                        <SubMenu key="sub1" icon={<FileOutlined />} title="Films">
-                            <Menu.Item key="10" icon={<FileOutlined />}>
-                                <NavLink to="/admin/movies">Films</NavLink>
-
+                        <SubMenu key='sub1' icon={<UserOutlined />} title='Users'>
+                            <Menu.Item key="1" >
+                                <NavLink to="/admin/users">Users</NavLink>
                             </Menu.Item>
-                            <Menu.Item key="11" icon={<FileOutlined />}>
+                        </SubMenu>
+                        {/* Movies */}
+                        <SubMenu key="sub2" icon={<FileOutlined />} title="Movies">
+                            <Menu.Item key="3" icon={<FileOutlined />}>
+                                <NavLink to="/admin/movies">Movies</NavLink>
+                            </Menu.Item>
+                            <Menu.Item key="4" icon={<FileOutlined />}>
                                 <NavLink to="/admin/movies/addnew">Add new</NavLink>
-
-
                             </Menu.Item>
                         </SubMenu>
                         {/* <Menu.Item key="3" icon={<DesktopOutlined />}>
@@ -97,7 +97,7 @@ export const AdminTemplate = (props) => { //path, exact, Component
                 </Sider>
                 <Layout className="site-layout">
                     <Header className="site-layout-background" style={{ padding: 0 }} >
-                        <div className="text-right pr-10 pt-1">{operations}</div>
+                        <div className="text-right">{operations}</div>
                     </Header>
                     <Content style={{ margin: '0 16px' }}>
                         <Breadcrumb style={{ margin: '16px 0' }}>
@@ -108,7 +108,7 @@ export const AdminTemplate = (props) => { //path, exact, Component
                             <Component {...propRoute} />
                         </div>
                     </Content>
-                    <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+                    <Footer style={{ textAlign: 'center' }}>Hello from Nguyen Van Huy</Footer>
                 </Layout>
             </Layout>
         </Fragment>

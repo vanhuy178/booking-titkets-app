@@ -3,9 +3,10 @@ import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { fetchCarousel } from '../../../redux/actions/CarouselAction';
+import './styles/Homecarousel.scss';
+import { memo } from 'react'
 
-
-export default function HomeCarousel() {
+function HomeCarousel() {
     const contentStyle = {
         height: '760px',
         color: '#fff',
@@ -30,13 +31,13 @@ export default function HomeCarousel() {
         return listCarouselBanner.map((item, index) => {
             return (
                 <div key={index} >
-                    <div className=" max-w-full" style={{ ...contentStyle, backgroundImage: `url(${item.hinhAnh})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundAttachment: 'fixed' }}>
+                    <div className=" max-w-full animate__animated animate__backInLeft" style={{ ...contentStyle, backgroundImage: `url(${item.hinhAnh})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundAttachment: 'fixed' }}>
                     </div>
                 </div >
             )
         })
     }
-
+    console.log('home carousel');
     return (
         <>
             <Carousel className='home-carousel'>
@@ -45,3 +46,5 @@ export default function HomeCarousel() {
         </>
     )
 }
+
+export default memo(HomeCarousel);

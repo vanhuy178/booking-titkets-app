@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { memo } from 'react'
 import './styleCompononent/Movies_Flip.css';
 import { PlayCircleOutlined } from '@ant-design/icons'
 import { NavLink } from 'react-router-dom';
-export default function Movies_Flip(props) {
+import { fadeIn } from 'react-animations';
+
+
+function Movies_Flip(props) {
     const { biDanh, dangChieu, danhGia, hinhAnh, hot, moTa, maPhim, ngayKhoiChieu, sapChieu, tenPhim, trailer } = props.moviesItem
 
     return (
         <>
-            <div className="flip-card mt-1">
+            <div className={`flip-card mt-1 animate__animated animate__backInDown animate__delay-${props.animateIndex + 1}00ms`}>
                 <div className="flip-card-inner">
                     <div className="flip-card-front">
                         <img src={hinhAnh} alt="Avatar" style={{ width: 300, height: 300 }} onError={e => { e.target.onerror = null; e.target.src = 'https://picsum.photos/300/300'; }} />
@@ -43,3 +46,5 @@ export default function Movies_Flip(props) {
 
     )
 }
+
+export default Movies_Flip;

@@ -106,6 +106,31 @@
     }
 }
 
+@media screen and (max-width: 450.98px) {
+    .carousel-card__item {
+        margin-left: 55px;
+
+        .watching-movies,
+        .upcoming-movies {
+            margin: 0;
+        }
+
+        .slick-next,
+        .slick-prev {
+            top: 410px;
+        }
+
+        .slick-next {
+            right: 10%;
+        }
+
+        .slick-prev {
+            left: -15%;
+            z-index: 20;
+        }
+    }
+}
+
 @media screen and (max-width: 400.98px) {
     .carousel-card__item {
         margin-left: 48px;
@@ -121,6 +146,26 @@
 
         .slick-prev {
             left: -15%;
+            z-index: 20;
+        }
+    }
+}
+
+@media screen and (max-width: 380.98px) {
+    .carousel-card__item {
+        margin-left: 35px;
+
+        .slick-next,
+        .slick-prev {
+            top: 410px;
+        }
+
+        .slick-next {
+            right: 9%;
+        }
+
+        .slick-prev {
+            left: -11%;
             z-index: 20;
         }
     }
