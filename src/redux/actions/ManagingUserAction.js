@@ -72,6 +72,7 @@ export const addUserInfo = (data) => {
         } catch (error) {
             await dispatch(hideLoadingAction)
             await dispatch({ type: REGISTER_DEPEAT, payload: error.response.data.content })
+            console.log(error);
             console.log(error.response.data.content);
         }
     }

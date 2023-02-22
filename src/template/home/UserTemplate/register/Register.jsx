@@ -41,7 +41,7 @@ const Register = () => {
   console.log(messageUserRegister);
   const formik = useFormik({
     initialValues: new RegisterClass(),
-    // validationSchema: SignupSchema,
+    validationSchema: SignupSchema,
     onSubmit: values => {
       console.log(values);
       dispatch(registerUserAction(values));

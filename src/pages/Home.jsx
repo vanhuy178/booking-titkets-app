@@ -33,7 +33,7 @@ export default function Home(propsRoute) {
 
             {/* CAROUSEL CARD */}
             <Section>
-                <section className="text-gray-600 body-font carousel-card" >
+                <section className="text-gray-600 body-font carousel-card animate__animated animate__backInUp animate__delay-2s" >
                     <div className="container px-0 md:px-5 mx-auto" style={{ maxHeight: '1000px' }}>
                         {/* WE USING REACT-SLICK HERE https://react-slick.neostack.com/*/}
                         {

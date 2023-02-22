@@ -21,8 +21,10 @@ import EditUser from './template/admin/users/EditUser';
 import Users from './template/admin/users/Users';
 import { CheckoutTemplate } from './template/home/CheckoutTemplate/CheckoutTemplate';
 import { HomeTemplate } from './template/home/HomeTemplate/HomeTemplate';
+import ChangePassword from './template/home/UserTemplate/changePassword/ChangePassword';
 import Login from './template/home/UserTemplate/login/Login';
 import Register from './template/home/UserTemplate/register/Register';
+import UpdateLogin from './template/home/UserTemplate/updateLogin/UpdateLogin';
 import { UserTemplate } from './template/home/UserTemplate/UserTemplate';
 export const history = createBrowserHistory();
 
@@ -43,8 +45,9 @@ function App() {
           <HomeTemplate path='/profile' exact Component={Profile} />
 
           <UserTemplate path='/login' exact Component={Login} />
+          <UserTemplate path='/login/update' exact Component={UpdateLogin} />
+          {/* <UserTemplate path='/login/update/password' exact Component={ChangePassword} /> */}
           <UserTemplate path='/register' exact Component={Register} />
-
 
           <CheckoutTemplate path='/checkout/:id' exact Component={Checkout} />
 
@@ -60,7 +63,6 @@ function App() {
           {/* <AdminTemplate path='/admin/showtimes' Component={Showtime} /> */}
 
           <HomeTemplate path="/" exact Component={Home} />
-
         </Switch>
       </Router>
     </>

@@ -59,14 +59,16 @@ const Login = () => {
                                     {errors.matKhau && touched.matKhau ? (
                                         <div className='text-red-500 text-sm'>{errors.matKhau}</div>
                                     ) : null}
-                                    <h1 className='mb-1'>Quên mật khẩu ?</h1>
+                                    <div className='flex justify-between'>
+                                        <NavLink to='/login/update' className='mb-1'>Quên mật khẩu ?</NavLink>
+                                        {/* <NavLink to='/login/update/password' className='mb-1'>Đổi mật khẩu ?</NavLink> */}
+                                    </div>
 
                                     <div>Bạn chưa có tài khoản?
                                         <NavLink to='/register' className='text-red-400 font-bold'> Đăng ký</NavLink>
                                     </div>
                                     <button className={buttonSubmit}
                                         type='submit'
-
                                         onClick={() => setShowMessageLogin(true)}
                                     >ĐĂNG NHẬP</button>
 
