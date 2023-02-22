@@ -156,9 +156,13 @@
     }
 }
 
-@media screen and (max-width: 380.98px) {
+@media screen and (max-width: 390.98px) {
+    .watching-movies {
+        margin-left: -20px !important;
+    }
+
     .carousel-card__item {
-        margin-left: 29px;
+        margin-left: 45px;
 
         .slick-next,
         .slick-prev {
@@ -170,7 +174,7 @@
         }
 
         .slick-prev {
-            left: -10%;
+            left: -13%;
             z-index: 20;
         }
     }

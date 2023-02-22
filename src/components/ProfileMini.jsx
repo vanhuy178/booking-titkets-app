@@ -34,7 +34,7 @@ export default function ProfileMini(info) {
                 className=' mr-1 hidden lg:block'>
                 <div className='flex items-center'>
                     <img className='w-10 h-10 bg-slate-500 rounded-full' src='https://ecdn.game4v.com/g4v-content/uploads/2022/09/04222917/game4v-One-Piece-1662305355-71.png' />
-                    <p className='ml-1 text-red-500'>{info.taiKhoan}</p>
+                    <p className='ml-1 text-red-500'>{info.taiKhoan || "No name"}</p>
                 </div>
             </NavLink>
         </li>

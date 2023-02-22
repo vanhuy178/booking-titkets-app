@@ -5,12 +5,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchManagingBookingTickets, postBookingTickets } from '../redux/actions/managingBookingTickets';
 import { BookingTicketClass } from '../models/BookingTicketsClass'
 import _ from 'lodash'
-import './StylePage/checkout.css';
+import './StylePage/checkout.scss';
 import { fethInfoUser } from '../redux/actions/ManagingUserAction';
 import moment from 'moment';
 import { orderCinemaChair } from '../redux/actions/ManagingMovies';
 import { NavLink } from 'react-router-dom';
 import ProfileMini from '../components/ProfileMini';
+import { x } from '../assets/constant';
 
 
 export default function Checkout(props) {
@@ -18,19 +19,20 @@ export default function Checkout(props) {
 	const { tabActive } = useSelector(state => state.managingBookingTicketsStore);
 	const { userLogin } = useSelector(state => state.managingUserStore);
 
-	const tabBooking = <span className='p-10 text-xl font-bold'>CHỌN VÀ THANH TOÁN</span>
-	const tabResult = <span className='p-10 text-xl font-bold'>KẾT QUẢ ĐẶT VÉ</span>
+	const tabBooking = <span className='p-10 text-xl font-bold tabBooking header__nav__item-hover'>CHỌN VÀ THANH TOÁN</span>
+	const tabResult = <span className='p-10 text-xl font-bold tabResult header__nav__item-hover'>KẾT QUẢ ĐẶT VÉ</span>
 
 	let HomeIcon = <NavLink to='/home' className='text-2xl text-gray-500'><i class="fa-solid fa-house"></i></NavLink>
+
 	const operator = <>
 		{
-			userLogin.taiKhoan === '' ? "" : ProfileMini(userLogin.taiKhoan)
+			userLogin.taiKhoan === '' ? "" : <ProfileMini taiKhoan={userLogin.taiKhoan} />
 		}
 	</>;
 
 	useEffect(() => {
 		dispatch({ type: "CHANGE_TAB_ACTIVE", payload: '1' })
-
+		// dispatch(fethInfoUser());
 	}, [])
 	return (
 		<div style={{ height: '100vh' }}>
@@ -58,21 +60,6 @@ function CheckoutItem(props) {
 		// DISPATH FUNCTION WITH THE HELP OF REDUX-THUNK
 		dispatch(fetchManagingBookingTickets(props.match.params.id))
 		dispatch(fethInfoUser())
-
-		// LOADING LIST CHAIRS ARE ORDERED PEOPLE FROM THE SERVER
-		// CODING...................................................
-
-		// connection.on('loadDanhSachGheDaDat', (listChairAreOrderedByPeople) => {
-		// 	//STEP 1 REMOVE YOURSELF FROM THE LIST CHAIR ARE ORDERED BY PEOPLE
-		// 	let filterMyselfOutOfTheList = listChairAreOrderedByPeople.filter(itemFilter => itemFilter.taiKhoan !== userLogin.taiKhoan);
-
-		// 	// STEP 2 MERGE ALL LIST CHAIRS INTO 1 GENERAL ARRAY
-		// 	let mergeListChairFromUser = filterMyselfOutOfTheList.reduce((result, itemMergerChair) => {
-		// 		let parseListChairs = JSON.parse(itemMergerChair.danhSachGhe);
-		// 		return [...result, ...parseListChairs]
-		// 	}, [])
-		// 	console.log({ mergeListChairFromUser });
-		// })
 	}, [])
 
 	// GET VALUE FROM REDUCER ACTUALLY WE WAS LOGGED SUCCESSFULLY
@@ -100,7 +87,7 @@ function CheckoutItem(props) {
 			let indexOrderingChairs = listOrderingCinemaChairs.findIndex(orderingChair => orderingChair.maGhe === itemChair.maGhe);
 			// IF CLICK IT AND THEY EQUALS ID, THE BUTTON WILL TRANSFORM GREEN
 			if (indexOrderingChairs !== -1) {
-				orderingChairClass = 'theOrderingChair'
+				orderingChairClass = 'theOrderingChair animate__animated animate__tada animate__infinite animate__slower infinites'
 			}
 
 			if (managingInfoUser.taiKhoan === itemChair.taiKhoanNguoiDat) {
@@ -110,8 +97,8 @@ function CheckoutItem(props) {
 			let checkOrder = itemChair.daDat === true ? theOrderChairClass : '';
 			return <>
 				<button
-					disabled={itemChair.daDat | customersAreOrderingTheChairs !== ''}
-					className={` theChair ${typeOfChairs} ${checkOrder} ${orderingChairClass} ${orderedChairClass} ${customersAreOrderingTheChairs} text-center text-gray-800`}
+					disabled={itemChair.daDat || customersAreOrderingTheChairs !== ''}
+					className={` theChair ${typeOfChairs} ${checkOrder} ${orderingChairClass} ${orderedChairClass} ${customersAreOrderingTheChairs} text-center text-gray-800 hover:scale-125 focus:scale-125 transition-all`}
 					key={index}
 
 					// HANDLE EVENT
@@ -123,7 +110,11 @@ function CheckoutItem(props) {
 					{itemChair.daDat ? orderedChairClass !== '' || customersAreOrderingTheChairs !== '' ?
 						<UserOutlined /> : <CloseOutlined /> :
 						itemChair.stt}
+
+					{/* {itemChair.daDat ? } */}
 				</button>
+				{/* EACH ROW HAS SIXTEEN SEATS */}
+
 				{(index + 1) % 16 === 0 ? <br /> : ''}
 			</>
 		}
@@ -134,25 +125,25 @@ function CheckoutItem(props) {
 	}
 	let styleTItleButton = { width: '30px', height: '30px' }
 	return (
-		<div className="min-h-screen checkout-c">
+		<div className="min-h-screen checkout-c ">
 			<div className='grid grid-cols-12'>
 				{/* SHOW SCREEN */}
-				<div className="col-span-8">
+				<div className="col-span-8 list-chairs">
 					{/* SCREEN */}
-					<div className="bg-black w-full  rounded-sm text-white text-center" style={{ width: '75%', margin: '0 auto' }}>Màn hình</div>
-					<div className={'trapezoid'} style={{ textAlign: 'center' }}>
+					<div className="bg-black w-full  rounded-sm text-white text-center screen" style={{ width: '75%', margin: '0 auto' }}>Màn hình</div>
+					<div className={`trapezoid ${'animate__animated animate__flash animate__infinite animate__slower infinites'}`} style={{ textAlign: 'center' }}>
 					</div>
 
 					{/* THE LIST CINEMA CHAIRS */}
-					<div className='mt-5 mx-auto' style={{ width: '75%' }}>
+					<div className='mt-5 mx-auto list-chairs-render' style={{ width: '75%' }}>
 						{renderChair()}
 					</div>
 					{/* DESCIPTION */}
-					<div className="flex justify-center" style={{ width: '70%', margin: '0 auto' }}>
+					<div className="flex justify-center description-chairs" style={{ width: '70%', margin: '0 auto' }}>
 						<div className='w-full'>
 							<ul className='flex justify-between'>
 								<li>Ghế đang đặt <button className='theChair theOrderingChair' style={styleTItleButton}></button></li>
-								<li>Ghế đã được đặt <button className='theChair theOrderChair' style={styleTItleButton}></button></li>
+								<li>Ghế đã được đặt <button className='theChair ' style={styleTItleButton}><CloseOutlined /></button></li>
 								<li>Ghế chưa đặt <button className='theChair' style={styleTItleButton}></button></li>
 								<li>Ghế vip <button className='theChair theVipChair' style={styleTItleButton}></button></li>
 								<li>Ghế mình đặt <button className='theChair theYourOrderChair' style={styleTItleButton}></button></li>
@@ -163,7 +154,7 @@ function CheckoutItem(props) {
 				</div>
 
 				{/* SHOW DETAIL OF THE MOVIE */}
-				<div className="col-span-3">
+				<div className="col-span-4 detail-bookings">
 					{/* TỔNG TIỀN */}
 					<h2 className='text-center text-4xl text-green-600 font-bold my-5'>{totalMoney()} đ</h2>
 					<hr />
@@ -197,7 +188,6 @@ function CheckoutItem(props) {
 							</span>
 						</p>
 					</div>
-
 					<hr />
 					<p>Email</p>
 					<p>{managingInfoUser.taiKhoan}</p>
@@ -230,9 +220,8 @@ function CheckoutItem(props) {
 							Đặt vé
 						</button>
 					</div>
+
 				</div>
-
-
 			</div>
 		</div >
 	)

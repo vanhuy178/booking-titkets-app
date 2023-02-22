@@ -1,5 +1,13 @@
 // I AM GOTING SET ALL VARIABLE OF WEBSITE IN HERE
 
+// TAKE THE LENGTH OF THE WEBSITE
+export let win = window,
+    doc = document,
+    docElem = doc.documentElement,
+    body = doc.getElementsByTagName('body')[0],
+    x = win.innerWidth || docElem.clientWidth || body.clientWidth,
+    y = win.innerHeight || docElem.clientHeight || body.clientHeight;
+
 // HEADER MAIN LOGO
 export const styleImageLogo = {
     height: '50px',

@@ -5,7 +5,7 @@ import { ADD_INFO_USER, GET_DATA_USERS, LOGIN_DEPEAT, LOGIN_SUCESSFULLY, MESSAGE
 
 
 let user = new UserLoginClass()
-if (!localStorage.getItem(USER_LOGIN)) {
+if (localStorage.getItem(USER_LOGIN)) {
     user = JSON.parse(localStorage.getItem(USER_LOGIN))
 }
 const initialState = {
