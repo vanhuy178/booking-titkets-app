@@ -5,7 +5,7 @@ import MainLogo from '../../../../components/MainLogo';
 import { useTranslation } from 'react-i18next';
 import { BarsOutlined } from '@ant-design/icons';
 import ProfileMini from '../../../../components/ProfileMini';
-import './style.scss';
+import './Header.scss';
 import { mainTextTitle } from '../../../../assets/constant';
 const { Option } = Select;
 export default function Header() {

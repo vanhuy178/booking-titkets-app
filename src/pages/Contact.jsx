@@ -40,13 +40,13 @@ export default function Contact() {
     }
     console.log({ subject, message, email });
     return (
-        <section className="bg-white dark:bg-gray-900">
-            <div className="pt-40 py-16 lg:py-19 px-4 mx-auto max-w-screen-md ">
+        <section className="bg-white dark:bg-gray-900 w-full mx-auto">
+            <div className="pt-40 py-16 lg:py-19 px-4 mx-auto max-w-screen-md">
                 <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-white uppercase">Contact me</h2>
                 <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
                     This form using emailjs so can send email to me! Regard
                 </p>
-                <form action="#" className="space-y-8">
+                <form action="#" className="space-y-8 w-full">
                     <div>
                         <label
                             htmlFor="email"
@@ -91,9 +91,8 @@ export default function Contact() {
                     >Send message</button>
                 </form>
             </div>
-
             {
-                emailSent ? <div id="defaultModal" tabIndex={-1} aria-hidden="true" className="fixed top-0 left-0 right-0 z-50  w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+                emailSent ? <div id="defaultModal" tabIndex={-1} aria-hidden="true" className="fixed top-0 left-0 right-0 z-50  p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
                     <div className="relative w-full h-full max-w-2xl md:h-auto">
                         {/* Modal content */}
                         <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">

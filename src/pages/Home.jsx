@@ -9,6 +9,7 @@ import './StylePage/home.scss'
 import { mainBackgroundColor } from '../assets/constant';
 import { Section } from '../components/Section';
 import CollapseCinema from '../components/CollapseCinema';
+
 export default function Home(propsRoute) {
     const { listMovies } = useSelector(state => state.managingMoviesStore);
     const { listCenimaSystem } = useSelector(state => state.managingCenimaStore);
@@ -26,14 +27,15 @@ export default function Home(propsRoute) {
         }, [])
 
     return (
-        <div className={mainBackgroundColor}>
+        <div className={`${mainBackgroundColor}`}>
             {/*WE USE <MultipleRows /> */}
             <HomeCarousel />
 
 
             {/* CAROUSEL CARD */}
-            <Section>
-                <section className="text-gray-600 body-font carousel-card animate__animated animate__backInUp animate__delay-2s" >
+            {/* class="wow slideInLeft"*/}
+            <Section className=''>
+                <section className="text-gray-600 body-font carousel-card animate__animated  animate__backInUp animate__delay-2s" >
                     <div className="container px-0 md:px-5 mx-auto" style={{ maxHeight: '1000px' }}>
                         {/* WE USING REACT-SLICK HERE https://react-slick.neostack.com/*/}
                         {
@@ -42,7 +44,6 @@ export default function Home(propsRoute) {
                     </div>
                 </section>
             </Section>
-
 
             {/* HOME MENU */}
             <HomeMenu listCenimaSystem={listCenimaSystem} />

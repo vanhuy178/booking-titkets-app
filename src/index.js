@@ -7,7 +7,6 @@ import { Provider } from 'react-redux';
 import store from './redux/configStore';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import 'animate.css';
 import i18n from './i18';
 import { DOMAIN } from './utils/settings/config';
 // const signalR = require("@microsoft/signalr");
@@ -16,7 +15,7 @@ import { DOMAIN } from './utils/settings/config';
 // export const connection = new signalR.HubConnectionBuilder().withUrl(`${DOMAIN}/DatVeHub`).configureLogging(signalR.LogLevel.Information).build();
 
 // if (connection) {
-//   connection.start()
+//   connection.start() 
 //     .then(() => {
 
 

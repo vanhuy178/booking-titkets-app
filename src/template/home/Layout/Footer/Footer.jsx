@@ -2,10 +2,11 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import MainLogo from '../../../../components/MainLogo'
 import _ from 'lodash';
-export default function Footer(props) {
+import { NavLink } from 'react-router-dom';
+export default function Footer() {
 
     const { listCenimaSystem } = useSelector(state => state.managingCenimaStore);
-
+    console.log(listCenimaSystem);
     // using map and uniq function of lodash to split unnecessary data
     const arrayCinemaSystem = _.map(listCenimaSystem, (cinemaSystemItem => _.pick(cinemaSystemItem, ['maHeThongRap', 'logo', 'tenHeThongRap'])));
     return (
@@ -14,15 +15,16 @@ export default function Footer(props) {
                 <div className="grid grid-cols-12">
                     <div className="pb-6 col-span-full md:pb-0 md:col-span-5">
                         <MainLogo />
-                        <a rel="noopener noreferrer" className="flex justify-center space-x-3 md:justify-start">
-                            <span className="self-center text-xl font-semibold">
+                        <NavLink to='/home' className="flex justify-center space-x-3 md:justify-start">
+                            <span className="self-center lg:text-xl md:text-lg text-sm font-semibold">
                                 I want to be a great developer
                             </span>
-                        </a>
+                        </NavLink>
                     </div>
-                    <div className="col-span-6 text-center md:text-left md:col-span-1">
-                        <p className="pb-1 text-lg font-medium">Partner</p>
+                    <div className="col-span-6 text-center md:text-left md:col-span-2">
+                        <p className="pb-1 text-lg font-medium text-left" >Hệ thống cụm rạp</p>
                         <ul className='grid grid-cols-2'>
+
                             {arrayCinemaSystem && arrayCinemaSystem.map((itemCinema, indexCinema) => {
                                 return (
                                     <li className=' my-2' key={indexCinema}>
@@ -32,39 +34,25 @@ export default function Footer(props) {
                             })}
                         </ul>
                     </div>
-                    <div className="col-span-6 text-center md:text-left md:col-span-4 ml-10">
+                    <div className="col-span-6 text-center md:text-left md:col-span-3 ml-10">
                         <p className="pb-1 text-lg font-medium">Category</p>
-                        <ul>
-                            <li>
-                                <a rel="noopener noreferrer" className="hover:dark:text-violet-400">Link</a>
-                            </li>
-                            <li>
-                                <a rel="noopener noreferrer" className="hover:dark:text-violet-400">Link</a>
-                            </li>
-                            <li>
-                                <a rel="noopener noreferrer" className="hover:dark:text-violet-400">Link</a>
-                            </li>
-                            <li>
-                                <a rel="noopener noreferrer" className="hover:dark:text-violet-400">Link</a>
-                            </li>
-                            <li>
-                                <a rel="noopener noreferrer" className="hover:dark:text-violet-400">Link</a>
-                            </li>
-                        </ul>
+                        <p className='pl-20 text-left'>Giới thiệu</p>
+                        <p className='pl-20 text-left'>Hợp tác</p>
+                        <p className='pl-20 text-left'>Thông tin chi tiết</p>
                     </div>
                 </div>
                 <div className="grid justify-center pt-6 lg:justify-between">
                     <div className="flex flex-col self-center text-sm text-center md:block lg:col-start-1 md:space-x-6">
                         <span>©2023 All rights reserved</span>
-                        <a rel="noopener noreferrer" >
+                        <a  >
                             <span>Privacy policy</span>
                         </a>
-                        <a rel="noopener noreferrer" >
+                        <a  >
                             <span>Terms of service</span>
                         </a>
                     </div>
                     <div className="flex justify-center pt-4 space-x-4 lg:pt-0 lg:col-end-13">
-                        <a rel="noopener noreferrer" title="Email" className="flex items-center justify-center w-10 h-10 rounded-full dark:bg-violet-400 dark:text-gray-900">
+                        <a title="Email" className="flex items-center justify-center w-10 h-10 rounded-full dark:bg-violet-400 dark:text-gray-900">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
                                 <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
                                 <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>

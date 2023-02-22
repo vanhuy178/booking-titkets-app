@@ -14,7 +14,7 @@ const MultipleRows = (props) => {
     // WE RECEIVE FUNCTION TO RENDER A LIST MOVIES RIGHT HERE
     const renderListMovie = () => {
         return props.listMovies.map((item, index) => {
-            return (<div className="mt-5">
+            return (<div className="mt-5 movies__flip">
                 <Movies_Flip moviesItem={item} key={index} animateIndex={index} />
             </div>)
         })
@@ -87,11 +87,11 @@ const MultipleRows = (props) => {
                 }
             },
             {
-                breakpoint: 500,
+                breakpoint: 576,
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
-                    centerPadding: "0",
+                    centerPadding: "0px",
                 }
             }
         ],
@@ -101,7 +101,7 @@ const MultipleRows = (props) => {
     return (
         <div className='md:container carousel-card__item'>
             {/* BUTTON SET WATCHING*/}
-            <button className={`watching-movies px-4 py-1 sm:px-8 sm:py-3 font-semibold rounded ${styleSlick[activeClassWatching]} ml-14 mx-10 border`}
+            <button className={`watching-movies px-8 py-3 font-semibold rounded ${styleSlick[activeClassWatching]} ml-14 mx-10 border`}
                 onClick={() => {
                     let action = {
                         type: SET_WATCHNG_FILM
@@ -110,7 +110,7 @@ const MultipleRows = (props) => {
                 }}
             >ĐANG CHIẾU</button>
             {/* BUTTON SET UPCOMING */}
-            <button className={`upcoming-movies px-4 py-1 sm:px-8 sm:py-3 font-semibold rounded ${styleSlick[activeClassUpcoming]} border`}
+            <button className={`upcoming-movies px-8 py-3 font-semibold rounded ${styleSlick[activeClassUpcoming]} border`}
                 onClick={() => {
                     let action = {
                         type: SET_UPCOMING_FILM

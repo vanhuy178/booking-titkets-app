@@ -9,6 +9,7 @@ import { Rate, Table } from 'antd';
 import { Tabs } from 'antd';
 import TabPane from 'antd/es/tabs/TabPane';
 import { NavLink } from 'react-router-dom';
+import './StylePage/detail.scss'
 export default function Detail(props) {
 	let dispatch = useDispatch()
 
@@ -29,7 +30,7 @@ export default function Detail(props) {
 
 	return (
 		<>
-			<div className='detail-c' style={{ backgroundImage: `url(${detailMoviesShowTimesInfo.hinhAnh})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
+			<div className='detail-c ' style={{ backgroundImage: `url(${detailMoviesShowTimesInfo.hinhAnh})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
 				<CustomCard
 					style={{ paddingTop: '150px', minHeight: '100vh' }}
 					effectColor="#C780FF" // required
@@ -38,20 +39,18 @@ export default function Detail(props) {
 					borderRadius={0} // default border radius value is 10px
 				>
 					<div className="grid grid-cols-12">
-						<div className="col-span-5 col-start-2 flex items-center">
-							<img src={image} alt={detailMoviesShowTimesInfo.tenPhim} style={{ width: '200px', height: '300px' }} />
-							<div className='ml-5 text-gray-100'>
-								<p>Ngày chiếu: {moment(detailMoviesShowTimesInfo.ngayKhoiChieu).format('d.mm.yyyy')}</p>
+						<div className="col-span-5 col-start-2 flex items-center movies-logo__response">
+							<img src={image} alt={detailMoviesShowTimesInfo.tenPhim} style={{ width: '200px', height: '300px' }} className='animate__animated animate__pulse animate__slower animate__infinite infinite main-title__image' />
+							<div className='ml-5 text-gray-700 bg-slate-100 p-1 rounded-sm detail_showtimes'>
+								<p className='text-2xl'>Ngày chiếu: {moment(detailMoviesShowTimesInfo.ngayKhoiChieu).format('d.mm.yyyy')}</p>
 								<p className='text-2xl'>{detailMoviesShowTimesInfo.tenPhim}</p>
-								<p className='text-sm'>{description && description.length > 100 ? <span>{description.substr(0, 100)}...</span> : <span>{description}</span>}</p>
+								<p className='text-XLm'>{description && description.length > 100 ? <span>{description.substr(0, 100)}...</span> : <span>{description}</span>}</p>
 							</div>
 						</div>
 						{/*RATING CIRCLE */}
-						<div className="col-span-6 mt-12 mx-auto">
-							{/* CODING... RATING CIRCLE */}
-
-							<div class="clearfix">
-
+						<div className="col-span-6 mt-12 mx-auto rating__circle">
+							{/* CHART RATING */}
+							<div class="clearfix animate__animated animate__pulse animate__infinite infinite">
 								<div class={`c100 p${rating * 10} big green`}>
 									<span>{(rating * 10)}%</span>
 									<div class="slice">
@@ -62,20 +61,27 @@ export default function Detail(props) {
 							</div>
 
 							{/* TEXT RATING */}
-							<div className="text-center">
+							<div className="text-center animate__animated animate__pulse animate__slower animate__infinite 	infinite">
 								<p className='uppercase text-xl text-white'>Đánh giá </p>
 								<Rate allowHalf value={rating / 2} className='text-green-500' />
 							</div>
 						</div>
 					</div>
 
+					{/* DETAIL SHOWTIMES RESPONSIVE */}
+					<div className='ml-5 w-50 text-gray-700 bg-slate-200 p-1 rounded-sm detail_showtimes-responsive'>
+						<p className='text-2xl'>Ngày chiếu: {moment(detailMoviesShowTimesInfo.ngayKhoiChieu).format('d.mm.yyyy')}</p>
+						<p className='text-2xl'>{detailMoviesShowTimesInfo.tenPhim}</p>
+						<p className='text-XLm'>{description && description.length > 100 ? <span>{description.substr(0, 100)}...</span> : <span>{description}</span>}</p>
+					</div>
+
 					{/* DESCRIPTION TABLE */}
-					<div className='bg-orange-300 py-10 px-12 mt-20 ml-64 w-2/3 ' style={{ minHeight: 500 }}>
+					<div className='bg-orange-300 py-10 px-12 mt-20 ml-64 w-2/3 description-table' style={{ minHeight: 500 }}>
 						<Tabs defaultActiveKey="1" size={'small'} centered >
 							<TabPane tab={
 								<h1 className='text-xl'>Lịch chiếu</h1>
 							} key="1" >
-								<div className="">
+								<div>
 									<Tabs tabPosition={'left'} >
 										{
 											detailMoviesShowTimesInfo.heThongRapChieu && detailMoviesShowTimesInfo.heThongRapChieu.map((itemCinema, index) => {
@@ -88,24 +94,23 @@ export default function Detail(props) {
 													key={index}>
 
 													{/* LOADING CINEMA SYSTEM */}
-
 													{
 														itemCinema.cumRapChieu && itemCinema.cumRapChieu.map((itemGroupCinema, indexGroupCinema) => {
 															return (
-																<div className=' mb-5' key={indexGroupCinema}>
+																<div className='mb-5' key={indexGroupCinema}>
 																	<div className="flex">
 																		<img src={itemGroupCinema.hinhAnh} alt={itemGroupCinema.tenCumRap} style={{ width: '50px', height: '50px' }} />
-																		<div className='ml-5'>
-																			<p className='text-xl leading-3 font-bold'>{itemGroupCinema.tenCumRap}</p>
+																		<div className='ml-1 md:ml-5'>
+																			<p className='md:text-md lg:text-xl md:leading-3 font-bold'>{itemGroupCinema.tenCumRap}</p>
 																			<p className='text-sm mt-3 text-gray-500'>{itemGroupCinema.diaChi}</p>
 																		</div>
 																	</div>
-																	<div className="info-showtimes-movie mt-2 grid grid-cols-4 gap-5">
+																	<div className="info-showtimes-movie mt-2 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
 																		{itemGroupCinema.lichChieuPhim && itemGroupCinema.lichChieuPhim.map((itemInforShowtimesMovie, indexShowtimesMovies) => {
 
 																			return (
 																				// LINK TO CHECKOUT PAGE
-																				<NavLink to={`/checkout/${itemInforShowtimesMovie.maLichChieu}`} className='text-sm col-span-1 text-green-500' key={indexShowtimesMovies}>
+																				<NavLink to={`/checkout/${itemInforShowtimesMovie.maLichChieu}`} className='text-sm col-span-1 text-green-700' key={indexShowtimesMovies}>
 																					<p>
 																						{itemInforShowtimesMovie.tenRap}
 																					</p>
@@ -137,14 +142,21 @@ export default function Detail(props) {
 								</div>
 							</TabPane>
 							<TabPane tab={
-								<h1 className='text-xl mx-5'>Thông tin</h1>
+								<>
+									<h1 className='text-xl mx-0 md:mx-5'>Thông tin</h1>
+								</>
 							} key="2" >
-
+								<iframe src={detailMoviesShowTimesInfo.trailer} frameborder="0" className='w-full h-80 mx-auto'></iframe>
+								<p className='w-50 mx-auto'>Trailer</p>
+								<p className='text-lg md:text-xl mt-2 md:mt-5'>{description}</p>
 							</TabPane>
 							<TabPane tab={
 								<h1 className='text-xl'>Đánh giá</h1>
-							} key="3">
 
+							} key="3">
+								<p className='text-xl'>Theo tổng cuộc bình chọn đánh giá từ phía người xem: </p>
+								<span className='text-lg'>Tổng số sao: </span>
+								<Rate allowHalf value={rating / 2} className='text-green-500' />
 							</TabPane>
 						</Tabs>
 					</div>

@@ -1,13 +1,11 @@
-// Extra small devices (portrait phones, less than 576px)
-@media screen and (max-width: 401px) {
-    .home-menu-layout {
-        display: none;
-    }
-}
+// Medium devices (tablets, less than 992px)
+@media screen and (max-width: 991.98px) {}
 
-@media screen and (min-width: 400.98px) {
-    .home-menu-layout {
-        display: block;
+// Large devices (desktops, less than 1200px)
+@media screen and (min-width: 1299.98px) {
+    .main-home-menu {
+        width: 1200px !important;
+        margin: 0 auto;
     }
 }
 
@@ -26,13 +24,15 @@
     }
 }
 
-// Medium devices (tablets, less than 992px)
-@media screen and (max-width: 991.98px) {}
+// Extra small devices (portrait phones, less than 576px)
+@media screen and (max-width: 451px) {
+    .home-menu-layout {
+        display: none;
+    }
+}
 
-// Large devices (desktops, less than 1200px)
-@media screen and (min-width: 1299.98px) {
-    .main-home-menu {
-        width: 1200px !important;
-        margin: 0 auto;
+@media screen and (min-width: 450.98px) {
+    .home-menu-layout {
+        display: block;
     }
 }

@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { headerTitleOFRigisterORLogin, mainBackgroundColor } from '../../../../assets/constant';
 import ButtonBack from '../../../../components/ButtonBack';
 import { getDataUserAction } from '../../../../redux/actions/ManagingUserAction';
-
+import './UpdateLogin.scss';
 export default function UpdateLogin() {
   const [search, setSearch] = useState('');
   const dispatch = useDispatch()
@@ -13,8 +13,8 @@ export default function UpdateLogin() {
   return (
     <>
       <ButtonBack address='/login' />
-      <div className={`${mainBackgroundColor} w-50`}>
-        <div className=" mt-5 mx-auto w-3/4">
+      <div className={`mx-auto lg:ml-0 w-50`}>
+        <div className=" mt-5 mx-auto lg:w-3/4">
           <h1 className={headerTitleOFRigisterORLogin}>Quên mật khẩu</h1>
           <input
             value={search || ''}
@@ -31,6 +31,7 @@ export default function UpdateLogin() {
 
         </div>
       </div>
+
     </>
   )
 }

@@ -2,13 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-/* This only changes this particular animation duration */
-.animate__animated.animate__bounce {
+/* All delay classes will take 2x longer to start */
+:root {
+    --animate-delay: 2s;
     --animate-duration: 2s;
 }
 
-/* This changes all the animations globally */
+/* All delay classes will take half the time to start */
 :root {
-    --animate-duration: 800ms;
-    --animate-delay: 0.9s;
+    --animate-delay: 0.5s;
 }

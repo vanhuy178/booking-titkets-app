@@ -61,9 +61,14 @@
     }
 }
 
-@media screen and (max-width: 567.98px) {
+@media screen and (max-width: 575.98px) {
+    .watching-movies {
+        margin-right: 2.5rem;
+        margin-left: -1rem;
+    }
+
     .carousel-card__item {
-        margin-left: 10px;
+        margin-left: 140px;
 
         .slick-next,
         .slick-prev {
@@ -71,11 +76,11 @@
         }
 
         .slick-next {
-            right: 5%;
+            right: 15%;
         }
 
         .slick-prev {
-            left: 2%;
+            left: -20%;
             z-index: 20;
         }
     }
@@ -153,7 +158,7 @@
 
 @media screen and (max-width: 380.98px) {
     .carousel-card__item {
-        margin-left: 35px;
+        margin-left: 29px;
 
         .slick-next,
         .slick-prev {
@@ -161,11 +166,11 @@
         }
 
         .slick-next {
-            right: 9%;
+            right: 8%;
         }
 
         .slick-prev {
-            left: -11%;
+            left: -10%;
             z-index: 20;
         }
     }

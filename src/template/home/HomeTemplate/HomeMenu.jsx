@@ -120,10 +120,13 @@ class HomeMenu extends React.PureComponent {
 	}
 
 	render() {
+		// animate__animated animate__backInUp animate__delay-4s
+
+
 		return (
-			<div className='home-menu-layout'>
+			<div className='home-menu-layout animate__animated animate__backInUp animate__delay-4s'>
 				<TitleHeader titleHeader={'Danh sách hệ thống rạp'} />
-				<div style={{ maxHeight: '700px', overflow: 'auto' }} className='main-home-menu animate__animated animate__backInUp animate__delay-4s'>
+				<div style={{ maxHeight: '700px', overflow: 'auto' }} className='main-home-menu'>
 					<div className='xl:container '>
 						<Tabs tabPosition={this.state.tabPosition} className='home-menu  bg-white' >
 							{this.renderCinemaSystem()}

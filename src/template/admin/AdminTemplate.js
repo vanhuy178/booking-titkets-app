@@ -11,7 +11,7 @@ import { NavLink } from "react-router-dom";
 import _ from "lodash";
 import ProfileMini from "../../components/ProfileMini";
 import { mainTextTitle } from "../../assets/constant";
-import HeaderAmin from "../../components/styleCompononent/HeaderAmin";
+import HeaderAmin from "../../components/HeaderAmin";
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 

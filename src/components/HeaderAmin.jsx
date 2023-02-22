@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
-import { TOKEN, USER_LOGIN } from '../../utils/settings/config';
+import { TOKEN, USER_LOGIN } from '../utils/settings/config';
 
 export default function HeaderAmin(info) {
     return (

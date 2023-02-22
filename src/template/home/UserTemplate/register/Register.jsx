@@ -7,7 +7,7 @@ import { buttonSubmit, headerTitleOFRigisterORLogin, inputText, mainBackgroundCo
 import ModalMessage, { MessageRegister } from '../../../../components/ModalMessage';
 import * as Yup from 'yup';
 import { registerUserAction } from '../../../../redux/actions/ManagingUserAction';
-import './style.scss';
+import './Register.scss';
 import ButtonBack from '../../../../components/ButtonBack';
 
 

@@ -21,7 +21,6 @@ import EditUser from './template/admin/users/EditUser';
 import Users from './template/admin/users/Users';
 import { CheckoutTemplate } from './template/home/CheckoutTemplate/CheckoutTemplate';
 import { HomeTemplate } from './template/home/HomeTemplate/HomeTemplate';
-import ChangePassword from './template/home/UserTemplate/changePassword/ChangePassword';
 import Login from './template/home/UserTemplate/login/Login';
 import Register from './template/home/UserTemplate/register/Register';
 import UpdateLogin from './template/home/UserTemplate/updateLogin/UpdateLogin';
