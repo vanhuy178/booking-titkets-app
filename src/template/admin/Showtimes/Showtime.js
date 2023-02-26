@@ -2,9 +2,6 @@ import React, { useState } from 'react'
 import style from './style.module.scss';
 import {
     Form,
-    Input,
-    Button,
-    Cascader,
     DatePicker,
     InputNumber,
     Select,
@@ -16,32 +13,44 @@ import { useEffect } from 'react';
 import { managingCenima } from '../../../services/manageCinema';
 import { useFormik } from 'formik';
 import dayjs from 'dayjs';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ADD_SHOWTIME_CINEMA_DEPEAT, ADD_SHOWTIME_CINEMA_SUCCESSFULLY } from '../../../redux/types/CinemaType';
+import { MessageShowTimes } from '../../../components/ModalMessage';
 
 
 export default function Showtime(props) {
     const [state, setState] = useState({
         cinemaSystem: [],
-        groupCinemaSystem: []
+        groupCinemaSystem: [],
+        messageErrors: ''
     })
-    const dispatch = useDispatch()
+    const { messageCenimaStatus } = useSelector(state => state.managingCenimaStore);
+    const dispatch = useDispatch();
+    const [show, setShow] = useState(false);
+    let movies = {};
 
+    if (localStorage.getItem('moviesparam')) {
+        movies = JSON.parse(localStorage.getItem('moviesparam'))
+    }
     const formik = useFormik({
         initialValues: {
-            maPhim: props.match.params.id,
+            maPhim: movies.maPhim,
             ngayChieuGioChieu: '',
             maRap: '',
             giaVe: ''
         },
         onSubmit: async (value) => {
-            console.log(value);
             try {
                 let result = await managingCenima.postShowtime(value);
-                dispatch({ type: ADD_SHOWTIME_CINEMA_SUCCESSFULLY, payload: result.data.content })
-                history.goBack()
+                console.log(result);
+                await dispatch({ type: ADD_SHOWTIME_CINEMA_SUCCESSFULLY, payload: result.data.content });
+                await setShow(true);
+                setTimeout(() => history.goBack(), 1000);
             } catch (error) {
-                dispatch({ type: ADD_SHOWTIME_CINEMA_DEPEAT, payload: error.response.data })
+                await dispatch({ type: ADD_SHOWTIME_CINEMA_DEPEAT, payload: error.response.data.content })
+                await setState({ ...state, messageErrors: error.response.data.content });
+                await setShow(true);
+
             }
         }
     })
@@ -62,20 +71,25 @@ export default function Showtime(props) {
         fetchDataOfCinema()
     }, [])
 
+
     const handleChangeValueCenimaSystem = async (value) => {
+        console.log(value);
         try {
             const result = await managingCenima.getInfoGroupCinemaSystem(value.trim().replace(/\s/g, ''))
 
             setState({
-                ...state, groupCinemaSystem: result.data.content
+                ...state, groupCinemaSystem: result.data.content, messageErrors: ''
             })
+
+
         } catch (error) {
-            console.log(error.response.data);
+            setState({ ...state, messageErrors: error.response.data.content })
+            console.log(error.response.data.content);
         }
     }
 
     const handleChangeValueGroupCinemaSystem = (value) => {
-        formik.setFieldValue('maRap', value)
+        formik.setFieldValue('maRap', value.trim().replace(/\s/g, ''))
     }
 
     const renderCenimaSystem = () => {
@@ -83,7 +97,7 @@ export default function Showtime(props) {
             state.cinemaSystem && state.cinemaSystem.map((itemCinemaSystem, indexCinemaSystem) => {
                 return {
                     label: itemCinemaSystem.tenHeThongRap,
-                    value: itemCinemaSystem.tenHeThongRap
+                    value: itemCinemaSystem.maHeThongRap
                 }
             })
         )
@@ -93,7 +107,7 @@ export default function Showtime(props) {
         return state.groupCinemaSystem.map((itemGroupCinema, indexGroupCinema) => {
             return {
                 label: itemGroupCinema.tenCumRap,
-                value: itemGroupCinema.tenCumRap
+                value: itemGroupCinema.maCumRap
             }
         })
     }
@@ -105,15 +119,10 @@ export default function Showtime(props) {
         formik.setFieldValue('ngayChieuGioChieu', dayjs(value).format('DD/MM/YYYY hh:mm:ss'))
     }
 
-
     const handleChangeNumber = value => {
         formik.setFieldValue('giaVe', value)
     }
 
-    let movies = {}
-    if (localStorage.getItem('moviesparam')) {
-        movies = JSON.parse(localStorage.getItem('moviesparam'))
-    }
     return (
         <>
             <Form
@@ -148,7 +157,6 @@ export default function Showtime(props) {
                             />
                         </Form.Item>
 
-
                         <Form.Item label="Cụm rạp">
                             <Select style={{
                                 maxWidth: 600,
@@ -157,6 +165,7 @@ export default function Showtime(props) {
                                 placeholder='Chọn cụm rạp'
                                 options={renderGroupCinema()}
                             />
+                            {/* <p className='text-red-500 text-sm'>{state.messageErrors || ""}</p> */}
                         </Form.Item>
 
 
@@ -166,6 +175,7 @@ export default function Showtime(props) {
 
                         <Form.Item label="Giá vé">
                             <InputNumber min={75000} max={150000} onChange={handleChangeNumber} />
+                            <p className='text-red-500 text-sm mt-2'>{state.messageErrors || ""}</p>
                         </Form.Item>
 
 
@@ -176,6 +186,8 @@ export default function Showtime(props) {
                 </div>
 
             </Form>
+
+            {show ? <MessageShowTimes messageContent={messageCenimaStatus} /> : ''}
         </>
     );
 };
