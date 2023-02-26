@@ -1,0 +1,18 @@
+.modal-adv {
+    position: fixed;
+    top: 10%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+    z-index: 99;
+    filter: drop-shadow(0px 0px 213px #000000);
+    -webkit-filter: drop-shadow(0px 0px 213px #000000);
+    -moz-filter: drop-shadow(0px 0px 213px #000000);
+
+    .adv-title {
+        position: absolute;
+        top: 25px;
+        left: -20px;
+        transform: rotate(-45deg);
+        background-color: white;
+    }
+}

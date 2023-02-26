@@ -80,11 +80,8 @@ export const MessageRegister = props => {
                 </div>
             </div>
         </div>
-
     )
 }
-
-
 export const DeletingMessage = (props) => {
     return (
         <>

@@ -9,6 +9,7 @@ import './StylePage/home.scss'
 import { mainBackgroundColor } from '../assets/constant';
 import { Section } from '../components/Section';
 import CollapseCinema from '../components/CollapseCinema';
+import Adv from '../components/Adv';
 
 export default function Home(propsRoute) {
     const { listMovies } = useSelector(state => state.managingMoviesStore);
@@ -47,6 +48,9 @@ export default function Home(propsRoute) {
             {/* HOME MENU */}
             <HomeMenu listCenimaSystem={listCenimaSystem} />
             <CollapseCinema listCenimaSystem={listCenimaSystem} />
+
+            {/* POPUP ADV */}
+            <Adv />
         </div>
 
     )

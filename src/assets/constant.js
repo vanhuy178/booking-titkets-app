@@ -1,4 +1,3 @@
-// I AM GOTING SET ALL VARIABLE OF WEBSITE IN HERE
 
 // TAKE THE LENGTH OF THE WEBSITE
 export let win = window,
@@ -47,7 +46,7 @@ export const mainTextTitle = 'text-red-500'
 
 
 
-// LOGIN AND REGISTER
+// LOGIN AND REGISTER --- WILL TRANSFORM TO TAILWIND FILE CSS LATER.............................................
 
 // HEADER TITLE
 export const headerTitleOFRigisterORLogin = 'text-5xl mb-3 font-bold text-center mb-2';
