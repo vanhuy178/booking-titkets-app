@@ -10,6 +10,7 @@ import { mainBackgroundColor } from '../assets/constant';
 import { Section } from '../components/Section';
 import CollapseCinema from '../components/CollapseCinema';
 import Adv from '../components/Adv';
+import Partner from '../components/Partner';
 
 export default function Home(propsRoute) {
     const { listMovies } = useSelector(state => state.managingMoviesStore);
@@ -48,6 +49,9 @@ export default function Home(propsRoute) {
             {/* HOME MENU */}
             <HomeMenu listCenimaSystem={listCenimaSystem} />
             <CollapseCinema listCenimaSystem={listCenimaSystem} />
+
+            {/* PARNERT */}
+            <Partner listCenimaSystem={listCenimaSystem} />
 
             {/* POPUP ADV */}
             <Adv />

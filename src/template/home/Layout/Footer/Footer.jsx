@@ -6,9 +6,6 @@ import { NavLink } from 'react-router-dom';
 export default function Footer() {
 
     const { listCenimaSystem } = useSelector(state => state.managingCenimaStore);
-    console.log(listCenimaSystem);
-    // using map and uniq function of lodash to split unnecessary data
-    const arrayCinemaSystem = _.map(listCenimaSystem, (cinemaSystemItem => _.pick(cinemaSystemItem, ['maHeThongRap', 'logo', 'tenHeThongRap'])));
     return (
         <footer className="py-6 dark:bg-gray-800 dark:text-gray-50 bg-gray-700 text-white">
             <div className="container px-6 mx-auto space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50">
@@ -25,7 +22,7 @@ export default function Footer() {
                         <p className="pb-1 text-lg font-medium text-left" >Hệ thống cụm rạp</p>
                         <ul className='grid grid-cols-2'>
 
-                            {arrayCinemaSystem && arrayCinemaSystem.map((itemCinema, indexCinema) => {
+                            {listCenimaSystem && listCenimaSystem.map((itemCinema, indexCinema) => {
                                 return (
                                     <li className=' my-2' key={indexCinema}>
                                         <img src={itemCinema.logo} className alt={itemCinema.tenHeThongRap} width='30' />
