@@ -14,8 +14,8 @@ const MultipleRows = (props) => {
     // WE RECEIVE FUNCTION TO RENDER A LIST MOVIES RIGHT HERE
     const renderListMovie = () => {
         return props.listMovies.map((item, index) => {
-            return (<div className="mt-5 movies__flip">
-                <Movies_Flip moviesItem={item} key={index} animateIndex={index} />
+            return (<div className="mt-5">
+                <Movies_Flip moviesItem={item} animateIndex={index} />
             </div>)
         })
     }

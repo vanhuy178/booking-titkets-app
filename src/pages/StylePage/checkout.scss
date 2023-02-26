@@ -260,8 +260,28 @@
 }
 
 @media screen and (max-width: 450px) {
+
+	.list-chairs {
+		grid-column-end: 13;
+	}
+
+	.description-chairs {
+		ul li {
+			text-align: center;
+
+			span {
+				display: block;
+			}
+		}
+	}
+
+	.break-seats {
+		display: none;
+	}
+
 	.ant-tabs-tab {
-		padding-left: 5px !important;
+		padding: 0 5px !important;
+		margin-left: 0 !important;
 
 		.tabResult,
 		.tabBooking {
@@ -275,5 +295,18 @@
 				padding-left: 5px;
 			}
 		}
+	}
+
+	.detail-booking-responsive {
+		display: block;
+	}
+
+	.detail-bookings {
+		grid-column-start: 2;
+		grid-column-end: 12;
+	}
+
+	.list-chairs-render {
+		margin-left: 9px !important;
 	}
 }

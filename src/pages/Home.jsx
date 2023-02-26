@@ -31,11 +31,10 @@ export default function Home(propsRoute) {
             {/*WE USE <MultipleRows /> */}
             <HomeCarousel />
 
-
             {/* CAROUSEL CARD */}
             {/* class="wow slideInLeft"*/}
-            <Section className=''>
-                <section className="text-gray-600 body-font carousel-card animate__animated  animate__backInUp animate__delay-2s" >
+            <Section className='carousel wow animate__fadeInUp' data-wow-duration='5' data-wow-delay="0">
+                <section className="text-gray-600 body-font carousel-card" >
                     <div className="container px-0 md:px-5 mx-auto" style={{ maxHeight: '1000px' }}>
                         {/* WE USING REACT-SLICK HERE https://react-slick.neostack.com/*/}
                         {
