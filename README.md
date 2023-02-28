@@ -2,7 +2,7 @@
 ## Project description
 - Link: https://backend.cyberlearn.vn/files/19-07-2021-du-an-cuoi-khoa.pdf
 ## Homepages
-![](./image/bookingTickets.png);
+![](./src/assets/image/bookingTickets.png);
 
 ## The technology that I'm using in this app.
 ```
