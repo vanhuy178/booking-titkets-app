@@ -42,8 +42,6 @@ export default function ProfileMini(info) {
         <li className="nav-item hidden lg:inline py-2 lg:mr-2">
             <NavLink to='/admin' className="text-left md:ml-1 uppercase main-text-color">Admin</NavLink>
         </li>
-
-
     return (
         <>{profileLink} {logOut} {adminLink} {logOutResponsive} </>
     )

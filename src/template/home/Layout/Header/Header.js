@@ -19,7 +19,6 @@ export default function Header() {
 		infoUserName = JSON.parse(localStorage.getItem('USER_LOGIN'))
 	}
 	const { t, i18n } = useTranslation();
-
 	const handleChange = (value) => {
 		i18n.changeLanguage(value)
 	}
@@ -29,9 +28,9 @@ export default function Header() {
 			return (
 				<>
 					{/* LOGIN AND RESGISTER */}
-					<NavLink to='/login' className={`${mainTextTitle} ${hover} `} i18nKey={'login'}>{t('login')}</NavLink>
-					<NavLink to='/register' className={`${mainTextTitle} md:mx-3 xl:mx-4 ${hover}`} i18nKey={'register'}>{t('register')}</NavLink>
-					<NavLink to='/admin' className={`${mainTextTitle} mr-2 xl:mr-3 ${hover} hidden lg:block`}>Admin</NavLink>
+					<NavLink to='/login' className={`main-text-color ${hover} `} i18nKey={'login'}>{t('login')}</NavLink>
+					<NavLink to='/register' className={`main-text-color md:mx-3 xl:mx-4 ${hover}`} i18nKey={'register'}>{t('register')}</NavLink>
+					<NavLink to='/admin' className={`main-text-color mr-2 xl:mr-3 ${hover} hidden lg:block`}>Admin</NavLink>
 				</>
 			)
 		}
@@ -76,7 +75,7 @@ export default function Header() {
 							<li className="nav-item lg:mx-10">
 								<NavLink to="/contact" className={`nav-link lg:${titleNav}`} i18nKey={'contact'}>{t('contact')}</NavLink>
 							</li>
-							<li className="nav-item lg:mr-52">
+							<li className="nav-item lg:mr-52 nav-item-center">
 								<NavLink to="/news" className={`nav-link lg:${titleNav}`} i18nKey={'news'}>{t('news')}</NavLink>
 							</li>
 							<li className="nav-item ml-0 lg:ml-80 lg:flex lg:items-center">

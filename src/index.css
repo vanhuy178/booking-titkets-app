@@ -78,4 +78,20 @@
     .text-error {
         @apply text-sm text-red-500;
     }
+
+
+    /* LOGIN, REGISTER, LOGIN */
+
+    .lable-form {
+        @apply text-pink-300 text-xl mb-2;
+    }
+
+    .input-form {
+        @apply block w-full bg-pink-300 text-white mb-1 rounded-sm py-2;
+    }
+
+    .title-form {
+        @apply text-5xl mb-3 font-bold text-center;
+    }
+
 }

@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-import { headerTitleOFRigisterORLogin, mainBackgroundColor } from '../../../../assets/constant';
 import ButtonBack from '../../../../components/ButtonBack';
 import { getDataUserAction } from '../../../../redux/actions/ManagingUserAction';
 import './UpdateLogin.scss';
@@ -9,13 +7,12 @@ export default function UpdateLogin() {
   const [search, setSearch] = useState('');
   const dispatch = useDispatch()
   const { dataUser } = useSelector(state => state.managingUserStore);
-  console.log(dataUser);
   return (
     <>
       <ButtonBack address='/login' />
       <div className={`mx-auto lg:ml-0 w-50`}>
         <div className=" mt-5 mx-auto lg:w-3/4">
-          <h1 className={headerTitleOFRigisterORLogin}>Quên mật khẩu</h1>
+          <h1 className="text-5xl mb-3 font-bold text-center mb-2">Quên mật khẩu</h1>
           <input
             value={search || ''}
             onChange={(e) => setSearch(e.target.value)}

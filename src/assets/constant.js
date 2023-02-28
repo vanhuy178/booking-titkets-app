@@ -48,12 +48,6 @@ export const mainTextTitle = 'text-red-500'
 
 // LOGIN AND REGISTER --- WILL TRANSFORM TO TAILWIND FILE CSS LATER.............................................
 
-// HEADER TITLE
-export const headerTitleOFRigisterORLogin = 'text-5xl mb-3 font-bold text-center mb-2';
-
-// TITLE MINI
-export const titleMini = 'text-pink-300 text-xl mb-2';
-
 // INPUT
 export const inputText = 'block w-full py-1 bg-pink-300 text-white mb-1 rounded-sm py-2 lg:py-0'
 
@@ -65,7 +59,6 @@ rounded-lg text-xl px-5 py-2.5 text-center mr-2 mb-2 w-full`;
 
 // MESSAGE FOR ERROR
 export const notBlank = 'không được bỏ trống';
-
 // METHOD MESSAGE ERROR
 export const messageError = (value = '') => {
     return <div className={`${mainTextTitle} text-sm`}>{value}</div>
