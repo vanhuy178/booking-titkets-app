@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Slider from "react-slick";
 import { SET_UPCOMING_FILM, SET_WATCHNG_FILM } from "../../redux/types/ManagingMoviesType";
@@ -101,7 +101,7 @@ const MultipleRows = (props) => {
     return (
         <div className='md:container carousel-card__item'>
             {/* BUTTON SET WATCHING*/}
-            <button className={`watching-movies px-8 py-3 font-semibold rounded ${styleSlick[activeClassWatching]} ml-14 mx-10 border`}
+            <button className={`watching-movies rounded-border ${styleSlick[activeClassWatching]} ml-14 mx-10`}
                 onClick={() => {
                     let action = {
                         type: SET_WATCHNG_FILM
@@ -110,7 +110,7 @@ const MultipleRows = (props) => {
                 }}
             >ĐANG CHIẾU</button>
             {/* BUTTON SET UPCOMING */}
-            <button className={`upcoming-movies px-8 py-3 font-semibold rounded ${styleSlick[activeClassUpcoming]} border`}
+            <button className={`upcoming-movies rounded-border ${styleSlick[activeClassUpcoming]}`}
                 onClick={() => {
                     let action = {
                         type: SET_UPCOMING_FILM
@@ -126,4 +126,4 @@ const MultipleRows = (props) => {
         </div>
     );
 }
-export default memo(MultipleRows);
+export default MultipleRows;

@@ -5,7 +5,6 @@ import la1 from '../assets/image/la-1.jpg';
 import la2 from '../assets/image/la-2.jpg';
 import la3 from '../assets/image/la-3.jpg';
 export default function Partner(props) {
-
     return (
         <Section>
             <TitleHeader titleHeader={"HÉ LỘ MỘT SỐ TIN TỨC MỚI VỀ BOM TẤN MỚI"} />

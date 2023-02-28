@@ -127,7 +127,7 @@ class HomeMenu extends React.PureComponent {
 			<div className='home-menu-layout'>
 				<TitleHeader titleHeader={'Danh sách hệ thống rạp'} />
 				<div style={{ maxHeight: '700px', overflow: 'auto' }} className='main-home-menu'>
-					<div className='xl:container'>
+					<div className=''>
 						<Tabs tabPosition={this.state.tabPosition} className='home-menu  bg-white' >
 							{this.renderCinemaSystem()}
 						</Tabs>

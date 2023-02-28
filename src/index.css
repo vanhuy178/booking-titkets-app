@@ -12,3 +12,70 @@
 :root {
     --animate-delay: 0.5s;
 }
+
+@layer components {
+
+    /* MAIN COLOR TEXT */
+    .main-text-color {
+        @apply text-red-500;
+    }
+
+    .main-bg-color {
+        @apply bg-yellow-100;
+    }
+
+    /* TITLE HEADER */
+    .title-header {
+        @apply text-3xl font-bold uppercase text-center;
+    }
+
+    /* MOVIES FLIP */
+    .flex-center-center {
+        @apply flex justify-center items-center;
+    }
+
+    /* HOT TEXT */
+    .hot-text {
+        @apply text-red-500 font-bold text-4xl
+    }
+
+    /* BOOKING BUTTON */
+    .booking-btn {
+        @apply text-center cursor-pointer py-4 bg-indigo-300 my-2 font-bold mb-1
+    }
+
+    .hw-full {
+        @apply w-full h-full;
+    }
+
+    /* PROFILE MINI */
+
+
+    /* PROFILE */
+    .title-mini {
+        @apply font-bold text-gray-700 text-xl
+    }
+
+    .btn-profile {
+        @apply text-white py-2 px-4 uppercase rounded font-medium transition transform shadow;
+    }
+
+    .btn-profile:hover {
+        @apply shadow-lg -translate-y-0.5;
+    }
+
+    /* MULTIPLE ROW */
+    .rounded-border {
+        @apply px-8 py-3 font-semibold rounded border
+    }
+
+
+    /* CONTACT */
+    .contact-lable {
+        @apply block mb-2 text-sm font-medium text-gray-900;
+    }
+
+    .text-error {
+        @apply text-sm text-red-500;
+    }
+}

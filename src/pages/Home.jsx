@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import MultipleRows from '../components/r-slick/MulipleRows';
 import { fetchMovies } from '../redux/actions/ManagingMovies';
 import HomeMenu from '../template/home/HomeTemplate/HomeMenu';
 import { fetchListCenimaSystem } from '../redux/actions/CenimaAction';
 import HomeCarousel from '../template/home/HomeTemplate/HomeCarousel';
-import './StylePage/home.scss'
-import { mainBackgroundColor } from '../assets/constant';
 import { Section } from '../components/Section';
 import CollapseCinema from '../components/CollapseCinema';
 import Adv from '../components/Adv';
@@ -29,7 +27,7 @@ export default function Home(propsRoute) {
         }, [])
 
     return (
-        <div className={`${mainBackgroundColor}`}>
+        <div className='main-bg-color'>
             {/*WE USE <MultipleRows /> */}
             <HomeCarousel />
 

@@ -1,0 +1,9 @@
+.main-bg-color {
+    max-width: 700px;
+}
+
+@media screen and (max-width: 440px) {
+    .main-bg-color {
+        width: 100%;
+    }
+}

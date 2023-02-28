@@ -17,7 +17,6 @@ import EditMovies from './template/admin/Movies/EditMovies/EditMovies';
 import AdminMovies from './template/admin/Movies/Movies';
 import Showtime from './template/admin/Showtimes/Showtime';
 import AddUsers from './template/admin/users/AddUsers';
-import EditUser from './template/admin/users/EditUser';
 import Users from './template/admin/users/Users';
 import { CheckoutTemplate } from './template/home/CheckoutTemplate/CheckoutTemplate';
 import { HomeTemplate } from './template/home/HomeTemplate/HomeTemplate';
@@ -45,7 +44,6 @@ function App() {
 
           <UserTemplate path='/login' exact Component={Login} />
           <UserTemplate path='/login/update' exact Component={UpdateLogin} />
-          {/* <UserTemplate path='/login/update/password' exact Component={ChangePassword} /> */}
           <UserTemplate path='/register' exact Component={Register} />
 
           <CheckoutTemplate path='/checkout/:id' exact Component={Checkout} />

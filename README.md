@@ -1,7 +1,10 @@
-### Booking tickets project
+# Booking tickets project
+## Project description
+- Link: https://backend.cyberlearn.vn/files/19-07-2021-du-an-cuoi-khoa.pdf
+## Homepages
+![](./image/bookingTickets.png);
 
-
-# The technology that I'm using in this app.
+## The technology that I'm using in this app.
 ```
 npm i react-router-dom: using for redirecting the webpage.;
 npm i react-redux: use  to connect redux with react.;
@@ -11,6 +14,13 @@ npm i lodash:  create object and function faster and using for old browser;
 npm i tailwind css: style for component by class name;
 npm i axios: handle asynchonous;
 npm i antd: design UI faster with components in antd;
+npm i emailjs: to send email to feedback for me
+npm i history: a library support for react-router-dom
+npm i i18net: translate content
+npm i slick-carousel: create carousel
+npm i yup: check validation for form
+npm i sass: for sass syntax
+npm i animate.css: animation for website; 
 ```
 
 # build folder structures
@@ -18,17 +28,25 @@ npm i antd: design UI faster with components in antd;
 ```
 src/ 
 |--- assets
-|    |---constant.js
+|    |---image: store image for the page
+|    |---constant.js: store variable for javascript(fixing....)
+|    |---styles: style some component from outside
 |---redux 
 |    |--- action
 |    |--- types
 |    |--- reducers
 |    |---configStore.js
 |--- pages
-|
+|    |---StylePage: css for file in pages folder
+|    |---Checkout.jsx: for booking seats and pay the money and watching the history for booking tickets
+|    |---Contact.jsx: page contact 
+|    |---Home.jsx: the homepage of the website;
+|    |---News.jsx: the news pages(developing.....)
+|    |---Profile.jsx: the profile page
 |--- servies (connect with backend with http resquest using axios lib) 
-|    |--- baseSerives.js
-|---component
+|  
+|---component: contain component of my pages
+|    |--- 
 |
 |---template
 |   |--- admin
@@ -59,37 +77,4 @@ layout
 ```
 servies
 ```
-
-
-# STEP
-
-1. set up redux and react router dom 
-
-2. in folder template we are going use history, reacr-router, tailwind, library to set up redirect page with Header.js + HomeTemplate.js + App.js, create footer component, we are going to target in HomeTemplate.js here includes multiple component 
-
-3. target folder redux, in folder reducer create carouselReducers, managingMoviesReducer
-
-4. After setting succesfully redux and we will we initial state for banner carousel and movies carousel with redux
-
-5. we create folder services to connect with back end via axios
-
-6. In Home component we use react-slick libary for MutipleRows component
-
-6. The component Movies carousel is ok, i use card in mamba, witch react slick carousel for Home component but we will config hover and some animation int the next step
-
-7. We finished watching and upcomming button
-
-8. we will target to HomeMenu component, but first we create manageCenima service to call api, next setup cenima in redux folder
-
-9. we finished Home menu will api 
-
-10. we complete Detail Component
-
-11. we will create Checkout template component
-
-12. Complete Tabs of Checkout component
-
-13. Build button for the people are ordering the chair and we will set up web socket in the next step
-
-14. Config websocket between client and server successfully.
 
