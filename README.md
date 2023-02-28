@@ -23,7 +23,7 @@ npm i sass: for sass syntax
 npm i animate.css: animation for website; 
 ```
 
-# build folder structures
+## build folder structures
 
 ```
 src/ 
@@ -31,7 +31,7 @@ src/
 |    |---image: store image for the page
 |    |---constant.js: store variable for javascript(fixing....)
 |    |---styles: style some component from outside
-|---redux 
+|---redux: manage state of the pages
 |    |--- action
 |    |--- types
 |    |--- reducers
@@ -43,38 +43,37 @@ src/
 |    |---Home.jsx: the homepage of the website;
 |    |---News.jsx: the news pages(developing.....)
 |    |---Profile.jsx: the profile page
+|    |---Detail: --> the page for desciption of the movies and checkout for booking seats
 |--- servies (connect with backend with http resquest using axios lib) 
 |  
-|---component: contain component of my pages
-|    |--- 
-|
-|---template
-|   |--- admin
-|   |--- HomeTemplate
-|   |--- UserTemplate
-|   |--- UserTemplate
-|---utils
+|--- component: contain component of my pages
+|    |---r-slick: --> contain the multiplerow section each card in it is a Movies_flip components and css file
+|    |---styleComponents: --> css for the all file in components folder
+|    |---Adv: -->Components for advertising hot movies
+|    |---ButtonBack: --> redirect the page to prev page 
+|    |---CollapseCinema: --> responsive HomeMenu at 450 breakpoint
+|    |---Movies_Flips: -->It is a card in Multilperows
+|    |---Partner: -->contains infomation about new movies
+|    |---ProfileMini: -->a nav with profile item, logout, admin item
+|    |---Section: -->create paddingX
+|    |---TitleHeader: --> create title for some components 
+|    |---ModalMessage: --> create message when click button login, register, add, delete movies or users
+|--- models: -->contain inital value for state in reducer
+|--- template: --> contain template page help me redirect to orther page, and we also use props.params.math
+|    |--- admin: contain the pages relate the admin
+|    |      |---Dashboard
+|    |      |---Movies: --> we can add, edit, delete movies in movies folder
+|    |      |---Showtimes: --> set showtimes for the movies
+|    |      |---Users: --> we can add user or delete user in here
+|    |      |---AdminTemplate: --> main page in Admin to redirect another pages in AdminTemplate
+|    |--- home: contain checkout template, hometemplate, usertemplate
+|    |      |---CheckoutTemplate:
+|    |      |---HomeTemplate
+|    |      |---Layout: -->conatain header, footer of the pages
+|    |      |---UserTenplate
+|---translate: using for tranlate
+|---utils: config domain to call api
+|---App: config router
 ```
 
-
-# What does each folder exactly do?
-
-```
-template
-```
-
-
-```
-
-redux
-```
-
-
-```
-layout
-```
-
-```
-servies
-```
 
