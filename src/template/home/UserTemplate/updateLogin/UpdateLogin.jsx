@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import ButtonBack from '../../../../components/ButtonBack';
 import { getDataUserAction } from '../../../../redux/actions/ManagingUserAction';
-import './UpdateLogin.scss';
 export default function UpdateLogin() {
   const [search, setSearch] = useState('');
   const dispatch = useDispatch()

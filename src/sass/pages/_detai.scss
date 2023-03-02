@@ -1,0 +1,83 @@
+// Large devices (desktops, less than 1200px)
+@media screen and (max-width: 1199.98px) {
+    .description-table {
+        margin-left: 12rem;
+    }
+}
+
+// Medium devices (tablets, less than 992px)
+@media screen and (max-width: 991.98px) {
+    .description-table {
+        margin-left: 9rem !important;
+    }
+
+    .detail_showtimes {
+        display: none;
+    }
+
+    .detail_showtimes-responsive {
+        display: block;
+    }
+
+
+}
+
+@media screen and (min-width: 992px) {
+    .detail_showtimes {
+        display: block;
+    }
+
+    .detail_showtimes-responsive {
+        display: none;
+    }
+}
+
+// Small devices (landscape phones, less than 768px)
+@media screen and (max-width: 767.98px) {
+    .description-table {
+        margin-left: 7rem !important;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+// Extra small devices (portrait phones, less than 576px)
+@media screen and (max-width: 575.98px) {
+    .description-table {
+        width: 100%;
+        min-height: 300px !important;
+        margin-left: 0rem !important;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .detail_showtimes-responsive {
+        margin-top: 10px;
+        width: 400px !important;
+    }
+}
+
+@media screen and (max-width: 450.98px) {
+    .main-title__image {
+        width: 100% !important;
+    }
+
+    .rating__circle {
+        display: none;
+    }
+
+    .detail_showtimes-responsive {
+        margin-top: 15px;
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+
+    .movies-logo__response {
+        grid-column-start: 1 !important;
+        grid-column: all;
+
+        .main-title__image {
+            height: 500px !important;
+        }
+    }
+}

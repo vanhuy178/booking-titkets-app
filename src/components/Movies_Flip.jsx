@@ -4,7 +4,6 @@ import { PlayCircleOutlined } from '@ant-design/icons'
 import { NavLink } from 'react-router-dom';
 function Movies_Flip(props) {
     const { hinhAnh, hot, maPhim, tenPhim, trailer } = props.moviesItem;
-    const [show, setShow] = useState(false);
     const configErrorImage = (e) => {
         e.target.onerror = null
         e.target.src = 'https://picsum.photos/300/300';
@@ -15,7 +14,10 @@ function Movies_Flip(props) {
             <div className={`flip-card mt-1`}>
                 <div className="flip-card-inner" data-toggle="modal" data-target="#exampleModal">
                     <div className="flip-card-front">
-                        <h2 className={`hot-hot-hot absolute top-0 -left-4 -rotate-45 hot-text`}>{hot ? "HOT" : ''}</h2>
+                        {/* <h2 className={`hot-hot-hot absolute top-0 -left-4 -rotate-45 hot-text`}>{hot ? "HOT" : ''}</h2> */}
+                        <div className='hot-hot-hot absolute top-0 -left-4 -rotate-45 hot-text'>
+                            <h2 class="text_shadows">{hot ? "HOT" : ''}</h2>
+                        </div>
                         <img src={hinhAnh} alt="Avatar" style={{ width: 300, height: 300 }} onError={configErrorImage} />
                     </div>
                     <div

@@ -1,0 +1,38 @@
+// Medium devices (tablets, less than 992px)
+@media screen and (max-width: 991.98px) {}
+
+// Large devices (desktops, less than 1200px)
+@media screen and (min-width: 1299.98px) {
+    .main-home-menu {
+        width: 1200px !important;
+        margin: 0 auto;
+    }
+}
+
+// Small devices (landscape phones, less than 768px)
+@media screen and (max-width: 767.98px) {
+    .main-home-menu {
+        max-height: 400px !important;
+    }
+
+    .name_of_cinema {
+        width: 200px !important;
+    }
+
+    .ant-tabs-left>.ant-tabs-content-holder>.ant-tabs-content>.ant-tabs-tabpane {
+        padding-left: 5px;
+    }
+}
+
+// Extra small devices (portrait phones, less than 576px)
+@media screen and (max-width: 451px) {
+    .home-menu-layout {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 450.98px) {
+    .home-menu-layout {
+        display: block;
+    }
+}

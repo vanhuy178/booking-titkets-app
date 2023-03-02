@@ -9,6 +9,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import i18n from './i18';
 import { DOMAIN } from './utils/settings/config';
+import './sass/main.scss';
 // const signalR = require("@microsoft/signalr");
 
 // // // import { HubConnection, HubConnectionBuilder } from "@microsoft/signalr";

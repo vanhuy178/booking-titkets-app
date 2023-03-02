@@ -43,6 +43,8 @@ export default function Home(propsRoute) {
                     </div>
                 </section>
             </Section>
+            {/* THE TARGET OF WEEKENDS */}
+
 
             {/* HOME MENU */}
             <HomeMenu listCenimaSystem={listCenimaSystem} />

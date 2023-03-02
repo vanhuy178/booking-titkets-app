@@ -1,312 +1,312 @@
-/* THE LIGHT OF THE SCREEN */
-.trapezoid {
-	border-bottom: 50px solid #555;
-	border-left: 25px solid transparent;
-	border-right: 25px solid transparent;
-	height: 0;
-	width: 80%;
-	margin: 0 auto;
-	opacity: 0.4;
-	// filter: drop-shadow(0px 87px 67px rgba(0, 0, 0, 0.7));
-	// -webkit-filter: drop-shadow(0px 87px 67px rgba(0, 0, 0, 0.7));
-	// -moz-filter: drop-shadow(0px 87px 67px rgba(0, 0, 0, 0.7));
-	filter: brightness(124%) drop-shadow(11px 140px 87px #000000);
-	-webkit-filter: brightness(124%) drop-shadow(11px 140px 87px #000000);
-	-moz-filter: brightness(124%) drop-shadow(11px 140px 87px #000000);
-}
+// /* THE LIGHT OF THE SCREEN */
+// .trapezoid {
+// 	border-bottom: 50px solid #555;
+// 	border-left: 25px solid transparent;
+// 	border-right: 25px solid transparent;
+// 	height: 0;
+// 	width: 80%;
+// 	margin: 0 auto;
+// 	opacity: 0.4;
+// 	// filter: drop-shadow(0px 87px 67px rgba(0, 0, 0, 0.7));
+// 	// -webkit-filter: drop-shadow(0px 87px 67px rgba(0, 0, 0, 0.7));
+// 	// -moz-filter: drop-shadow(0px 87px 67px rgba(0, 0, 0, 0.7));
+// 	filter: brightness(124%) drop-shadow(11px 140px 87px #000000);
+// 	-webkit-filter: brightness(124%) drop-shadow(11px 140px 87px #000000);
+// 	-moz-filter: brightness(124%) drop-shadow(11px 140px 87px #000000);
+// }
 
-/* NORMALL CHAIR */
-.theChair {
-	width: 35px;
-	height: 35px;
-	border-radius: 5px;
-	cursor: pointer;
-	margin-left: 5px;
-	margin-right: 5px;
-	margin-bottom: 20px;
-	background-color: gray;
-}
+// /* NORMALL CHAIR */
+// .theChair {
+// 	width: 35px;
+// 	height: 35px;
+// 	border-radius: 5px;
+// 	cursor: pointer;
+// 	margin-left: 5px;
+// 	margin-right: 5px;
+// 	margin-bottom: 20px;
+// 	background-color: gray;
+// }
 
-/* ORDERED CHAIR */
-.theOrderChair {
-	cursor: no-drop;
-	background-color: rgb(232, 76, 76);
-}
+// /* ORDERED CHAIR */
+// .theOrderChair {
+// 	cursor: no-drop;
+// 	background-color: rgb(232, 76, 76);
+// }
 
-/* ORDERING CHAIR */
-.theOrderingChair {
-	background-color: rgb(18, 176, 18) !important;
-}
+// /* ORDERING CHAIR */
+// .theOrderingChair {
+// 	background-color: rgb(18, 176, 18) !important;
+// }
 
-/* VIP CHAIR */
-.theVipChair {
-	background-color: yellow;
-}
+// /* VIP CHAIR */
+// .theVipChair {
+// 	background-color: yellow;
+// }
 
-.theYourOrderChair {
-	background-color: rgb(248, 248, 248) !important;
-	-webkit-box-shadow: 5px 5px 15px 5px #000000;
-	box-shadow: 5px 5px 15px 5px #000000;
-}
+// .theYourOrderChair {
+// 	background-color: rgb(248, 248, 248) !important;
+// 	-webkit-box-shadow: 5px 5px 15px 5px #000000;
+// 	box-shadow: 5px 5px 15px 5px #000000;
+// }
 
-.theChairAreOrderingByByCustomer {
-	background-color: #007bff !important;
-	cursor: no-drop;
-}
+// .theChairAreOrderingByByCustomer {
+// 	background-color: #007bff !important;
+// 	cursor: no-drop;
+// }
 
-.ant-tabs-extra-content {
-	margin-right: 20px !important;
-	display: flex;
-	align-items: center;
-	padding: 30px 0;
-}
+// .ant-tabs-extra-content {
+// 	margin-right: 20px !important;
+// 	display: flex;
+// 	align-items: center;
+// 	padding: 30px 0;
+// }
 
-.header__nav__item-hover::before {
-	transform: scaleX(0);
-	transform-origin: bottom right;
-}
+// .header__nav__item-hover::before {
+// 	transform: scaleX(0);
+// 	transform-origin: bottom right;
+// }
 
-.header__nav__item-hover:hover::before,
-.header__nav__item-hover:focus::before {
-	transform: scaleX(1);
-	transform-origin: bottom left;
-}
+// .header__nav__item-hover:hover::before,
+// .header__nav__item-hover:focus::before {
+// 	transform: scaleX(1);
+// 	transform-origin: bottom left;
+// }
 
-.header__nav__item-hover::before {
-	content: " ";
-	display: block;
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	inset: 0 0 0 0;
-	background: hsl(200 100% 80%);
-	z-index: -1;
-	transition: transform .3s ease;
-}
+// .header__nav__item-hover::before {
+// 	content: " ";
+// 	display: block;
+// 	position: absolute;
+// 	top: 0;
+// 	right: 0;
+// 	bottom: 0;
+// 	left: 0;
+// 	inset: 0 0 0 0;
+// 	background: hsl(200 100% 80%);
+// 	z-index: -1;
+// 	transition: transform .3s ease;
+// }
 
-.header__nav__item-hover {
-	position: relative;
+// .header__nav__item-hover {
+// 	position: relative;
 
-}
-
-
-// Large devices (desktops, less than 1400px)
-@media screen and (max-width: 1400.98px) {
-	.ant-tabs-tab {
-
-		.tabResult,
-		.tabBooking {
-			font-size: 1rem;
-			padding: .9rem 1.2rem;
-		}
-	}
-
-	.trapezoid {
-		width: 75%;
-	}
-
-	.screen {
-		width: 70% !important;
-	}
-
-	.list-chairs {
-		grid-column-start: 1;
-		grid-column-end: 10;
-
-	}
-
-	.detail-bookings {
-		grid-column-start: 10;
-	}
-
-	.theChair {
-		margin-right: 8.9px;
-	}
-}
-
-// Large devices (desktops, less than 1200px)
-@media screen and (max-width: 1199.98px) {
-	.list-chairs {
-		grid-column-start: 1;
-		grid-column-end: 9;
-
-	}
-
-	.detail-bookings {
-		grid-column-start: 9;
-	}
-
-	.trapezoid {
-		width: 75%;
-	}
-
-	.list-chairs-render {
-		width: 100% !important;
-		margin: 20px 0 0 !important;
-		margin-left: 75px !important;
-	}
-
-	.theChair {
-		margin-right: 1px;
-	}
-}
+// }
 
 
+// // Large devices (desktops, less than 1400px)
+// @media screen and (max-width: 1400.98px) {
+// 	.ant-tabs-tab {
 
-// Medium devices (tablets, less than 992px)
-@media (max-width: 991.98px) {
-	.list-chairs {
-		grid-column-start: 1;
-		grid-column-end: 13;
-	}
+// 		.tabResult,
+// 		.tabBooking {
+// 			font-size: 1rem;
+// 			padding: .9rem 1.2rem;
+// 		}
+// 	}
 
-	.list-chairs-render {
-		width: 79% !important;
-	}
+// 	.trapezoid {
+// 		width: 75%;
+// 	}
 
-	.detail-bookings {
-		grid-column-start: 3;
-		grid-column-end: 11;
-	}
+// 	.screen {
+// 		width: 70% !important;
+// 	}
 
-	.theChair {
-		margin-right: 8px;
-	}
+// 	.list-chairs {
+// 		grid-column-start: 1;
+// 		grid-column-end: 10;
 
-	.list-chairs-render {
-		margin-left: 115px !important;
-	}
+// 	}
 
-	.trapezoid,
-	.screen {
-		width: 85% !important;
-	}
+// 	.detail-bookings {
+// 		grid-column-start: 10;
+// 	}
 
-	.detail-bookings {
-		width: 100%;
-		margin-bottom: 20px;
-	}
+// 	.theChair {
+// 		margin-right: 8.9px;
+// 	}
+// }
 
-	.description-chairs {
-		margin-top: 10px;
-	}
-}
+// // Large devices (desktops, less than 1200px)
+// @media screen and (max-width: 1199.98px) {
+// 	.list-chairs {
+// 		grid-column-start: 1;
+// 		grid-column-end: 9;
 
-// Small devices (landscape phones, less than 768px)
-@media (max-width: 767.98px) {
-	.ant-tabs-tab {
+// 	}
 
-		.tabResult,
-		.tabBooking {
-			font-size: .9rem;
-			padding: .5rem 1rem;
-		}
+// 	.detail-bookings {
+// 		grid-column-start: 9;
+// 	}
 
-	}
+// 	.trapezoid {
+// 		width: 75%;
+// 	}
 
-	.ant-tabs-extra-content {
-		padding: 15px 0;
-	}
+// 	.list-chairs-render {
+// 		width: 100% !important;
+// 		margin: 20px 0 0 !important;
+// 		margin-left: 75px !important;
+// 	}
 
-	.theChair {
-		margin-right: 5px;
-	}
-
-	.list-chairs-render {
-		margin-left: 20px !important;
-	}
-
-	.list-chairs-render {
-		width: 100% !important;
-	}
-}
+// 	.theChair {
+// 		margin-right: 1px;
+// 	}
+// }
 
 
-// Extra small devices (portrait phones, less than 576px)
-@media screen and (max-width: 575.98px) {
-	.ant-tabs-tab {
 
-		.tabResult,
-		.tabBooking {
-			font-size: .8rem;
-			padding: .3rem .2rem;
-		}
+// // Medium devices (tablets, less than 992px)
+// @media (max-width: 991.98px) {
+// 	.list-chairs {
+// 		grid-column-start: 1;
+// 		grid-column-end: 13;
+// 	}
 
-		.ant-tabs-tab-btn {
-			a {
-				font-size: 1rem;
-			}
-		}
-	}
+// 	.list-chairs-render {
+// 		width: 79% !important;
+// 	}
 
-	.list-chairs-render {
-		margin-left: 3px !important;
-	}
+// 	.detail-bookings {
+// 		grid-column-start: 3;
+// 		grid-column-end: 11;
+// 	}
 
-	.theChair {
-		width: 33px;
-		height: 33px;
-		line-height: 30px;
-		border-radius: 5px;
-		margin-left: 1px;
-		margin-right: 1px;
-	}
+// 	.theChair {
+// 		margin-right: 8px;
+// 	}
 
-	.description-chairs {
-		width: 100% !important;
-	}
-}
+// 	.list-chairs-render {
+// 		margin-left: 115px !important;
+// 	}
 
-@media screen and (max-width: 450px) {
+// 	.trapezoid,
+// 	.screen {
+// 		width: 85% !important;
+// 	}
 
-	.list-chairs {
-		grid-column-end: 13;
-	}
+// 	.detail-bookings {
+// 		width: 100%;
+// 		margin-bottom: 20px;
+// 	}
 
-	.description-chairs {
-		ul li {
-			text-align: center;
+// 	.description-chairs {
+// 		margin-top: 10px;
+// 	}
+// }
 
-			span {
-				display: block;
-			}
-		}
-	}
+// // Small devices (landscape phones, less than 768px)
+// @media (max-width: 767.98px) {
+// 	.ant-tabs-tab {
 
-	.break-seats {
-		display: none;
-	}
+// 		.tabResult,
+// 		.tabBooking {
+// 			font-size: .9rem;
+// 			padding: .5rem 1rem;
+// 		}
 
-	.ant-tabs-tab {
-		padding: 0 5px !important;
-		margin-left: 0 !important;
+// 	}
 
-		.tabResult,
-		.tabBooking {
-			font-size: .6rem;
-			padding: .1rem .2rem;
-		}
+// 	.ant-tabs-extra-content {
+// 		padding: 15px 0;
+// 	}
 
-		.ant-tabs-tab-btn {
-			a {
-				font-size: .9rem;
-				padding-left: 5px;
-			}
-		}
-	}
+// 	.theChair {
+// 		margin-right: 5px;
+// 	}
 
-	.detail-booking-responsive {
-		display: block;
-	}
+// 	.list-chairs-render {
+// 		margin-left: 20px !important;
+// 	}
 
-	.detail-bookings {
-		grid-column-start: 2;
-		grid-column-end: 12;
-	}
+// 	.list-chairs-render {
+// 		width: 100% !important;
+// 	}
+// }
 
-	.list-chairs-render {
-		margin-left: 9px !important;
-	}
-}
+
+// // Extra small devices (portrait phones, less than 576px)
+// @media screen and (max-width: 575.98px) {
+// 	.ant-tabs-tab {
+
+// 		.tabResult,
+// 		.tabBooking {
+// 			font-size: .8rem;
+// 			padding: .3rem .2rem;
+// 		}
+
+// 		.ant-tabs-tab-btn {
+// 			a {
+// 				font-size: 1rem;
+// 			}
+// 		}
+// 	}
+
+// 	.list-chairs-render {
+// 		margin-left: 3px !important;
+// 	}
+
+// 	.theChair {
+// 		width: 33px;
+// 		height: 33px;
+// 		line-height: 30px;
+// 		border-radius: 5px;
+// 		margin-left: 1px;
+// 		margin-right: 1px;
+// 	}
+
+// 	.description-chairs {
+// 		width: 100% !important;
+// 	}
+// }
+
+// @media screen and (max-width: 450px) {
+
+// 	.list-chairs {
+// 		grid-column-end: 13;
+// 	}
+
+// 	.description-chairs {
+// 		ul li {
+// 			text-align: center;
+
+// 			span {
+// 				display: block;
+// 			}
+// 		}
+// 	}
+
+// 	.break-seats {
+// 		display: none;
+// 	}
+
+// 	.ant-tabs-tab {
+// 		padding: 0 5px !important;
+// 		margin-left: 0 !important;
+
+// 		.tabResult,
+// 		.tabBooking {
+// 			font-size: .6rem;
+// 			padding: .1rem .2rem;
+// 		}
+
+// 		.ant-tabs-tab-btn {
+// 			a {
+// 				font-size: .9rem;
+// 				padding-left: 5px;
+// 			}
+// 		}
+// 	}
+
+// 	.detail-booking-responsive {
+// 		display: block;
+// 	}
+
+// 	.detail-bookings {
+// 		grid-column-start: 2;
+// 		grid-column-end: 12;
+// 	}
+
+// 	.list-chairs-render {
+// 		margin-left: 9px !important;
+// 	}
+// }

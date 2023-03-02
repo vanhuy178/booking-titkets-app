@@ -59,8 +59,6 @@ export const AdminTemplate = (props) => { //path, exact, Component
                         <img src="https://cyberlearn.vn/wp-content/uploads/2020/03/cyberlearn-min-new-opt2.png" alt="..." />
                     </div>
                     <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-
-
                         {/* User */}
                         <SubMenu key='sub1' icon={<UserOutlined />} title='Users'>
                             <Menu.Item key="1" >
@@ -79,22 +77,7 @@ export const AdminTemplate = (props) => { //path, exact, Component
                                 <NavLink to="/admin/movies/addnew">Add new</NavLink>
                             </Menu.Item>
                         </SubMenu>
-                        {/* <Menu.Item key="3" icon={<DesktopOutlined />}>
-                            <NavLink to="/admin/showtimes">Showtime</NavLink>
 
-                        </Menu.Item> */}
-                        {/* <SubMenu key="sub1" icon={<UserOutlined />} title="User">
-                            <Menu.Item key="3">Tom</Menu.Item>
-                            <Menu.Item key="4">Bill</Menu.Item>
-                            <Menu.Item key="5">Alex</Menu.Item>
-                        </SubMenu>
-                        <SubMenu key="sub2" icon={<TeamOutlined />} title="Team">
-                            <Menu.Item key="6">Team 1</Menu.Item>
-                            <Menu.Item key="8">Team 2</Menu.Item>
-                        </SubMenu>
-                        <Menu.Item key="9" icon={<FileOutlined />}>
-                            Files
-                        </Menu.Item> */}
                     </Menu>
                 </Sider>
                 <Layout className="site-layout">
@@ -103,8 +86,6 @@ export const AdminTemplate = (props) => { //path, exact, Component
                     </Header>
                     <Content style={{ margin: '0 16px' }}>
                         <Breadcrumb style={{ margin: '16px 0' }}>
-                            {/* <Breadcrumb.Item>User</Breadcrumb.Item>
-                            <Breadcrumb.Item>Bill</Breadcrumb.Item> */}
                         </Breadcrumb>
                         <div className="site-layout-background" style={{ padding: 24, minHeight: '85vh' }}>
                             <Component {...propRoute} />

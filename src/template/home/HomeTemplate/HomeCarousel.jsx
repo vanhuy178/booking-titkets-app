@@ -16,6 +16,7 @@ function HomeCarousel() {
     };
     const dispatch = useDispatch()
     const { listCarouselBanner } = useSelector((state) => state.carouselStore);
+    console.log({ listCarouselBanner });
     useEffect(
         () => {
             // DISPATCH ACTION WITH REDUX THUNK
