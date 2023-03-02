@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom';
 import moment from 'moment/moment';
 import TitleHeader from '../../../components/TitleHeader';
-import './styles/HomeMenu.scss';
 const { TabPane } = Tabs;
 
 class HomeMenu extends React.PureComponent {

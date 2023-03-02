@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchManagingBookingTickets, postBookingTickets } from '../redux/actions/managingBookingTickets';
 import { BookingTicketClass } from '../models/BookingTicketsClass'
 import _ from 'lodash'
-import './StylePage/checkout.scss';
 import { fethInfoUser } from '../redux/actions/ManagingUserAction';
 import moment from 'moment';
 import { orderCinemaChair } from '../redux/actions/ManagingMovies';

@@ -1,4 +1,4 @@
-/* .slick-prev:before,
+.slick-prev:before,
 .slick-next:before {
     color: gray !important;
     font-size: 3rem !important;
@@ -20,4 +20,4 @@
 
 .slick-list {
     max-height: 1000px;
-} */
+}

@@ -1,5 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { Fragment, useState } from "react";
 import { Redirect, Route } from "react-router";
 
 import { Layout, Menu, Breadcrumb } from 'antd';
@@ -9,8 +8,6 @@ import {
 } from '@ant-design/icons';
 import { NavLink } from "react-router-dom";
 import _ from "lodash";
-import ProfileMini from "../../components/ProfileMini";
-import { mainTextTitle } from "../../assets/constant";
 import HeaderAmin from "../../components/HeaderAmin";
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -38,8 +35,8 @@ export const AdminTemplate = (props) => { //path, exact, Component
     const operations = <Fragment>
         {userInfo === "" || userInfo.taiKhoan === "" ?
             <div>
-                <NavLink to='/register' className={`${mainTextTitle} px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900`}>Đăng ký</NavLink>
-                <NavLink to='/login' className={`${mainTextTitle} px-8 py-3 rounded`}>Đăng nhập</NavLink>
+                <NavLink to='/register' className={`main-text-color px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900`}>Đăng ký</NavLink>
+                <NavLink to='/login' className={`main-text-color px-8 py-3 rounded`}>Đăng nhập</NavLink>
             </div>
             :
             <div>

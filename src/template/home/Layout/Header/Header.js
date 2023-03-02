@@ -5,12 +5,11 @@ import MainLogo from '../../../../components/MainLogo';
 import { useTranslation } from 'react-i18next';
 import { BarsOutlined } from '@ant-design/icons';
 import ProfileMini from '../../../../components/ProfileMini';
-import './Header.scss';
-import { mainTextTitle } from '../../../../assets/constant';
+
 const { Option } = Select;
 export default function Header() {
 	// const userLogin = 
-	let titleNav = `text-xl xl:text-2xl ${mainTextTitle} font-bold hover:text-yellow-400`;
+	let titleNav = `text-xl xl:text-2xl main-text-color font-bold hover:text-yellow-400`;
 	let hover = 'font-bold hover:text-yellow-200 block lg:inline py-1 lg:py-0 hover:no-underline'
 	let infoUserName = "";
 

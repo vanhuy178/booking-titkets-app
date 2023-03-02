@@ -1,8 +1,6 @@
 import moment from 'moment'
 import React, { memo } from 'react'
 import { NavLink } from 'react-router-dom';
-import './styleCompononent/collapse.scss'
-
 function CollapseCinema(props) {
 
     const renderCard = () => {

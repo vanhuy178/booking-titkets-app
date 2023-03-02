@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import './styleCompononent/Movies_Flip.scss';
+import React from 'react'
 import { PlayCircleOutlined } from '@ant-design/icons'
 import { NavLink } from 'react-router-dom';
 function Movies_Flip(props) {

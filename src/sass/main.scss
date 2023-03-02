@@ -1,5 +1,5 @@
 @import './base/customize';
-
+@import './base/base';
 
 // COMPONENT
 @import './components/hot-hot-hot';
@@ -13,6 +13,7 @@
 @import './components/section';
 @import './components/slider';
 @import './components/home-carousel';
+@import './components/home-menu';
 @import './components/detail_movies';
 @import './components/header';
 @import './components/register';

@@ -7,7 +7,6 @@ import { messageError, notBlank } from '../../../../assets/constant';
 import { MessageRegister } from '../../../../components/ModalMessage';
 import * as Yup from 'yup';
 import { registerUserAction } from '../../../../redux/actions/ManagingUserAction';
-import './Register.scss';
 import ButtonBack from '../../../../components/ButtonBack';
 
 

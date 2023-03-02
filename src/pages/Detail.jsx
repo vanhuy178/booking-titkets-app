@@ -2,14 +2,12 @@ import React, { useEffect } from 'react'
 import { CustomCard } from '@tsamantanis/react-glassmorphism'
 import '@tsamantanis/react-glassmorphism/dist/index.css'
 import { useDispatch, useSelector } from 'react-redux'
-import '../assets/styles/ratingCircle.scss';
 import { fetchDetailShowTimesMovies } from '../redux/actions/ManagingMovies';
 import moment from 'moment';
-import { Rate, Table } from 'antd';
+import { Rate } from 'antd';
 import { Tabs } from 'antd';
 import TabPane from 'antd/es/tabs/TabPane';
 import { NavLink } from 'react-router-dom';
-import './StylePage/detail.scss'
 export default function Detail(props) {
 	let dispatch = useDispatch()
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import './styleCompononent/Loading.css';
 const styleLoading = {
     position: 'fixed',
     top: '0',

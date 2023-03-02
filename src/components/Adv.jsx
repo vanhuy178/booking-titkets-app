@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import './styleCompononent/Adv.scss';
 import LogoAdv from '../assets/image/bestDev.png'
 export default function Adv() {
     const [show, setShow] = useState(true);

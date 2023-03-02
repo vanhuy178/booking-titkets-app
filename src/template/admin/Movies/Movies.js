@@ -2,7 +2,6 @@ import { Table } from 'antd';
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteMoviesAcition, fetchMovies } from '../../../redux/actions/ManagingMovies';
-import './style.scss';
 import { CalendarOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { NavLink } from 'react-router-dom';
 

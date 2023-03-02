@@ -3,8 +3,7 @@ import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { fetchCarousel } from '../../../redux/actions/CarouselAction';
-import './styles/Homecarousel.scss';
-import { memo } from 'react'
+
 
 function HomeCarousel() {
     const contentStyle = {

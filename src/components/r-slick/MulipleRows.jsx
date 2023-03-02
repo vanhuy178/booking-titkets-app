@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import { SET_UPCOMING_FILM, SET_WATCHNG_FILM } from "../../redux/types/ManagingMoviesType";
 import Movies_Flip from "../Movies_Flip";
 import styleSlick from './styleSlick.module.css';
-import '../styleCompononent/slider.scss';
+
 
 const MultipleRows = (props) => {
     const { watchingMovies, upcomingMovies } = useSelector(state => state.managingMoviesStore);
