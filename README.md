@@ -2,7 +2,11 @@
 ## Project description
 - Link: https://backend.cyberlearn.vn/files/19-07-2021-du-an-cuoi-khoa.pdf
 ## Homepages
+<<<<<<< HEAD
 
+=======
+![](./src/assets/image/bookingTickets.png);
+>>>>>>> 50ce43c557c50182a1d427b234a30c2c8bfd6deb
 
 ## The technology that I'm using in this app.
 ```
@@ -74,4 +78,10 @@ src/
 |---translate: using for tranlate
 |---utils: config domain to call api
 |---App: config router
+<<<<<<< HEAD
 ```
+=======
+```
+
+
+>>>>>>> 50ce43c557c50182a1d427b234a30c2c8bfd6deb
