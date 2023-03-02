@@ -1,6 +1,6 @@
 import { createBrowserHistory } from 'history';
-import React, { Suspense } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import Loading from './components/Loading';
 
 import Checkout from './pages/Checkout';

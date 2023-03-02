@@ -93,8 +93,4 @@
     .title-form {
         @apply text-5xl mb-3 font-bold text-center;
     }
-
-
-    /* MODAL MESSAGE */
-
 }
