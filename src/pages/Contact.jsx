@@ -22,6 +22,9 @@ export default class Contact extends Component {
         }
     }
 
+    componentDidMount() {
+        document.title = 'Contacts - Cenima App';
+    }
     handleChangeValue = (event) => {
         let { name, value } = event.target;
         let newValue = { ...this.state.values, [name]: value };

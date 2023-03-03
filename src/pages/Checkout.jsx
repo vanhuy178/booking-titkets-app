@@ -28,6 +28,8 @@ export default function Checkout(props) {
 	</>;
 
 	useEffect(() => {
+		document.title = 'Checkout - Cenima App';
+
 		dispatch({ type: "CHANGE_TAB_ACTIVE", payload: '1' })
 		// dispatch(fethInfoUser());
 	}, [])

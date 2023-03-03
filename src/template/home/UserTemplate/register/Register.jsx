@@ -1,6 +1,6 @@
 
 import { useFormik } from 'formik';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { RegisterClass } from '../../../../models/RegisterClass';
 import { messageError, notBlank } from '../../../../assets/constant';
@@ -36,8 +36,10 @@ const SignupSchema = Yup.object().shape({
 const Register = () => {
   const [showMessageRegister, setShowMessageRegister] = useState(false);
   const { messageUserRegister } = useSelector(state => state.managingUserStore)
-  const dispatch = useDispatch()
-  console.log(messageUserRegister);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    document.title = 'Register - Cenima App';
+  }, [])
   const formik = useFormik({
     initialValues: new RegisterClass(),
     validationSchema: SignupSchema,

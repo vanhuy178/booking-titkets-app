@@ -12,6 +12,8 @@ export default function Detail(props) {
 	let dispatch = useDispatch()
 
 	useEffect(() => {
+		document.title = 'Details - Cenima App';
+
 		// TAKE INFO PARAMS FROM URL
 		let { id } = props.match.params
 

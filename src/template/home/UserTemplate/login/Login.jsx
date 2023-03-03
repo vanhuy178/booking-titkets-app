@@ -1,4 +1,4 @@
-import React, { useState, } from 'react'
+import React, { useEffect, useState, } from 'react'
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { postUserLogin } from '../../../../redux/actions/ManagingUserAction';
@@ -27,7 +27,9 @@ const Login = () => {
     const [showMEssageLogin, setShowMessageLogin] = useState(false);
     const { messageUserLogin } = useSelector(state => state.managingUserStore)
     const dispatch = useDispatch()
-
+    useEffect(() => {
+        document.title = 'Đăng nhập - Cenima App';
+    }, [])
     return (
         <>
             <ButtonBack address='./home' />

@@ -9,6 +9,7 @@ import {
 import { NavLink } from "react-router-dom";
 import _ from "lodash";
 import HeaderAmin from "../../components/HeaderAmin";
+import { useEffect } from "react";
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
@@ -17,6 +18,9 @@ export const AdminTemplate = (props) => { //path, exact, Component
     let userInfo = '';
     const [collapsed, setCollapsed] = useState(false);
 
+    useEffect(() => {
+        document.title = 'Admin - Cenima App';
+    })
     if (localStorage.getItem('USER_LOGIN')) {
         userInfo = JSON.parse(localStorage.getItem('USER_LOGIN'))
     }

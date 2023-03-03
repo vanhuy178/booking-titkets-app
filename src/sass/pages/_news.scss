@@ -1,0 +1,32 @@
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+
+.blog-post {
+    margin-bottom: 20px;
+}
+
+h2 {
+    margin-bottom: 5px;
+}
+
+h3 {
+    margin-bottom: 10px;
+}
+
+.blog-pagination {
+    a {
+        margin-left: 10px;
+    }
+}

@@ -17,6 +17,8 @@ export default function Home(propsRoute) {
 
     useEffect(
         () => {
+            document.title = 'Home - Cenima App';
+
             // DISPATCH ACTION WITH REDUX THUNK
             const action = fetchMovies()
             // CAN DISPATCH A FUNCTION WITH A SUPPORT OF REDUX - THUNK

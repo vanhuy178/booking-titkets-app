@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import ButtonBack from '../../../../components/ButtonBack';
 import { getDataUserAction } from '../../../../redux/actions/ManagingUserAction';
@@ -6,6 +6,9 @@ export default function UpdateLogin() {
   const [search, setSearch] = useState('');
   const dispatch = useDispatch()
   const { dataUser } = useSelector(state => state.managingUserStore);
+  useEffect(() => {
+    document.title = 'Lấy lại mật khẩu - Cenima App';
+  }, [])
   return (
     <>
       <ButtonBack address='/login' />

@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 export default function Profile() {
-    // const { userLogin } = useSelector(state => state.managingUserStore);
+    useEffect(() => {
+        document.title = 'Profiles - Cenima App';
+    }, [])
     let userInfo = '';
     if (localStorage.getItem('USER_LOGIN')) {
         userInfo = JSON.parse(localStorage.getItem('USER_LOGIN'))

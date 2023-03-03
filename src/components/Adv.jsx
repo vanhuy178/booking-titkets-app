@@ -16,7 +16,10 @@ export default function Adv() {
                         <img src={LogoAdv} style={{ width: '100%', height: '100%' }} />
                         <figcaption className='text-center'>
                             <h1 className='uppercase text-2xl font-bold'>Chú ủn và những thằng bạn</h1>
-                            <p className='mt-2'>N. Korea test-fires biggest intercontinental ballistic missile under commander Kim Jong Un</p>
+                            <p className='mt-2'>
+                                Vì sợ anh trai nào đó bên kia Thái Bình dương cà khịa, cùng với nổi lo anh em chung hệ tư tưởng bỏ rơi nhau và cũng để dằn mặt thằng em ruột phía nam, chú ủn đã quyết định sản xuất vũ khí hạt nhân để bảo vệ thế giới,
+                                vì "anh trai nào đó bên kia Thái Bình dương nói là anh sản xuất vũ khí hạt nhân là bảo vệ thế giới nhưng nước khác sản xuất là hủy diệt thế giới" với tâm hôn trong sáng anh ủn muốn chứng minh là không phải như vậy
+                            </p>
                         </figcaption>
                     </figure>
                 </a>
