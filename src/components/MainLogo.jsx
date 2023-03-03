@@ -17,7 +17,7 @@ const animation = `
 export default function MainLogo() {
     return (
         <>
-            <NavLink rel="noopener noreferrer" to='/home' aria-label="Back to homepage" className="flex items-center p-2 inline-block">
+            <NavLink rel="noopener noreferrer" to='/home' aria-label="Back to homepage" className="flex items-center p-2  hvr-grow">
                 <style>
                     {animation}
                 </style>

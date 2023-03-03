@@ -9,8 +9,8 @@ import ProfileMini from '../../../../components/ProfileMini';
 const { Option } = Select;
 export default function Header() {
 	// const userLogin = 
-	let titleNav = `text-xl xl:text-2xl main-text-color font-bold hover:text-yellow-400`;
-	let hover = 'font-bold hover:text-yellow-200 block lg:inline py-1 lg:py-0 hover:no-underline'
+	let titleNav = `text-xl xl:text-2xl main-text-color font-bold hover:text-white`;
+	let hover = 'font-bold hover:text-white block lg:inline py-1 lg:py-0 hover:no-underline'
 	let infoUserName = "";
 
 	// take from localstorage
@@ -27,9 +27,9 @@ export default function Header() {
 			return (
 				<>
 					{/* LOGIN AND RESGISTER */}
-					<NavLink to='/login' className={`main-text-color ${hover} `} i18nKey={'login'}>{t('login')}</NavLink>
-					<NavLink to='/register' className={`main-text-color md:mx-3 xl:mx-4 ${hover}`} i18nKey={'register'}>{t('register')}</NavLink>
-					<NavLink to='/admin' className={`main-text-color mr-2 xl:mr-3 ${hover} hidden lg:block`}>Admin</NavLink>
+					<NavLink to='/login' className={`main-text-color hvr-float ${hover}`} i18nKey={'login'}>{t('login')}</NavLink>
+					<NavLink to='/register' className={`main-text-color md:mx-3 xl:mx-4 hvr-float ${hover}`} i18nKey={'register'}>{t('register')}</NavLink>
+					<NavLink to='/admin' className={`main-text-color mr-2 xl:mr-3  hvr-float ${hover} hidden lg:block`}>Admin</NavLink>
 				</>
 			)
 		}
@@ -41,8 +41,8 @@ export default function Header() {
 	}
 	return (
 		// WE ARE USING MAMBA LIB IT IS A LIB SUPPORT FOR TAILWIND WITH CLASS NAME THE SAME TAILWIND
-		<header className={`p-4 bg-opacity-75 dark:bg-gray-800 dark:text-gray-100 bg-gray-700 w-full fixed z-10 animate__animated animate__bounceInDown`}>
-			<nav className="navbar navbar-expand-lg " >
+		<header className={`px-4 bg-opacity-75 dark:bg-gray-800 dark:text-gray-100 bg-gray-700 w-full fixed z-10 animate__animated animate__bounceInDown`}>
+			<nav className="navbar navbar-expand-lg py-0" >
 				<div className="container lg:flex lg:items-center">
 					<div className="hidden lg:block md:-ml-10">
 						<MainLogo />
@@ -68,14 +68,14 @@ export default function Header() {
 
 					<div className="collapse navbar-collapse" id="navbarNavDropdown">
 						<ul className="navbar-nav ml-auto lg:flex lg:items-center">
-							<li className="nav-item active lg:ml-2 lg:mt-0">
-								<NavLink to="/home" className={`nav-link lg:${titleNav}`} i18nKey={'home'}>{t('home')}</NavLink>
+							<li className="nav-item active lg:ml-2 lg:mt-0 hvr-bounce-to-bottom">
+								<NavLink to="/home" className={`nav-link lg:${titleNav} py-5`} i18nKey={'home'}>{t('home')}</NavLink>
 							</li>
-							<li className="nav-item lg:mx-10">
-								<NavLink to="/contact" className={`nav-link lg:${titleNav}`} i18nKey={'contact'}>{t('contact')}</NavLink>
+							<li className="nav-item lg:mx-10 hvr-bounce-to-bottom ">
+								<NavLink to="/contact" className={`nav-link lg:${titleNav}  py-5`} i18nKey={'contact'}>{t('contact')}</NavLink>
 							</li>
-							<li className="nav-item lg:mr-52 nav-item-center">
-								<NavLink to="/news" className={`nav-link lg:${titleNav}`} i18nKey={'news'}>{t('news')}</NavLink>
+							<li className="nav-item lg:mr-52 nav-item-center hvr-bounce-to-bottom ">
+								<NavLink to="/news" className={`nav-link lg:${titleNav}  py-5`} i18nKey={'news'}>{t('news')}</NavLink>
 							</li>
 							<li className="nav-item ml-0 lg:ml-80 lg:flex lg:items-center">
 								{renderLogin()}
