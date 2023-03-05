@@ -17,14 +17,14 @@ function Movies_Flip(props) {
                         <div className='hot-hot-hot absolute top-0 -left-4 -rotate-45 hot-text'>
                             <h2 class="text_shadows">{hot ? "HOT" : ''}</h2>
                         </div>
-                        <img src={hinhAnh} alt="Avatar" style={{ width: 300, height: 300 }} onError={configErrorImage} />
+                        <img className='image-flip' loading="lazy" src={hinhAnh} alt="Avatar" style={{ width: 300, height: 300 }} onError={configErrorImage} />
                     </div>
                     <div
                         className="flip-card-back" style={{ position: 'relative', backgroundColor: 'rgba(0,0,0,.9)' }}>
                         <div
 
                             style={{ position: 'absolute', top: 0, left: 0 }} >
-                            <img src={hinhAnh} alt="Avatar" style={{ width: 300, height: 300 }} onError={configErrorImage} />
+                            <img className='image-flip' loading="lazy" src={hinhAnh} alt="Avatar" style={{ width: 300, height: 300 }} onError={configErrorImage} />
                         </div>
                         {/* LAYOUT */}
                         {/* ADD EVENT TO SHOW TRAILER */}

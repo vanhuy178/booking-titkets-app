@@ -57,51 +57,13 @@ class HomeMenu extends React.PureComponent {
 															<p className='text-lg mt-1'>Ngày chiếu và thời gian chiếu: </p>
 
 															<p className='text-blue-600 uppercase mt-2'
-																// onClick={() => this.setState({ showtimes: !this.state.showtimes })}
-																data-toggle="modal" data-target={`#exampleModal-${movieIndex}`}
+
+																data-toggle="collapse"
+																data-target={`#HomeMenu-${movieIndex}`}
+															// data-target={`#exampleModal`}
 															>
 																xem lịch chiếu</p>
-															{/* Modal */}
-															<div className="modal fade" id={`exampleModal-${movieIndex}`} tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true" style={{ maxHeight: '700px' }}>
-																<div className="modal-dialog" style={{ maxWidth: '800px' }}>
-																	<div className="modal-content">
-																		<div className="modal-header">
-																			<h5 className="modal-title" id="exampleModalLabel">Thông tin chi tiết: </h5>
-																			<h5 className="modal-title">Tên Rạp: {itemCinema.tenCumRap}. </h5>
-																			<h5 className="modal-title">Tên phim: {movieItem.tenPhim}</h5>
-																			<button type="button" className="close" data-dismiss="modal" aria-label="Close">
-																				<span aria-hidden="true">×</span>
-																			</button>
-																		</div>
-																		<div className="modal-body overflow-y-auto">
-
-																			{movieItem.lstLichChieuTheoPhim && movieItem.lstLichChieuTheoPhim.map((itemShowTimeMovies, indexShowTimeMovies) => {
-																				return (
-																					<>
-																						{/* // USING MOMENT LIB TO FOTMAT TIME */}
-																						<NavLink to={`/checkout/${itemShowTimeMovies.maLichChieu}`}
-																							className={`text-green-500 text-xl mb-5 block
-																							animate__animated animate__swing animate__delay-${indexShowTimeMovies + 1}00ms `}
-																							key={indexShowTimeMovies}>
-																							<p>{itemShowTimeMovies.tenRap}</p>
-																							<p>
-																								{moment(itemShowTimeMovies.ngayChieuGioChieu).format('d/m/yy')}
-																							</p>
-																							<p className=''>
-																								{moment(itemShowTimeMovies.ngayChieuGioChieu).format('hh:mm a')}
-																							</p>
-																							<p>Giá vé: {itemShowTimeMovies.giaVe}</p>
-																						</NavLink>
-																					</>
-																				)
-																			})}
-																		</div>
-																		<div className="modal-footer">
-																			<button type="button" className="btn btn-secondary" data-dismiss="modal">OK</button>
-																		</div>
-																	</div>
-																</div>
-															</div>
+															{this.showModal(movieItem, movieIndex, itemCinema)}
 														</div>
 													</div>
 													<hr />
@@ -109,6 +71,7 @@ class HomeMenu extends React.PureComponent {
 											)
 										})}
 									</div>
+
 								</TabPane>
 							)
 						})}
@@ -118,21 +81,60 @@ class HomeMenu extends React.PureComponent {
 		})
 	}
 
-	render() {
-		// animate__animated animate__backInUp animate__delay-4s
 
 
+	showModal(movieItem, movieIndex, itemCinema) {
 		return (
-			<div className='home-menu-layout'>
-				<TitleHeader titleHeader={'Danh sách hệ thống rạp'} />
-				<div style={{ maxHeight: '700px', overflow: 'auto' }} className='main-home-menu'>
-					<div className=''>
-						<Tabs tabPosition={this.state.tabPosition} className='home-menu  bg-white' >
-							{this.renderCinemaSystem()}
-						</Tabs>
+			<>
+				<div className="collapse" id={`HomeMenu-${movieIndex}`}>
+					<div className="card card-body">
+						<title className='mb-1'>
+							<h5 className="modal-title" id="exampleModalLabel">Thông tin chi tiết: </h5>
+							<h5 className="modal-title">Tên Rạp: {itemCinema.tenCumRap}. </h5>
+							<h5 className="modal-title">Tên phim: {movieItem.tenPhim}</h5>
+						</title>
+						<div className="listShowtimes grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7">
+							{movieItem.lstLichChieuTheoPhim && movieItem.lstLichChieuTheoPhim.map((itemShowTimeMovies, indexShowTimeMovies) => {
+								return (
+									<div>
+
+										<NavLink to={`/checkout/${itemShowTimeMovies.maLichChieu}`}
+
+											className={`text-green-500 text-sm mb-5 block
+									animate__animated animate__swing animate__delay-${indexShowTimeMovies + 1}00ms `}
+											key={indexShowTimeMovies}>
+											<p>{itemShowTimeMovies.tenRap}</p>
+											<p>
+												{moment(itemShowTimeMovies.ngayChieuGioChieu).format('d/m/yy')}
+											</p>
+											<p>
+												{moment(itemShowTimeMovies.ngayChieuGioChieu).format('hh:mm a')}
+											</p>
+											<p>Giá vé: {itemShowTimeMovies.giaVe}</p>
+										</NavLink>
+									</div>
+								)
+							})}
+						</div>
 					</div>
 				</div>
-			</div>
+			</>
+		)
+	}
+	render() {
+		return (
+			<>
+				<div className='home-menu-layout'>
+					<TitleHeader titleHeader={'Danh sách hệ thống rạp'} />
+					<div style={{ maxHeight: '700px', overflow: 'auto' }} className='main-home-menu'>
+						<div className=''>
+							<Tabs tabPosition={this.state.tabPosition} className='home-menu  bg-white' >
+								{this.renderCinemaSystem()}
+							</Tabs>
+						</div>
+					</div>
+				</div>
+			</>
 		);
 	}
 }

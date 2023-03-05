@@ -7,8 +7,57 @@
     }
 }
 
+@media screen and (min-width: 992px) {
+    .navbar .navbar-nav .nav-item {
+        padding-top: 20px !important;
+        padding-bottom: 20px !important;
+
+        .nav-item-center {
+            display: block;
+        }
+
+        .nav-news-item-responsive {
+            display: none;
+        }
+
+        .nav-register {
+            display: block !important;
+        }
+
+        .nav-register-responsive {
+            display: none !important;
+        }
+    }
+}
+
 @media screen and (max-width: 1199.98px) {
     .nav-item-center {
         margin-right: 12rem;
     }
+}
+
+@media screen and (max-width: 991.98px) {
+    .navbar {
+        padding-top: 20px !important;
+        padding-bottom: 20px !important;
+
+        .nav-news-item {
+            display: none;
+        }
+
+        .nav-news-item-responsive {
+            display: block;
+
+        }
+
+        .nav-register {
+            display: none !important;
+        }
+
+        .nav-register-responsive {
+            display: block !important;
+        }
+    }
+
+
 }

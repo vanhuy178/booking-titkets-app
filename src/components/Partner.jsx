@@ -19,14 +19,14 @@ export default function Partner(props) {
                 {/* The slideshow */}
                 <div className="carousel-inner">
                     <figure className="imghvr-slide-left carousel-item active " >
-                        <img src={la1} alt="Los Angeles" className='w-full h-96' />
+                        <img src={la1} alt="Los Angeles" className='w-full h-96' loading="lazy" />
                         <figcaption className='text-left'>
                             <h1 className='text-xl my-2'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate, quo?</h1>
                             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit repellat, quae iusto architecto non, ipsam vitae eos quisquam delectus corporis repudiandae reiciendis officiis, earum dicta sequi voluptas facere nemo sunt?</p>
                         </figcaption>
                     </figure>
                     <figure className="imghvr-slide-left carousel-item" >
-                        <img src={la2} alt="Los Angeles" className='w-full h-96' />
+                        <img src={la2} alt="Los Angeles" className='w-full h-96' loading="lazy" />
                         <figcaption>
                             <h1 className='text-xl my-2'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate, quo?</h1>
                             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit repellat, quae iusto architecto non, ipsam vitae eos quisquam delectus corporis repudiandae reiciendis officiis, earum dicta sequi voluptas facere nemo sunt?</p>
@@ -34,7 +34,7 @@ export default function Partner(props) {
                         </figcaption>
                     </figure>
                     <figure className="imghvr-slide-left carousel-item" >
-                        <img src={la3} alt="Los Angeles" className='w-full h-96' />
+                        <img src={la3} alt="Los Angeles" className='w-full h-96' loading="lazy" />
                         <figcaption>
                             <h1 className='text-xl my-2'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate, quo?</h1>
                             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit repellat, quae iusto architecto non, ipsam vitae eos quisquam delectus corporis repudiandae reiciendis officiis, earum dicta sequi voluptas facere nemo sunt?</p>

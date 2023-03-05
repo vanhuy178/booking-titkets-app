@@ -31,7 +31,7 @@ function HomeCarousel() {
         return listCarouselBanner.map((item, index) => {
             return (
                 <div key={index} >
-                    <div className={`max-w-full wow animate__fadeInUp`} data-wow-duration='2' data-wow-delay="0" style={{ ...contentStyle, backgroundImage: `url(${item.hinhAnh})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundAttachment: 'fixed' }}>
+                    <div className={`max-w-full`} style={{ ...contentStyle, backgroundImage: `url(${item.hinhAnh})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundAttachment: 'fixed' }}>
                     </div>
                 </div >
             )

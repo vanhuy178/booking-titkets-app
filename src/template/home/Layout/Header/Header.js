@@ -27,8 +27,9 @@ export default function Header() {
 			return (
 				<>
 					{/* LOGIN AND RESGISTER */}
-					<NavLink to='/login' className={`main-text-color hvr-float ${hover}`} i18nKey={'login'}>{t('login')}</NavLink>
-					<NavLink to='/register' className={`main-text-color md:mx-3 xl:mx-4 hvr-float ${hover}`} i18nKey={'register'}>{t('register')}</NavLink>
+					<NavLink to='/login' className={`nav-login main-text-color hvr-float ${hover}`} i18nKey={'login'}>{t('login')}</NavLink>
+					<NavLink to='/register' className={`nav-register main-text-color md:mx-3 xl:mx-4 hvr-float ${hover}`} i18nKey={'register'}>{t('register')}</NavLink>
+					<NavLink to='/register' className={`nav-register-responsive  main-text-color hvr-float ${hover}`} i18nKey={'register'}>{t('register')}</NavLink>
 					<NavLink to='/admin' className={`main-text-color mr-2 xl:mr-3  hvr-float ${hover} hidden lg:block`}>Admin</NavLink>
 				</>
 			)
@@ -69,13 +70,16 @@ export default function Header() {
 					<div className="collapse navbar-collapse" id="navbarNavDropdown">
 						<ul className="navbar-nav ml-auto lg:flex lg:items-center">
 							<li className="nav-item active lg:ml-2 lg:mt-0 hvr-bounce-to-bottom">
-								<NavLink to="/home" className={`nav-link lg:${titleNav} py-5`} i18nKey={'home'}>{t('home')}</NavLink>
+								<NavLink to="/home" className={`nav-link lg:${titleNav} xl:py-5`} i18nKey={'home'}>{t('home')}</NavLink>
 							</li>
 							<li className="nav-item lg:mx-10 hvr-bounce-to-bottom ">
-								<NavLink to="/contact" className={`nav-link lg:${titleNav}  py-5`} i18nKey={'contact'}>{t('contact')}</NavLink>
+								<NavLink to="/contact" className={`nav-link lg:${titleNav}  xl:py-5`} i18nKey={'contact'}>{t('contact')}</NavLink>
 							</li>
-							<li className="nav-item lg:mr-52 nav-item-center hvr-bounce-to-bottom ">
-								<NavLink to="/news" className={`nav-link lg:${titleNav}  py-5`} i18nKey={'news'}>{t('news')}</NavLink>
+							<li className="nav-news-item nav-item lg:mr-52 nav-item-center hvr-bounce-to-bottom ">
+								<NavLink to="/news" className={`nav-link lg:${titleNav}  xl:py-5`} i18nKey={'news'}>{t('news')}</NavLink>
+							</li>
+							<li className="nav-news-item-responsive nav-item lg:mx-10 hvr-bounce-to-bottom">
+								<NavLink to="/news" className={`nav-link lg:${titleNav}  xl:py-5`} i18nKey={'news'}>{t('news')}</NavLink>
 							</li>
 							<li className="nav-item ml-0 lg:ml-80 lg:flex lg:items-center">
 								{renderLogin()}

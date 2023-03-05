@@ -48,4 +48,8 @@
     transform: rotateY(180deg);
 }
 
-@media screen and (max-width: 576px) {}
+@media screen and (max-width: 450.98px) {
+    .flip-card {
+        width: 220px !important;
+    }
+}

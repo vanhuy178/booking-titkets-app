@@ -40,7 +40,7 @@ export default function Detail(props) {
 				>
 					<div className="grid grid-cols-12">
 						<div className="col-span-5 col-start-2 flex items-center movies-logo__response">
-							<img src={image} alt={detailMoviesShowTimesInfo.tenPhim} style={{ width: '200px', height: '300px' }} className='animate__animated animate__pulse animate__slower animate__infinite infinite main-title__image' />
+							<img src={image} loading="lazy" alt={detailMoviesShowTimesInfo.tenPhim} style={{ width: '200px', height: '300px' }} className='animate__animated animate__pulse animate__slower animate__infinite infinite main-title__image' />
 							<div className='ml-5 text-gray-700 bg-slate-100 p-1 rounded-sm detail_showtimes'>
 								<p className='text-2xl'>Ngày chiếu: {moment(detailMoviesShowTimesInfo.ngayKhoiChieu).format('d.mm.yyyy')}</p>
 								<p className='text-2xl'>{detailMoviesShowTimesInfo.tenPhim}</p>
@@ -87,7 +87,7 @@ export default function Detail(props) {
 											detailMoviesShowTimesInfo.heThongRapChieu && detailMoviesShowTimesInfo.heThongRapChieu.map((itemCinema, index) => {
 												return (<TabPane tab={
 													<div>
-														<img src={itemCinema.logo} alt={itemCinema.tenPhim} className='rounded-full' width={50} />
+														<img loading="lazy" src={itemCinema.logo} alt={itemCinema.tenPhim} className='rounded-full' width={50} />
 														{itemCinema.tenHeThongRap}
 													</div>
 												}
@@ -99,7 +99,7 @@ export default function Detail(props) {
 															return (
 																<div className='mb-5' key={indexGroupCinema}>
 																	<div className="flex">
-																		<img src={itemGroupCinema.hinhAnh} alt={itemGroupCinema.tenCumRap} style={{ width: '50px', height: '50px' }} />
+																		<img loading="lazy" src={itemGroupCinema.hinhAnh} alt={itemGroupCinema.tenCumRap} style={{ width: '50px', height: '50px' }} />
 																		<div className='ml-1 md:ml-5'>
 																			<p className='md:text-md lg:text-xl md:leading-3 font-bold'>{itemGroupCinema.tenCumRap}</p>
 																			<p className='text-sm mt-3 text-gray-500'>{itemGroupCinema.diaChi}</p>

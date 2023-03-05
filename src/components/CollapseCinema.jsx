@@ -1,7 +1,12 @@
 import moment from 'moment'
-import React, { memo } from 'react'
+import React, { memo, useState } from 'react'
 import { NavLink } from 'react-router-dom';
 function CollapseCinema(props) {
+    const [show, setShow] = useState(false);
+
+    const handleShowHide = () => {
+        setShow(false);
+    }
 
     const renderCard = () => {
         return props.listCenimaSystem && props.listCenimaSystem.map((itemCinema, indexCinema) => {
@@ -55,7 +60,8 @@ function CollapseCinema(props) {
                                                         >
                                                             xem lịch chiếu</p>
                                                         {/* Modal */}
-                                                        <div className="modal fade" id={`exampleModal-${indexListMovies}`} tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true" style={{ maxHeight: '700px' }}>
+
+                                                        <div className={`modal fade`} id={`exampleModal-${indexListMovies}`} tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true" style={{ maxHeight: '700px' }}>
                                                             <div className="modal-dialog" style={{ maxWidth: '800px' }}>
                                                                 <div className="modal-content">
                                                                     <div className="modal-header">
@@ -67,12 +73,12 @@ function CollapseCinema(props) {
                                                                         </button>
                                                                     </div>
                                                                     <div className="modal-body overflow-y-auto">
-
                                                                         {itemListMovies.lstLichChieuTheoPhim && itemListMovies.lstLichChieuTheoPhim.map((itemShowTimeMovies, indexShowTimeMovies) => {
                                                                             return (
                                                                                 <>
                                                                                     {/* // USING MOMENT LIB TO FOTMAT TIME */}
                                                                                     <NavLink to={`/checkout/${itemShowTimeMovies.maLichChieu}`}
+
                                                                                         className={`text-green-500 text-xl mb-5 block
                                                                                         animate__animated animate__swing animate__delay-${indexShowTimeMovies + 1}00ms `}
                                                                                         key={indexShowTimeMovies}>
@@ -104,7 +110,7 @@ function CollapseCinema(props) {
                             })}
                         </div>
                     </div>
-                </div>
+                </div >
             )
         })
     }

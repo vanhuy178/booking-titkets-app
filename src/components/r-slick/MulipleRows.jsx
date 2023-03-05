@@ -87,9 +87,9 @@ const MultipleRows = (props) => {
                 }
             },
             {
-                breakpoint: 576,
+                breakpoint: 450.98,
                 settings: {
-                    slidesToShow: 1,
+                    slidesToShow: 2,
                     slidesToScroll: 1,
                     centerPadding: "0px",
                 }

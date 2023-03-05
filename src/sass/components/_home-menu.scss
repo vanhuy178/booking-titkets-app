@@ -1,6 +1,19 @@
 // Medium devices (tablets, less than 992px)
 @media screen and (max-width: 991.98px) {}
 
+.modal {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+}
+
+.home-menu-modal {
+    z-index: 99999 !important;
+
+    .home-menu-modal-dialog {}
+}
+
+
 // Large devices (desktops, less than 1200px)
 @media screen and (min-width: 1299.98px) {
     .main-home-menu {

@@ -24,3 +24,12 @@
     }
 
 }
+
+@media screen and (max-width: 450.98px) {
+    .modal-adv {
+        position: fixed;
+        top: 10%;
+        left: 10%;
+        transform: translate(-50%, -50%);
+    }
+}
