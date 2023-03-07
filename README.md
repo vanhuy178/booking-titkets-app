@@ -7,6 +7,13 @@
 
 
 ## Những chức năng chính của trang web
+*** Tài khoản và mật khẩu quản trị: 
+Tài khoản: 0901959488cxcx
+Mật khẩu: 12312345
+
+*** Tài khoản dự bị: 
+Tài khoản:123@111
+Mật khẩu: 12345678
 
 *** Một số link tới trang youtobe bị lỗi ở card của trang chủ, mong anh chị bỏ qua 
 1. Thêm, xóa, tìm kiếm người dùng với quyền quản trị
