@@ -1,12 +1,14 @@
 # Booking tickets project
 ## Miêu tả dự án
 - Link: https://backend.cyberlearn.vn/files/19-07-2021-du-an-cuoi-khoa.pdf
+- Link demo: https://64074e281d81b9074c67ffd1--chimerical-dango-ee9543.netlify.app/
 ## Homepages
 ![](./src/assets/image/bookingTickets.png);
 
 
 ## Những chức năng chính của trang web
 
+*** Một số link tới trang youtobe bị lỗi ở card của trang chủ, mong anh chị bỏ qua 
 1. Thêm, xóa, tìm kiếm người dùng với quyền quản trị
 2. Thêm, sửa, xóa, tìm kiếm người dùng với quyền quản trị
 3. Chức năng đăng nhập, đăng ký, lấy mật khẩu kiểm tra validation của form
