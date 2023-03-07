@@ -1,8 +1,18 @@
 # Booking tickets project
-## Project description
+## Miêu tả dự án
 - Link: https://backend.cyberlearn.vn/files/19-07-2021-du-an-cuoi-khoa.pdf
 ## Homepages
 ![](./src/assets/image/bookingTickets.png);
+
+
+## Những chức năng chính của trang web
+
+1. Thêm, xóa, tìm kiếm người dùng với quyền quản trị
+2. Thêm, sửa, xóa, tìm kiếm người dùng với quyền quản trị
+3. Chức năng đăng nhập, đăng ký, lấy mật khẩu kiểm tra validation của form
+4. Đặt vé xem phim, đặt ghế, xem lịch sử đặt vé
+5. Responsive với 4 khích thước chính: 1199px, 991px, 765px, 450px
+
 
 ## The technology that I'm using in this app.
 ```

@@ -110,7 +110,7 @@ export default class Contact extends Component {
         return (
             <>
                 <form className='main-bg-color contact-us' style={{ width: '700px', margin: '0 auto', padding: '100px 0' }} >
-                    <TitleHeader titleHeader={'Contact with me'} />
+                    <TitleHeader titleHeader={'Contact with me (EmailJs)'} />
                     <div className="container" style={{ borderRadius: '10px' }}>
                         <div className="row pt-2">
                             <div className="col-md-12" >

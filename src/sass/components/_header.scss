@@ -16,9 +16,7 @@
             display: block;
         }
 
-        .nav-news-item-responsive {
-            display: none;
-        }
+
 
         .nav-register {
             display: block !important;
@@ -27,6 +25,11 @@
         .nav-register-responsive {
             display: none !important;
         }
+
+    }
+
+    .navbar .navbar-nav .nav-item.nav-news-item-responsive {
+        display: none !important;
     }
 }
 

@@ -25,11 +25,20 @@
 
 }
 
+@media screen and (max-width: 576.98px) {
+    .modal-adv {
+        position: fixed;
+        top: 10%;
+        left: 20%;
+        transform: translate(-10%, -50%);
+    }
+}
+
 @media screen and (max-width: 450.98px) {
     .modal-adv {
         position: fixed;
         top: 10%;
-        left: 10%;
-        transform: translate(-50%, -50%);
+        left: 11%;
+        transform: translate(-10%, -50%);
     }
 }
