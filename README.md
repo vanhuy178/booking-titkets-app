@@ -1,7 +1,7 @@
 # Booking tickets project
 ## Miêu tả dự án
 - Link: https://backend.cyberlearn.vn/files/19-07-2021-du-an-cuoi-khoa.pdf
-- Link demo: https://64074e281d81b9074c67ffd1--chimerical-dango-ee9543.netlify.app/
+- Link demo: https://64097ebe112b5b7b3a6dc834--verdant-concha-1b4f7e.netlify.app/
 ## Homepages
 ![](./src/assets/image/bookingTickets.png);
 
