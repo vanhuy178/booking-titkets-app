@@ -85,9 +85,8 @@ const AddUsers = () => {
 
                 onSubmit={values => {
                     // same shape as initial values
-                    console.log(values);
                     dispatch(addUserInfo(values))
-                    console.log(values);
+
                 }}
             >
                 {({ errors, values, touched }) => (

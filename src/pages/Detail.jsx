@@ -27,7 +27,32 @@ export default function Detail(props) {
 	const description = detailMoviesShowTimesInfo.moTa;
 	const rating = detailMoviesShowTimesInfo.danhGia;
 	const image = detailMoviesShowTimesInfo.hinhAnh
+	const renderShowTimes = (props) => {
+		return props.lichChieuPhim && props.lichChieuPhim.map((itemInforShowtimesMovie, indexShowtimesMovies) => {
 
+			return (
+				// LINK TO CHECKOUT PAGE
+				<NavLink to={`/checkout/${itemInforShowtimesMovie.maLichChieu}`} className='text-sm col-span-1 text-green-700' key={indexShowtimesMovies}>
+					<p>
+						{itemInforShowtimesMovie.tenRap}
+					</p>
+					<p>
+						Giá vé: {itemInforShowtimesMovie.giaVe}
+					</p>
+					<p>
+						Thời lượng: {itemInforShowtimesMovie.thoiLuong}'
+					</p>
+					<p>
+						{moment(itemInforShowtimesMovie.ngayChieuGioChieu).format('d.mm.yyyy')}
+					</p>
+					<p>
+						{moment(itemInforShowtimesMovie.ngayChieuGioChieu).format('hh:mm A')}
+					</p>
+				</NavLink>
+			)
+		})
+
+	}
 	return (
 		<>
 			<div className='detail-c ' style={{ backgroundImage: `url(${detailMoviesShowTimesInfo.hinhAnh})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}>
@@ -106,7 +131,7 @@ export default function Detail(props) {
 																		</div>
 																	</div>
 																	<div className="info-showtimes-movie mt-2 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-																		{itemGroupCinema.lichChieuPhim && itemGroupCinema.lichChieuPhim.map((itemInforShowtimesMovie, indexShowtimesMovies) => {
+																		{/* {itemGroupCinema.lichChieuPhim && itemGroupCinema.lichChieuPhim.map((itemInforShowtimesMovie, indexShowtimesMovies) => {
 
 																			return (
 																				// LINK TO CHECKOUT PAGE
@@ -128,7 +153,11 @@ export default function Detail(props) {
 																					</p>
 																				</NavLink>
 																			)
-																		})}
+																		})} */}
+																		{
+																			renderShowTimes(itemGroupCinema)
+
+																		}
 																	</div>
 
 																</div>
@@ -161,7 +190,7 @@ export default function Detail(props) {
 						</Tabs>
 					</div>
 
-					{/*WHICH CINEMA will WILL THIS MOVIE BE SHOWN*/}
+
 
 
 				</CustomCard>

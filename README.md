@@ -93,10 +93,7 @@ src/
 |---translate: using for tranlate
 |---utils: config domain to call api
 |---App: config router
-<<<<<<< HEAD
-```
-=======
 ```
 
 
->>>>>>> 50ce43c557c50182a1d427b234a30c2c8bfd6deb
+

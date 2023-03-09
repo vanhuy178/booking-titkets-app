@@ -4,26 +4,24 @@ import { TOKEN, USER_LOGIN } from '../utils/settings/config';
 
 export default function ProfileMini(info) {
 
+    const handleServices = () => {
+        localStorage.removeItem(USER_LOGIN);
+        localStorage.removeItem(TOKEN);
+        window.location.reload()
+    }
+
     let logOut =
         <li className="nav-item hidden lg:inline lg:pb-o pd-2 lg:mx-5 ">
             <NavLink
                 to='/home' className='mr-2 main-text-color'
-                onClick={() => {
-                    localStorage.removeItem(USER_LOGIN);
-                    localStorage.removeItem(TOKEN);
-                    window.location.reload()
-                }}
+                onClick={handleServices}
             >Log out <i class="fa-solid fa-right-from-bracket main-text-color "></i> </NavLink>
         </li>
     let logOutResponsive =
         <li className="nav-item block lg:hidden pb-2">
             <NavLink
                 to='/home' className='mr-2 main-text-color text-sm'
-                onClick={() => {
-                    localStorage.removeItem(USER_LOGIN);
-                    localStorage.removeItem(TOKEN);
-                    window.location.reload()
-                }}
+                onClick={handleServices}
             >Log out <i class="fa-solid fa-right-from-bracket main-text-color"></i> </NavLink>
         </li>
 

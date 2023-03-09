@@ -56,8 +56,6 @@ const EditMovies = (props) => {
 					}
 				}
 			}
-
-			console.log({ formData });
 			// USING POST REQUEST TO POST DATA 
 			dispatch(updatedInfoMoviesAction(formData))
 		}

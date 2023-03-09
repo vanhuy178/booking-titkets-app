@@ -8,6 +8,7 @@ import * as Yup from 'yup';
 import { notBlank } from '../../../../assets/constant';
 import { UserLoginClass } from '../../../../models/LoginClass';
 import ButtonBack from '../../../../components/ButtonBack';
+import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 
 
 const SignupSchema = Yup.object().shape({
@@ -26,7 +27,8 @@ const SignupSchema = Yup.object().shape({
 const Login = () => {
     const [showMEssageLogin, setShowMessageLogin] = useState(false);
     const { messageUserLogin } = useSelector(state => state.managingUserStore)
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const [show, setShow] = useState(false);
     useEffect(() => {
         document.title = 'Đăng nhập - Cenima App';
     }, [])
@@ -44,7 +46,8 @@ const Login = () => {
                                 // same shape as initial values
                                 const action = postUserLogin(values)
                                 dispatch(action)
-                            }}
+                            }
+                            }
                         >
                             {({ errors, touched }) => (
                                 <Form className='w-80 sm:w-96'>
@@ -55,11 +58,17 @@ const Login = () => {
                                         <div className='text-red-500 text-sm'>{errors.taiKhoan}</div>
                                     ) : null}
                                     {/* PASSWORD */}
-                                    <h1 className='text-pink-300 text-xl mb-2'>Mật khẩu</h1>
-                                    <Field name="matKhau" className='block w-full py-1 bg-pink-300 text-white mb-3 rounded-sm' type='password' />
+                                    <div className="relative">
+                                        <h1 className='text-pink-300 text-xl mb-2'>Mật khẩu</h1>
+                                        <Field name="matKhau" className='block w-full py-1 bg-pink-300 text-white mb-3 rounded-sm ' type={`${show ? "text" : "password"}`} />
+                                        <div className="show_hide absolute top-0 right-0 z-50" onClick={() => setShow(!show)}>
+                                            {show ? <EyeInvisibleOutlined /> : <EyeOutlined />}
+                                        </div>
+                                    </div>
                                     {errors.matKhau && touched.matKhau ? (
                                         <div className='text-red-500 text-sm'>{errors.matKhau}</div>
                                     ) : null}
+
                                     <div className='flex justify-between'>
                                         <NavLink to='/login/update' className='mb-1'>Quên mật khẩu ?</NavLink>
                                         {/* <NavLink to='/login/update/password' className='mb-1'>Đổi mật khẩu ?</NavLink> */}

@@ -22,19 +22,19 @@ export default function Home(propsRoute) {
         else {
             return <HomeMenu listCenimaSystem={listCenimaSystem} />
         }
-
     }
     useEffect(
         () => {
             document.title = 'Home - Cenima App';
             // DISPATCH ACTION WITH REDUX THUNK
-            const action = fetchMovies()
             // CAN DISPATCH A FUNCTION WITH A SUPPORT OF REDUX - THUNK
             // Because we was setting redux thunk , so we can pass into dispatch with a function
             // dispatch(action)---> action ---> fetchCarousel() --> dispatch an action object to reducer
+            const action = fetchMovies()
             dispatch(action)
-            dispatch(fetchListCenimaSystem());
-
+            setTimeout(() => {
+                dispatch(fetchListCenimaSystem());
+            }, 1300)
         }, [])
 
     return (
@@ -58,7 +58,7 @@ export default function Home(propsRoute) {
             {responsiveHomeMenu()}
 
             {/* PARNERT */}
-            <Partner listCenimaSystem={listCenimaSystem} />
+            <Partner />
 
             {/* POPUP ADV */}
             <Adv />
