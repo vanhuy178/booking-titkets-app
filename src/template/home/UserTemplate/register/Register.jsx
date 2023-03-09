@@ -8,7 +8,7 @@ import { MessageRegister } from '../../../../components/ModalMessage';
 import * as Yup from 'yup';
 import { registerUserAction } from '../../../../redux/actions/ManagingUserAction';
 import ButtonBack from '../../../../components/ButtonBack';
-
+import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 
 const SignupSchema = Yup.object().shape({
   taiKhoan: Yup.string()
@@ -37,6 +37,10 @@ const Register = () => {
   const [showMessageRegister, setShowMessageRegister] = useState(false);
   const { messageUserRegister } = useSelector(state => state.managingUserStore)
   const dispatch = useDispatch();
+  const [state, setState] = useState({
+    password: false,
+    password_again: false
+  });
   useEffect(() => {
     document.title = 'Register - Cenima App';
   }, [])
@@ -44,10 +48,16 @@ const Register = () => {
     initialValues: new RegisterClass(),
     validationSchema: SignupSchema,
     onSubmit: values => {
-      console.log(values);
-      dispatch(registerUserAction(values));
+      if (values.matKhau !== values.nhaplaimatkhau) {
+        return
+      }
+      else {
+        dispatch(registerUserAction(values));
+      }
     }
   })
+
+
   return (
     <>
       <ButtonBack address='./login' />
@@ -59,8 +69,8 @@ const Register = () => {
           <h1 className='title-form mb-2pt-10 lg:pt-2'>Đăng ký</h1>
 
           {/* TAI KHOAN */}
-          <label htmlFor="taiKhoan" className='lable-form'>Tài khoản</label>
-          <input className='input-form lg:py-0'
+          <label htmlFor="taiKhoan" className='lable-form leading-none'>Tài khoản</label>
+          <input className='input-form lg:py-1'
             id="taiKhoan"
             name="taiKhoan"
             type="taiKhoan"
@@ -73,11 +83,15 @@ const Register = () => {
           ) : null}
 
           {/* PASSWORD */}
-          <label htmlFor="matKhau" className='lable-form'>Mật khẩu</label>
-          <input className='input-form lg:py-0'
+          <label htmlFor="matKhau" className='lable-form leading-none relative' >Mật khẩu
+            <div className="show_hide absolute top-0 right-0 z-50" onClick={() => setState({ ...state, password: !state.password })}>
+              {state.password ? <EyeInvisibleOutlined /> : <EyeOutlined />}
+            </div>
+          </label>
+          <input className='input-form lg:py-1'
             id="matKhau"
             name="matKhau"
-            type="text"
+            type={`${state.password ? 'text' : 'password'}`}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.matKhau}
@@ -85,10 +99,28 @@ const Register = () => {
           {formik.touched.matKhau && formik.errors.matKhau ? (
             messageError(formik.errors.matKhau)
           ) : null}
+          {/* Nhập lại password */}
+          <label htmlFor="nhaplaimatkhau" className='lable-form leading-none relative' >Nhập lại mật khẩu
+            <div className="show_hide absolute top-0 right-0 z-50" onClick={() => setState({ ...state, password_again: !state.password_again })}>
+              {state.password_again ? <EyeInvisibleOutlined /> : <EyeOutlined />}
+            </div>
+          </label>
+          <input className='input-form lg:py-1'
+            id="nhaplaimatkhau"
+            name="nhaplaimatkhau"
+            type={`${state.password_again ? 'text' : 'password'}`}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.nhaplaimatkhau}
+          />
+
+          {formik.values.nhaplaimatkhau && (formik.values.matKhau !== formik.values.nhaplaimatkhau) ? (
+            messageError("Mật khẩu nhập không đúng")
+          ) : null}
 
           {/* EMAIL */}
-          <label htmlFor="email" className='lable-form'>Email</label>
-          <input className='input-form lg:py-0'
+          <label htmlFor="email" className='lable-form leading-none' >Email</label>
+          <input className='input-form lg:py-1'
             id="email"
             name="email"
             type="email"
@@ -96,13 +128,13 @@ const Register = () => {
             onBlur={formik.handleBlur}
             value={formik.values.email}
           />
-          {formik.touched.email && formik.errors.email ? (
+          {formik.touched.hoTen && formik.errors.hoTen ? (
             messageError(formik.errors.email)
           ) : null}
 
           {/* HO VA TEN */}
-          <label htmlFor="hoTen" className='lable-form'>Họ và tên</label>
-          <input className='input-form lg:py-0'
+          <label htmlFor="hoTen" className='lable-form leading-none' >Họ và tên</label>
+          <input className='input-form lg:py-1'
             id="hoTen"
             name="hoTen"
             type="text"
@@ -117,8 +149,8 @@ const Register = () => {
 
 
           {/* SO DIEN THOAI */}
-          <label htmlFor="soDt" className='lable-form'>Số điện thoại</label>
-          <input className='input-form lg:py-0'
+          <label htmlFor="soDt" className='lable-form leading-none' >Số điện thoại</label>
+          <input className='input-form lg:py-1'
             id="soDt"
             name="soDt"
             type="soDt"
@@ -133,8 +165,8 @@ const Register = () => {
 
 
           {/* MA NHOM */}
-          <label htmlFor="maNhom" className='lable-form'>Mã nhóm</label>
-          <input className='input-form lg:py-0'
+          <label htmlFor="maNhom" className='lable-form leading-none' >Mã nhóm</label>
+          <input className='input-form lg:py-1'
             id="maNhom"
             name="maNhom"
             type="maNhom"
